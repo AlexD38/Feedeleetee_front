@@ -1,5 +1,6 @@
 body {
 	margin: 5rem;
+	min-height: 90vh;
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
 		"Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
 		"Helvetica Neue", sans-serif;
@@ -12,4 +13,5 @@ body {
 	justify-content: center;
 	align-items: center;
 	text-align: center;
+	border-style: 20px solid blue;
 }
