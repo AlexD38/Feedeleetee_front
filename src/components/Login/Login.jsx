@@ -1,21 +1,10 @@
 import React, { useState } from "react";
 import Button from "../../styles/components/Button.js";
+import Form from "../../styles/components/form.js";
+import Input from "../../styles/components/input.js";
 import axios from "axios";
 import qs from "qs";
 import styled from "styled-components";
-
-// Create a styled form
-const Form = styled.form`
-  background-color: none;
-  color: grey;
-  font-size: 1.5rem;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
 
 function Login() {
   const [userName, setUserName] = useState("");
@@ -59,7 +48,7 @@ function Login() {
       <Form onSubmit={handleSubmit}>
         <label>
           Pseudo :
-          <input
+          <Input
             type="text"
             value={userName}
             onChange={(e) => setUserName(e.target.value)}
@@ -67,7 +56,7 @@ function Login() {
         </label>
         <label>
           mail :
-          <input
+          <Input
             type="text"
             value={mail}
             onChange={(e) => setMail(e.target.value)}
@@ -75,7 +64,7 @@ function Login() {
         </label>
         <label>
           pwd :
-          <input
+          <Input
             type="text"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -83,11 +72,11 @@ function Login() {
         </label>
 
         <Button type="submit">Créer un compte</Button>
+        <p>
+          Already have an account ?{" "}
+          <a href="http://localhost:4000/login">Login</a>{" "}
+        </p>
       </Form>
-      <p>
-        Already have an account ?{" "}
-        <a href="http://localhost:4000/login">Login</a>{" "}
-      </p>
     </>
   );
 }
