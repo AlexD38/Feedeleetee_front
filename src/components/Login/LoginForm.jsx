@@ -9,91 +9,88 @@ import Link from "../../styles/components/Link";
 import qs from "qs";
 
 function LoginForm() {
-	const [mail, setMail] = useState("");
-	const [password, setPassword] = useState("");
-	const navigate = useNavigate();
-	localStorage.clear();
+  const [mail, setMail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+  localStorage.clear();
 
-	const handleSubmit = async (event) => {
-		const data = {
-			mail,
-			password,
-		};
+  const handleSubmit = async (event) => {
+    const data = {
+      mail,
+      password,
+    };
 
-		const headers = {
-			"Content-Type": "application/x-www-form-urlencoded",
-		};
+    const headers = {
+      "Content-Type": "application/x-www-form-urlencoded",
+    };
 
-		console.log(data);
-		event.preventDefault();
+    console.log(data);
+    event.preventDefault();
 
-		try {
-			const response = await axios.post(
-				"http://localhost:4000/login",
-				qs.stringify(data),
-				{
-					headers,
-				}
-			);
-			console.log("reponse : ", response.data);
+    try {
+      const response = await axios.post(
+        "http://localhost:4000/login",
+        qs.stringify(data),
+        {
+          headers,
+        }
+      );
+      console.log("reponse : ", response.data);
 
-			if (response.data.error) {
-				alert(response.data.error);
-				navigate("/login");
-				return;
-			}
-			response.data.token
-				? localStorage.setItem("token", response.data.token)
-				: navigate("/login");
-			response.data.userName
-				? localStorage.setItem("user", response.data.userName)
-				: navigate("/login");
-			response.data.clientId
-				? localStorage.setItem("clientId", response.data?.clientId)
-				: console.log("no client id");
-			response.data.enterpriseId
-				? localStorage.setItem(
-						"enterpriseId",
-						response.data?.enterpriseId
-				  )
-				: console.log("no enterpriseId");
-			navigate("/home");
-		} catch (error) {
-			console.log(error);
-			alert("Erreur lors de la création de l'utilisateur");
-		}
-	};
+      if (response.data.error) {
+        alert(response.data.error);
+        navigate("/login");
+        return;
+      }
+      response.data.token
+        ? localStorage.setItem("token", response.data.token)
+        : navigate("/login");
+      response.data.userName
+        ? localStorage.setItem("user", response.data.userName)
+        : navigate("/login");
+      response.data.clientId
+        ? localStorage.setItem("clientId", response.data?.clientId)
+        : console.log("no client id");
+      response.data.enterpriseId
+        ? localStorage.setItem("enterpriseId", response.data?.enterpriseId)
+        : console.log("no enterpriseId");
+      navigate("/home");
+    } catch (error) {
+      console.log(error);
+      alert("Erreur lors de la création de l'utilisateur");
+    }
+  };
 
-	// console.log("token");
+  // console.log("token");
 
-	return (
-		<>
-			<Form onSubmit={handleSubmit}>
-				<label>
-					mail :
-					<Input
-						type="text"
-						value={mail}
-						onChange={(e) => setMail(e.target.value)}
-					/>
-				</label>
-				<label>
-					pwd :
-					<Input
-						type="text"
-						value={password}
-						onChange={(e) => setPassword(e.target.value)}
-					/>
-				</label>
+  return (
+    <>
+      <Form onSubmit={handleSubmit}>
+        <label>
+          <Input
+            type="text"
+            placeholder="email"
+            value={mail}
+            onChange={(e) => setMail(e.target.value)}
+          />
+        </label>
+        <label>
+          <Input
+            type="text"
+            placeholder="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </label>
 
-				<Button type="submit">Me connecter</Button>
-				<p>
-					Don't have an account yet ?{" "}
-					<Link href="http://localhost:3000/signup">Create One</Link>{" "}
-				</p>
-			</Form>
-		</>
-	);
+        <Button type="submit">Me connecter</Button>
+        <p>
+          Don't have an account yet ?{" "}
+          <Link href="http://localhost:3000/signup">Create One</Link>{" "}
+        </p>
+      </Form>
+    </>
+  );
 }
 
 export default LoginForm;
