@@ -1,10 +1,18 @@
-import Login from "../Login/Login.jsx";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import Home from "../Home/Home.jsx";
+import LoginForm from "../Login/LoginForm.jsx";
+import Signup from "../SignUp/SignUp.jsx";
 
 function App() {
 	return (
-		<div className="container">
-			<Login />
-		</div>
+		<Router>
+			<Routes>
+				<Route path="/" exact element={<Signup />} />
+				<Route path="/login" exact element={<LoginForm />} />
+				<Route path="/home" exact element={<Home />} />
+				<Route path="/signup" exact element={<Signup />} />
+			</Routes>
+		</Router>
 	);
 }
 
