@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 // Create a styled component
 const Link = styled.a`
-	margin: 2rem;
 	display: block;
 	cursor: pointer;
 	color: white;

@@ -19,6 +19,7 @@ function CreateEnterprise() {
 			enterpriseLogo,
 			enterpriseDesc,
 		};
+		// localStorage.clear();
 
 		const headers = {
 			"Content-Type": "application/x-www-form-urlencoded",
@@ -41,7 +42,7 @@ function CreateEnterprise() {
 			console.log(result.success);
 			if (result.success) {
 				alert(result.success);
-				navigate("/login");
+				navigate("/home");
 			}
 			if (result.authenticated === false) {
 				// Redirection vers la page de login

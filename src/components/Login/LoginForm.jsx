@@ -42,21 +42,15 @@ function LoginForm() {
 				navigate("/login");
 				return;
 			}
-			response.data.token
-				? localStorage.setItem("token", response.data.token)
-				: navigate("/login");
-			response.data.userName
-				? localStorage.setItem("user", response.data.userName)
-				: navigate("/login");
-			response.data.clientId
-				? localStorage.setItem("clientId", response.data?.clientId)
-				: console.log("no client id");
-			response.data.enterpriseId
-				? localStorage.setItem(
-						"enterpriseId",
-						response.data?.enterpriseId
-				  )
-				: console.log("no enterpriseId");
+			response.data.token = localStorage.setItem(
+				"token",
+				response.data.token
+			);
+			response.data.userName = localStorage.setItem(
+				"user",
+				response.data.userName
+			);
+
 			navigate("/home");
 		} catch (error) {
 			console.log(error);
