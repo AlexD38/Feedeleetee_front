@@ -10,6 +10,11 @@ function App() {
 				<Route path="/" exact element={<Signup />} />
 				<Route path="/login" exact element={<LoginForm />} />
 				<Route path="/home" exact element={<Home />} />
+				<Route
+					path="/myenterprise"
+					exact
+					element={<enterpriseDashboard />}
+				/>
 				<Route path="/signup" exact element={<Signup />} />
 			</Routes>
 		</Router>

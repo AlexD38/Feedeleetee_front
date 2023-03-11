@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 // Create a styled component
 const Input = styled.input`
-  border-radius: 0.5rem;
-  padding: 0.4rem;
+  border-radius: 1rem;
+  padding: 0.2 rem;
   margin: 1rem;
   border: none;
   text-aling: center;

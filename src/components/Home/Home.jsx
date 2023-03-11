@@ -9,6 +9,8 @@ import Link from "../../styles/components/Link";
 import qs from "qs";
 import CreateEnterprise from "../CreateEnterpriseFrom/CreateEnterpriseFrom.jsx";
 import HorizontalWrapper from "../../styles/components/HorizontalWrapper.js";
+import verticalWrapper from "../../styles/components/verticalWrapper.js";
+import Greetings from "../../styles/components/Greetings.js";
 
 function Home() {
 	const userName = localStorage.getItem("user");
@@ -24,33 +26,40 @@ function Home() {
 	}, []);
 
 	return (
-		<>
-			<h1>Hello {userName}</h1>
-			{enterpriseId ? (
-				<>
-					<h2>J'ai déjà une entreprise</h2>
-				</>
-			) : (
-				<>
-					<HorizontalWrapper>
-						<CreateEnterprise />
-						{/* <CreateClient /> */}
-					</HorizontalWrapper>
-				</>
-			)}
-			{clientId ? (
-				<>
-					<h2>J'ai déjà un profil client</h2>
-				</>
-			) : (
-				<>
-					<HorizontalWrapper>
-						<CreateEnterprise />
-						{/* <CreateClient /> */}
-					</HorizontalWrapper>
-				</>
-			)}
-		</>
+		<verticalWrapper>
+			<>
+				<Greetings>Hello {userName}</Greetings>
+				{enterpriseId ? (
+					<>
+						{" "}
+						<Link href="http://localhost/myenterprise">
+							Accéder à mon entreprise
+						</Link>
+					</>
+				) : (
+					<>
+						<HorizontalWrapper>
+							<CreateEnterprise />
+							{/* <CreateClient /> */}
+						</HorizontalWrapper>
+					</>
+				)}
+				{clientId ? (
+					<>
+						<Link href="http://localhost/myclientprofile">
+							Accéder à mon profil client
+						</Link>
+					</>
+				) : (
+					<>
+						<HorizontalWrapper>
+							<CreateEnterprise />
+							{/* <CreateClient /> */}
+						</HorizontalWrapper>
+					</>
+				)}
+			</>
+		</verticalWrapper>
 	);
 }
 
