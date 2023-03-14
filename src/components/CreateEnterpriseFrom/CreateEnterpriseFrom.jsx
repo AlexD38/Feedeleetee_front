@@ -56,7 +56,7 @@ function CreateEnterprise() {
 	};
 	return (
 		<>
-			<Form onSubmit={handleSubmit}>
+			<Form onSubmit={handleSubmit} enctype="multipart/form-data">
 				<label>
 					Nom de l'entreprise :
 					<Input
@@ -86,7 +86,7 @@ function CreateEnterprise() {
 				<label>
 					Logo de l'entreprise :
 					<Input
-						type="file"
+						type="text"
 						value={enterpriseLogo}
 						onChange={(e) => setEnterpriseLogo(e.target.value)}
 					/>

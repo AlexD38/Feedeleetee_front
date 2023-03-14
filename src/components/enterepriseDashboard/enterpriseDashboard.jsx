@@ -1,9 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Greetings from "../../styles/components/Greetings.js";
-import Link from "../../styles/components/Link.js";
-import CreateEnterprise from "../CreateEnterpriseFrom/CreateEnterpriseFrom.jsx";
+
 import Logout from "../Logout/Logout.jsx";
+import ClientsInfos from "./clientsInfos/clientsInfos.jsx";
+import EnterpriseInfos from "./enterpriseInfos/enterpriseInfos.jsx";
 
 function EnterpriseDashboard() {
 	const [myEnterprise, setMyEnterprise] = useState("");
@@ -27,22 +28,9 @@ function EnterpriseDashboard() {
 	return (
 		<>
 			<Greetings>My Dashboard</Greetings>
+			<EnterpriseInfos />
+			<ClientsInfos />
 			<Logout />
-			{myEnterprise ? (
-				<>
-					<h3>{myEnterprise.name}</h3>
-					<h3>{myEnterprise.address}</h3>
-					<h3>{myEnterprise.logo}</h3>
-					<h3>{myEnterprise.description}</h3>
-					<Link>supprimer mon entreprise</Link>
-					{/* <EnterpriseInfos /> */}
-				</>
-			) : (
-				<>
-					<h1>You need to create one first...</h1>
-					<CreateEnterprise />
-				</>
-			)}
 		</>
 	);
 }

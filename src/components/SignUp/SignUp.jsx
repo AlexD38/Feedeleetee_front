@@ -53,6 +53,7 @@ function Signup() {
 				<label>
 					Pseudo :
 					<Input
+						required
 						type="text"
 						value={userName}
 						onChange={(e) => setUserName(e.target.value)}
@@ -61,7 +62,8 @@ function Signup() {
 				<label>
 					mail :
 					<Input
-						type="text"
+						required
+						type="mail"
 						value={mail}
 						onChange={(e) => setMail(e.target.value)}
 					/>
@@ -69,7 +71,8 @@ function Signup() {
 				<label>
 					pwd :
 					<Input
-						type="text"
+						required
+						type="password"
 						value={password}
 						onChange={(e) => setPassword(e.target.value)}
 					/>
