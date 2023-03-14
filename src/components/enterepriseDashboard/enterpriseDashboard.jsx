@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Greetings from "../../styles/components/Greetings.js";
 import Link from "../../styles/components/Link.js";
 import CreateEnterprise from "../CreateEnterpriseFrom/CreateEnterpriseFrom.jsx";
+import Logout from "../Logout/Logout.jsx";
 
 function EnterpriseDashboard() {
 	const [myEnterprise, setMyEnterprise] = useState("");
@@ -26,6 +27,7 @@ function EnterpriseDashboard() {
 	return (
 		<>
 			<Greetings>My Dashboard</Greetings>
+			<Logout />
 			{myEnterprise ? (
 				<>
 					<h3>{myEnterprise.name}</h3>
@@ -33,6 +35,7 @@ function EnterpriseDashboard() {
 					<h3>{myEnterprise.logo}</h3>
 					<h3>{myEnterprise.description}</h3>
 					<Link>supprimer mon entreprise</Link>
+					{/* <EnterpriseInfos /> */}
 				</>
 			) : (
 				<>

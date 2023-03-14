@@ -1,34 +1,41 @@
 import React, { useEffect, useState } from "react";
-
 import { useNavigate } from "react-router-dom";
+
 import Link from "../../styles/components/Link";
-import axios from "axios";
-import CreateEnterprise from "../CreateEnterpriseFrom/CreateEnterpriseFrom.jsx";
-import HorizontalWrapper from "../../styles/components/HorizontalWrapper.js";
+
 import VerticalWrapper from "../../styles/components/verticalWrapper.js";
 import Greetings from "../../styles/components/Greetings.js";
+import Logout from "../Logout/Logout";
 
 function Home() {
-	// const [userName, setUserName] = useState("");
 	const userName = localStorage.getItem("user");
-	// const clientId = localStorage.getItem("clientId");
-	const token = localStorage.getItem("token");
+	const [token, setToken] = useState(localStorage.getItem("token"));
 	const navigate = useNavigate();
 
-	return (
+	useEffect(() => {
+		if (!token) {
+			alert("please login first");
+			navigate("/login");
+		}
+	}, [token]);
+
+	return userName ? (
 		<VerticalWrapper>
-			<>
-				<Greetings>Hello {userName}</Greetings>
+			<Greetings>Hello {userName}</Greetings>
+			<Logout />
 
-				<Link href="http://localhost:3000/myenterprise">
-					Accéder à mon entreprise
-				</Link>
+			<Link href="http://localhost:3000/myenterprise">
+				Accéder à mon entreprise
+			</Link>
 
-				<Link href="http://localhost/myclientprofile">
-					Accéder à mon profil client
-				</Link>
-			</>
+			<Link href="http://localhost/myclientprofile">
+				Accéder à mon profil client
+			</Link>
 		</VerticalWrapper>
+	) : (
+		<>
+			<h1>nothing to see here...</h1>
+		</>
 	);
 }
 
