@@ -17,7 +17,7 @@ function EnterpriseInfos() {
 				`http://localhost:4000/enterprise/`,
 				{ headers }
 			);
-			console.log(response.data[0]);
+			// console.log(response.data[0]);
 			setMyEnterprise((myEnterprise) => response.data[0]);
 		}
 		fetchDashboard();

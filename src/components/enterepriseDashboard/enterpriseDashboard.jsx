@@ -5,6 +5,10 @@ import Greetings from "../../styles/components/Greetings.js";
 import Logout from "../Logout/Logout.jsx";
 import ClientsInfos from "./clientsInfos/clientsInfos.jsx";
 import EnterpriseInfos from "./enterpriseInfos/enterpriseInfos.jsx";
+import ServicesInfos from "./servicesInfos/servicesInfos.jsx";
+import HorizontalWrapper from "../../styles/components/HorizontalWrapper.js";
+import OffersInfos from "./offersInfos/OffersInfos.jsx";
+import AppointmentsInfos from "./appointmentsInfos/appointmentsInfos.jsx";
 
 function EnterpriseDashboard() {
 	const [myEnterprise, setMyEnterprise] = useState("");
@@ -19,19 +23,22 @@ function EnterpriseDashboard() {
 				`http://localhost:4000/enterprise/`,
 				{ headers }
 			);
-			console.log(response.data[0]);
-			setMyEnterprise((myEnterprise) => response.data[0]);
+			// console.log(response.data[0]);
+			setMyEnterprise((myEnterprise) => response.data);
 		}
 		fetchDashboard();
 	}, []);
 
 	return (
-		<>
+		<HorizontalWrapper>
 			<Greetings>My Dashboard</Greetings>
 			<EnterpriseInfos />
 			<ClientsInfos />
+			<ServicesInfos />
+			<OffersInfos />
+			<AppointmentsInfos />
 			<Logout />
-		</>
+		</HorizontalWrapper>
 	);
 }
 

@@ -66,7 +66,7 @@ function LoginForm() {
 				<label>
 					mail :
 					<Input
-						type="text"
+						type="mail"
 						value={mail}
 						onChange={(e) => setMail(e.target.value)}
 					/>
@@ -74,7 +74,7 @@ function LoginForm() {
 				<label>
 					pwd :
 					<Input
-						type="text"
+						type="password"
 						value={password}
 						onChange={(e) => setPassword(e.target.value)}
 					/>

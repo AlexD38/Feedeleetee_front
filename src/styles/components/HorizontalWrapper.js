@@ -5,7 +5,8 @@ const HorizontalWrapper = styled.div`
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
-	align-items: center;
+	flex-wrap: wrap;
+	align-items: flex-start;
 `;
 
 export default HorizontalWrapper;

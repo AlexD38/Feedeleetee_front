@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Card from "../../../styles/components/card.js";
-import CreateEnterprise from "../../CreateEnterpriseFrom/CreateEnterpriseFrom.jsx";
 
 function ClientsInfos() {
 	const [myClients, setMyClients] = useState("");
@@ -16,21 +15,29 @@ function ClientsInfos() {
 				`http://localhost:4000/enterprises/clients`,
 				{ headers }
 			);
-			console.log(response.data[0]);
-			setMyClients((myClients) => response.data[0]);
+			setMyClients((myClients) => response.data);
+			// console.log(response.data);
 		}
 		fetchClients();
 	}, [token]);
 
 	return (
 		<>
-			{" "}
-			<Card>
-				<p>{myClients.firstname}</p>
-				<p>{myClients.lastname}</p>
-				<p>{myClients.tel}</p>
-				<p>{myClients.mail}</p>
-			</Card>
+			{myClients ? (
+				<Card>
+					<h1>My Clients List</h1>
+					{myClients.map((clientInformation) => (
+						<div key={clientInformation.id}>
+							<p>{clientInformation.firstname}</p>
+							<p>{clientInformation.lastname}</p>
+							<p>{clientInformation.tel}</p>
+							<p>{clientInformation.mail}</p>
+						</div>
+					))}
+				</Card>
+			) : (
+				<></>
+			)}
 		</>
 	);
 }
