@@ -28,15 +28,19 @@ function ClientsInfos() {
 					<h1>My Clients List</h1>
 					{myClients.map((clientInformation) => (
 						<div key={clientInformation.id}>
-							<p>{clientInformation.firstname}</p>
-							<p>{clientInformation.lastname}</p>
+							<p>
+								{clientInformation.firstname}{" "}
+								{clientInformation.lastname}
+							</p>
 							<p>{clientInformation.tel}</p>
 							<p>{clientInformation.mail}</p>
 						</div>
 					))}
 				</Card>
 			) : (
-				<></>
+				<Card>
+					<h1>No clients yet ...</h1>
+				</Card>
 			)}
 		</>
 	);

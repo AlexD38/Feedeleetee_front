@@ -15,10 +15,13 @@ function OffersInfos() {
 				`http://localhost:4000/enterprises/offers`,
 				{ headers }
 			);
-			setMyOffers(
-				(myOffers) => response.data[0].entreprise_et_services.offers
-			);
-			// console.log(response.data[0].entreprise_et_services.offers);
+			const offers = response.data[0].entreprise_et_services.offers;
+			if (offers) {
+				setMyOffers(
+					(myOffers) => response.data[0].entreprise_et_services.offers
+				);
+				console.log(response.data[0].entreprise_et_services.offers);
+			}
 		}
 		fetchOffers();
 	}, [token]);
@@ -30,13 +33,15 @@ function OffersInfos() {
 					<h1>My Offers List</h1>
 					{myOffers.map((offerInformation) => (
 						<div key={offerInformation.id}>
-							<p>{offerInformation.description}</p>
-							<p>{offerInformation.discount}</p>
+							<p>{offerInformation.description} </p>
+							<p>-{offerInformation.discount}%</p>
 						</div>
 					))}
 				</Card>
 			) : (
-				<></>
+				<Card>
+					<h1>No offers yet...</h1>
+				</Card>
 			)}
 		</>
 	);

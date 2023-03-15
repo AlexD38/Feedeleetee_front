@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Card from "../../../styles/components/card.js";
+import HorizontalWrapper from "../../../styles/components/HorizontalWrapper.js";
 
 function AppointmentsInfos() {
 	const [myAppointments, setMyAppointments] = useState("");
@@ -16,7 +17,7 @@ function AppointmentsInfos() {
 				{ headers }
 			);
 			setMyAppointments((myAppointments) => response.data);
-			console.log(response.data);
+			// console.log(response.data);
 		}
 		fetchAppointments();
 	}, [token]);
@@ -24,19 +25,22 @@ function AppointmentsInfos() {
 	return (
 		<>
 			{" "}
-			Hello pou
 			{myAppointments ? (
 				<Card>
 					<h1>My Appointment List</h1>
 					{myAppointments.map((myAppointments) => (
-						<div key={myAppointments.id}>
-							<p>{myAppointments.day}</p>
-							<p>{myAppointments.time_of_day}</p>
-						</div>
+						<HorizontalWrapper key={myAppointments.id}>
+							<p>
+								Le {myAppointments.day} à :{" "}
+								{myAppointments.time_of_day}
+							</p>
+						</HorizontalWrapper>
 					))}
 				</Card>
 			) : (
-				<></>
+				<Card>
+					<h1>No Appointments...</h1>
+				</Card>
 			)}
 		</>
 	);

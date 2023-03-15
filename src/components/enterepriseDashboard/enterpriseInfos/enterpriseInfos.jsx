@@ -31,7 +31,11 @@ function EnterpriseInfos() {
 						<h1>My enterprise :</h1>
 						<h3>{myEnterprise.name}</h3>
 						<h3>{myEnterprise.address}</h3>
-						<img alt="logo" src={myEnterprise.logo} />
+						{myEnterprise.logo ? (
+							<img alt="logo" src={myEnterprise.logo} />
+						) : (
+							<></>
+						)}
 						<h3>{myEnterprise.description}</h3>{" "}
 					</Card>
 				</>

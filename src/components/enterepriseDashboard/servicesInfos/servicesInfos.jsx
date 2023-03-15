@@ -15,11 +15,14 @@ function ServicesInfos() {
 				`http://localhost:4000/enterprises/services`,
 				{ headers }
 			);
-			setMyServices(
-				(myServices) => response.data[0].entreprise_et_services.services
-			);
-			// (myServices) => response.data[0].entreprise_et_services.services
-			// console.log(response.data);
+			const services = response.data[0].entreprise_et_services.services;
+			if (services) {
+				setMyServices(
+					(myServices) =>
+						response.data[0].entreprise_et_services.services
+				);
+			}
+			console.log(response.data);
 		}
 		fetchServices();
 	}, [token]);
@@ -31,13 +34,17 @@ function ServicesInfos() {
 					<h1>My services</h1>
 					{myServices.map((serviceInformation) => (
 						<div key={serviceInformation.id}>
-							<p>{serviceInformation.description}</p>
-							<p>{serviceInformation.price}</p>
+							<p>
+								{serviceInformation.description} :{" "}
+								{serviceInformation.price} €
+							</p>
 						</div>
 					))}
 				</Card>
 			) : (
-				<></>
+				<Card>
+					<h1>No services yet...</h1>
+				</Card>
 			)}
 		</>
 	);

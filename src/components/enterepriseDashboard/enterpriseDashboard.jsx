@@ -33,10 +33,10 @@ function EnterpriseDashboard() {
 		<HorizontalWrapper>
 			<Greetings>My Dashboard</Greetings>
 			<EnterpriseInfos />
-			<ClientsInfos />
 			<ServicesInfos />
 			<OffersInfos />
 			<AppointmentsInfos />
+			<ClientsInfos />
 			<Logout />
 		</HorizontalWrapper>
 	);
