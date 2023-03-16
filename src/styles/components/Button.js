@@ -10,7 +10,6 @@ const Button = styled.button`
 	padding: 0.5rem 1rem;
 	border-radius: 1rem;
 	border: none;
-	margin: 2rem 0 0.5rem 0;
 	transition: all 0.3s ease;
 	&:hover {
 		cursor: pointer;

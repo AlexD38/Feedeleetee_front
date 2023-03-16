@@ -22,7 +22,6 @@ function Home() {
 	return userName ? (
 		<VerticalWrapper>
 			<Greetings>Hello {userName}</Greetings>
-			<Logout />
 
 			<Link href="http://localhost:3000/myenterprise">
 				Accéder à mon entreprise
@@ -31,6 +30,7 @@ function Home() {
 			<Link href="http://localhost/myclientprofile">
 				Accéder à mon profil client
 			</Link>
+			<Logout />
 		</VerticalWrapper>
 	) : (
 		<>

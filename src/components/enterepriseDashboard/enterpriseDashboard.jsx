@@ -9,6 +9,12 @@ import ServicesInfos from "./servicesInfos/servicesInfos.jsx";
 import HorizontalWrapper from "../../styles/components/HorizontalWrapper.js";
 import OffersInfos from "./offersInfos/OffersInfos.jsx";
 import AppointmentsInfos from "./appointmentsInfos/appointmentsInfos.jsx";
+import Trashcan from "../trashcan/Trashcan.jsx";
+import AddSign from "../addSign/AddSign.jsx";
+import CheckSign from "../checkSign/CheckSign.jsx";
+import EditSign from "../editSign/EditSign.jsx";
+import SideBar from "../../styles/layout/sideBar.js";
+import Logo from "../../styles/components/Logo.js";
 
 function EnterpriseDashboard() {
 	const [myEnterprise, setMyEnterprise] = useState("");
@@ -24,20 +30,23 @@ function EnterpriseDashboard() {
 				{ headers }
 			);
 			// console.log(response.data[0]);
-			setMyEnterprise((myEnterprise) => response.data);
+			setMyEnterprise((myEnterprise) => response.data[0]);
 		}
 		fetchDashboard();
 	}, []);
 
 	return (
 		<HorizontalWrapper>
-			<Greetings>My Dashboard</Greetings>
+			<Greetings>{myEnterprise.name}</Greetings>
+			<SideBar>
+				<Logo src={myEnterprise.logo} alt="logo" />
+				<Logout />
+			</SideBar>
 			<EnterpriseInfos />
 			<ServicesInfos />
 			<OffersInfos />
 			<AppointmentsInfos />
 			<ClientsInfos />
-			<Logout />
 		</HorizontalWrapper>
 	);
 }

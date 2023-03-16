@@ -3,7 +3,6 @@ import Home from "../Home/Home.jsx";
 import LoginForm from "../Login/LoginForm.jsx";
 import Signup from "../SignUp/SignUp.jsx";
 import EnterpriseDashboard from "../enterepriseDashboard/enterpriseDashboard.jsx";
-import CreateEnterprise from "../CreateEnterpriseFrom/CreateEnterpriseFrom.jsx";
 
 function App() {
 	return (
