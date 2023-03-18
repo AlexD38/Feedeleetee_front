@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Card from "../../../styles/components/card.js";
+import VerticalWrapper from "../../../styles/components/verticalWrapper.js";
 
 function ServicesInfos() {
 	const [myServices, setMyServices] = useState("");
@@ -25,7 +26,7 @@ function ServicesInfos() {
 	}, [token]);
 
 	return (
-		<>
+		<VerticalWrapper>
 			{myServices ? (
 				<Card>
 					<h1>My services</h1>
@@ -43,7 +44,7 @@ function ServicesInfos() {
 					<h1>No services yet...</h1>
 				</Card>
 			)}
-		</>
+		</VerticalWrapper>
 	);
 }
 

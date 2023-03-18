@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Card from "../../../styles/components/card.js";
+import VerticalWrapper from "../../../styles/components/verticalWrapper.js";
 
 function ClientsInfos() {
 	const [myClients, setMyClients] = useState("");
@@ -22,7 +23,7 @@ function ClientsInfos() {
 	}, [token]);
 
 	return (
-		<>
+		<VerticalWrapper>
 			{myClients ? (
 				<Card>
 					<h1>My Clients List</h1>
@@ -42,7 +43,7 @@ function ClientsInfos() {
 					<h1>No clients yet ...</h1>
 				</Card>
 			)}
-		</>
+		</VerticalWrapper>
 	);
 }
 

@@ -3,6 +3,7 @@ import styled from "styled-components";
 // Create a styled component
 const Card = styled.div`
 	display: flex;
+	position: relative;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
@@ -14,7 +15,7 @@ const Card = styled.div`
 	background: #454545;
 	box-shadow: 20px 20px 60px #3b3b3b, -20px -20px 60px #4f4f4f;
 	margin: 1.5rem;
-	min-width: 25dvw;
+	min-width: 50%;
 `;
 
 export default Card;

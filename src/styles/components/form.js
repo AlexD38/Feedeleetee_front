@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 // Create a styled component
 const Form = styled.form`
+	margin-top: 15rem;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;

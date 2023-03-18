@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Card from "../../../styles/components/card.js";
+import VerticalWrapper from "../../../styles/components/verticalWrapper.js";
 
 function OffersInfos() {
 	const [myOffers, setMyOffers] = useState("");
@@ -25,7 +26,7 @@ function OffersInfos() {
 	}, [token]);
 
 	return (
-		<>
+		<VerticalWrapper>
 			{myOffers ? (
 				<Card>
 					<h1>My Offers List</h1>
@@ -41,7 +42,7 @@ function OffersInfos() {
 					<h1>No offers yet...</h1>
 				</Card>
 			)}
-		</>
+		</VerticalWrapper>
 	);
 }
 

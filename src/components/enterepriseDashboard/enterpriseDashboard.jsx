@@ -22,6 +22,7 @@ function EnterpriseDashboard() {
 	const token = localStorage.getItem("token");
 	const navigate = useNavigate();
 	const [currentComponent, setCurrentComponent] = useState("Appointments");
+	const [coloredNavlink, setColoredNavlink] = useState("white");
 
 	useEffect(() => {
 		async function fetchDashboard() {
@@ -32,47 +33,99 @@ function EnterpriseDashboard() {
 				"http://localhost:4000/enterprise/",
 				{ headers }
 			);
-			setMyEnterprise(response.data[0]);
+			if (response.data[0]) {
+				setMyEnterprise(response.data[0]);
+			} else {
+				navigate("/createenterprise");
+			}
 		}
 		fetchDashboard();
-	}, []);
+	}, [navigate, token]);
 	const handleClick = (componentName) => {
+		setColoredNavlink("white");
 		setCurrentComponent(componentName);
 		console.log(currentComponent);
 	};
 
 	return (
 		<>
-			<Header>
-				<Greetings>{myEnterprise.name}</Greetings>
-				<EnterpriseDesc>{myEnterprise.description}</EnterpriseDesc>
-			</Header>
-			<SideBar>
-				<Navbar>
-					<LinkComp
-						onClick={(e) => handleClick(e.target.textContent)}>
-						Appointments
+			{" "}
+			{myEnterprise.name ? (
+				<>
+					<Header>
+						<Greetings>{myEnterprise.name}</Greetings>
+						<EnterpriseDesc>
+							{myEnterprise.description}
+						</EnterpriseDesc>
+					</Header>
+					<SideBar>
+						<Navbar>
+							<LinkComp
+								onClick={(e) =>
+									handleClick(e.target.textContent)
+								}
+								style={{
+									color:
+										currentComponent === "Appointments"
+											? "#eca869"
+											: "white",
+								}}>
+								Appointments
+							</LinkComp>
+							<LinkComp
+								onClick={(e) =>
+									handleClick(e.target.textContent)
+								}
+								style={{
+									color:
+										currentComponent === "Clients"
+											? "#eca869"
+											: "white",
+								}}>
+								Clients
+							</LinkComp>
+							<LinkComp
+								onClick={(e) =>
+									handleClick(e.target.textContent)
+								}
+								style={{
+									color:
+										currentComponent === "Offers"
+											? "#eca869"
+											: "white",
+								}}>
+								Offers
+							</LinkComp>
+							<LinkComp
+								onClick={(e) =>
+									handleClick(e.target.textContent)
+								}
+								style={{
+									color:
+										currentComponent === "Offers"
+											? "#eca869"
+											: "white",
+								}}>
+								Services
+							</LinkComp>
+						</Navbar>
+						<Logo src={myEnterprise.logo} alt="logo" />
+						<Logout />
+					</SideBar>
+					{currentComponent === "Appointments" && (
+						<AppointmentsInfos />
+					)}
+					{currentComponent === "Clients" && <ClientsInfos />}
+					{currentComponent === "Offers" && <OffersInfos />}
+					{currentComponent === "Services" && <ServicesInfos />}
+				</>
+			) : (
+				<>
+					<LinkComp href="/createenterprise">
+						You must create one first...
 					</LinkComp>
-					<LinkComp
-						onClick={(e) => handleClick(e.target.textContent)}>
-						Clients
-					</LinkComp>
-					<LinkComp
-						onClick={(e) => handleClick(e.target.textContent)}>
-						Offers
-					</LinkComp>
-					<LinkComp
-						onClick={(e) => handleClick(e.target.textContent)}>
-						Services
-					</LinkComp>
-				</Navbar>
-				<Logo src={myEnterprise.logo} alt="logo" />
-				<Logout />
-			</SideBar>
-			{currentComponent === "Appointments" && <AppointmentsInfos />}
-			{currentComponent === "Clients" && <ClientsInfos />}
-			{currentComponent === "Offers" && <OffersInfos />}
-			{currentComponent === "Services" && <ServicesInfos />}
+				</>
+			)}
 		</>
 	);
 }

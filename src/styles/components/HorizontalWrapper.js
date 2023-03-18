@@ -4,8 +4,9 @@ import styled from "styled-components";
 const HorizontalWrapper = styled.div`
 	display: flex;
 	flex-direction: row;
-	justify-content: center;
+	justify-content: space-between;
 	flex-wrap: wrap;
+	position: relative;
 	align-items: flex-start;
 `;
 
