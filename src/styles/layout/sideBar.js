@@ -7,7 +7,7 @@ const SideBar = styled.aside`
 	position: relative;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
+	justify-content: center;
 	align-items: center;
 	color: white;
 	font-size: 1rem;
@@ -18,12 +18,6 @@ const SideBar = styled.aside`
 	min-width: 2dvw;
 	left: 0;
 	top: 0;
-	transition: all 0.3s ease;
-	&:hover {
-		cursor: pointer;
-		min-width: 10dvw;
-		transition: all 0.5s ease-in-out;
-	}
 `;
 
 export default SideBar;

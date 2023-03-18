@@ -4,7 +4,7 @@ import Form from "../../styles/components/form.js";
 import Input from "../../styles/components/input.js";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import Link from "../../styles/components/Link";
+import Link from "../../styles/components/LinkComp";
 
 import qs from "qs";
 

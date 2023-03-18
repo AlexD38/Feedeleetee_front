@@ -1,11 +1,9 @@
 import styled from "styled-components";
-import button from "./Button.js";
 
 // Create a styled component
-const LogoutBtn = styled.svg`
+const EditSign = styled.svg`
 	margin: 0 auto;
-	position: absolute;
-	bottom: 2rem;
+	position: relative;
 	transition: all 0.2s ease;
 	&:hover {
 		cursor: pointer;
@@ -14,4 +12,4 @@ const LogoutBtn = styled.svg`
 	}
 `;
 
-export default LogoutBtn;
+export default EditSign;

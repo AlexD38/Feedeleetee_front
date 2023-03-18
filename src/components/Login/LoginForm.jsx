@@ -4,7 +4,7 @@ import Form from "../../styles/components/form.js";
 import Input from "../../styles/components/input.js";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import Link from "../../styles/components/Link";
+import Link from "../../styles/components/LinkComp";
 
 import qs from "qs";
 
@@ -54,8 +54,14 @@ function LoginForm() {
 			navigate("/home");
 		} catch (error) {
 			console.log(error);
-			alert("Erreur lors de la création de l'utilisateur");
+			alert("erreur lors de la connexion");
 		}
+	};
+	const showPwd = (event) => {
+		event.target.type = "text";
+	};
+	const hidePwd = (event) => {
+		event.target.type = "password";
 	};
 
 	// console.log("token");
@@ -66,7 +72,8 @@ function LoginForm() {
 				<label>
 					mail :
 					<Input
-						type="mail"
+						required
+						type="email"
 						value={mail}
 						onChange={(e) => setMail(e.target.value)}
 					/>
@@ -74,6 +81,9 @@ function LoginForm() {
 				<label>
 					pwd :
 					<Input
+						onBlur={hidePwd}
+						onDoubleClick={showPwd}
+						required
 						type="password"
 						value={password}
 						onChange={(e) => setPassword(e.target.value)}

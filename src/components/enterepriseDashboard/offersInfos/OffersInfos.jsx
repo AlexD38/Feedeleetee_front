@@ -15,12 +15,10 @@ function OffersInfos() {
 				`http://localhost:4000/enterprises/offers`,
 				{ headers }
 			);
-			const offers = response.data[0].entreprise_et_services.offers;
+			const offers = response.data;
 			if (offers) {
-				setMyOffers(
-					(myOffers) => response.data[0].entreprise_et_services.offers
-				);
-				console.log(response.data[0].entreprise_et_services.offers);
+				setMyOffers((myOffers) => response.data);
+				// console.log(response.data);
 			}
 		}
 		fetchOffers();

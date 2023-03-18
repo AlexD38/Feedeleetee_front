@@ -15,14 +15,11 @@ function ServicesInfos() {
 				`http://localhost:4000/enterprises/services`,
 				{ headers }
 			);
-			const services = response.data[0].entreprise_et_services.services;
+			const services = response.data;
 			if (services) {
-				setMyServices(
-					(myServices) =>
-						response.data[0].entreprise_et_services.services
-				);
+				setMyServices((myServices) => response.data);
 			}
-			console.log(response.data);
+			// console.log(response.data);
 		}
 		fetchServices();
 	}, [token]);

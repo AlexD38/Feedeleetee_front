@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Card from "../../../styles/components/card.js";
-import Link from "../../../styles/components/Link.js";
+import Link from "../../../styles/components/LinkComp.js";
 import CreateEnterprise from "../../CreateEnterpriseFrom/CreateEnterpriseFrom.jsx";
 
 function EnterpriseInfos() {

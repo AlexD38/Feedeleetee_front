@@ -6,8 +6,8 @@ const Greetings = styled.h1`
 	font-size: 3rem;
 	font-weight: bold;
 	position: absolute;
-	top: 1rem;
-	left: 2rem;
+	left: 17rem;
+	margin: 0;
 `;
 
 export default Greetings;

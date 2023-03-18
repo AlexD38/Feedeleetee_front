@@ -3,6 +3,10 @@ import Home from "../Home/Home.jsx";
 import LoginForm from "../Login/LoginForm.jsx";
 import Signup from "../SignUp/SignUp.jsx";
 import EnterpriseDashboard from "../enterepriseDashboard/enterpriseDashboard.jsx";
+import ServicesInfos from "../enterepriseDashboard/servicesInfos/servicesInfos.jsx";
+import OffersInfos from "../enterepriseDashboard/offersInfos/OffersInfos.jsx";
+import AppointmentsInfos from "../enterepriseDashboard/appointmentsInfos/appointmentsInfos.jsx";
+import ClientsInfos from "../enterepriseDashboard/clientsInfos/clientsInfos.jsx";
 
 function App() {
 	return (
@@ -18,6 +22,22 @@ function App() {
 					element={<EnterpriseDashboard />}
 				/>
 				<Route path="/signup" exact element={<Signup />} />
+				<Route
+					path="/myenterprise/services"
+					exact
+					element={<ServicesInfos />}></Route>
+				<Route
+					path="/myenterprise/offers"
+					exact
+					element={<OffersInfos />}></Route>
+				<Route
+					path="/myenterprise/appointments"
+					exact
+					element={<AppointmentsInfos />}></Route>
+				<Route
+					path="/myenterprise/clients"
+					exact
+					element={<ClientsInfos />}></Route>
 			</Routes>
 		</Router>
 	);
