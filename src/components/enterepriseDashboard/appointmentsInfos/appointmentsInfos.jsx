@@ -8,11 +8,12 @@ import Input from "../../../styles/components/input.js";
 import VerticalWrapper from "../../../styles/components/verticalWrapper.js";
 import DeleteSign from "../../deleteSign/deleteSign.jsx";
 import EditSign from "../../editSign/EditSign.jsx";
+import Button from "../../../styles/components/Button.js";
+import { motion } from "framer-motion";
 function AppointmentsInfos() {
 	const [myAppointments, setMyAppointments] = useState("");
 	const token = localStorage.getItem("token");
-	const [editable, setEditable] = useState(false);
-	const [data, dispatch] = useReducer(dataReducer, []);
+	const [showInput, setShowInput] = useState(false);
 	const [showButtons, setShowButtons] = useState(false);
 	const ADD_DATA = "ADD_DATA";
 
@@ -44,6 +45,14 @@ function AppointmentsInfos() {
 			setShowButtons(true);
 		} else {
 			setShowButtons(false);
+			setShowInput(false);
+		}
+	};
+	const showAddInput = () => {
+		if (!showInput) {
+			setShowInput(true);
+		} else {
+			setShowInput(false);
 		}
 	};
 	const deleteAppointment = (e) => {
@@ -52,27 +61,40 @@ function AppointmentsInfos() {
 
 	return (
 		<VerticalWrapper>
-			<h1>My Appointments</h1>{" "}
+			<motion.h1
+				initial={{ opacity: 0, scale: 0.5 }}
+				animate={{ opacity: 1, scale: 1 }}
+				transition={{ duration: 0.5 }}>
+				My Appointments
+			</motion.h1>{" "}
 			{myAppointments ? (
 				<Card>
-					<div onClick={handleClick}>
+					<motion.div
+						initial={{ opacity: 0, scale: 0.5 }}
+						animate={{ opacity: 1, scale: 1 }}
+						transition={{ duration: 0.5 }}
+						onClick={handleClick}>
 						<EditSign />
-					</div>
+					</motion.div>
 
 					{myAppointments.map((myAppointments) => (
 						<HorizontalWrapper key={myAppointments.id}>
-							<h3>
+							<motion.h3
+								whileHover={{ scale: 1.1 }}
+								initial={{ opacity: 0, scale: 0.5 }}
+								animate={{ opacity: 1, scale: 1 }}
+								transition={{ duration: 0.3 }}>
 								Le {myAppointments.day} à :{" "}
 								{myAppointments.time_of_day}
 								{showButtons && (
 									<>
-										<button>Edit</button>
-										<button onClick={deleteAppointment}>
+										<Button>Edit</Button>
+										<Button onClick={deleteAppointment}>
 											Delete
-										</button>
+										</Button>
 									</>
 								)}
-							</h3>
+							</motion.h3>
 							{myAppointments.client_id ? (
 								<h3>
 									- Rdv pris par {myAppointments.firstname}{" "}
@@ -83,7 +105,22 @@ function AppointmentsInfos() {
 							)}
 						</HorizontalWrapper>
 					))}
-					{showButtons && <button>ADD</button>}
+					{showInput && (
+						<motion.form
+							initial={{ opacity: 0, scale: 0.5 }}
+							animate={{ opacity: 1, scale: 1 }}
+							transition={{ duration: 0.5 }}
+							action="submit">
+							<Input type="date"></Input>
+							<Input type="text" min="1" />
+						</motion.form>
+					)}
+
+					{showButtons && (
+						<Button onClick={showAddInput} type="submit">
+							ADD
+						</Button>
+					)}
 				</Card>
 			) : (
 				<Card>
