@@ -4,10 +4,7 @@ import Greetings from "../../styles/components/Greetings.js";
 import { useNavigate } from "react-router-dom";
 import Logout from "../Logout/Logout.jsx";
 import ClientsInfos from "./clientsInfos/clientsInfos.jsx";
-import EnterpriseInfos from "./enterpriseInfos/enterpriseInfos.jsx";
 import ServicesInfos from "./servicesInfos/servicesInfos.jsx";
-import HorizontalWrapper from "../../styles/components/HorizontalWrapper.js";
-import VerticalWrapper from "../../styles/components/verticalWrapper.js";
 import OffersInfos from "./offersInfos/OffersInfos.jsx";
 import AppointmentsInfos from "./appointmentsInfos/appointmentsInfos.jsx";
 import LinkComp from "../../styles/components/LinkComp.js";
@@ -16,31 +13,40 @@ import Logo from "../../styles/components/Logo.js";
 import Header from "../../styles/layout/header.js";
 import EnterpriseDesc from "../../styles/components/enterpriseDesc.js";
 import Navbar from "../../styles/components/navbar.js";
-
+import EditSign from "../editSign/EditSign.jsx";
 function EnterpriseDashboard() {
 	const [myEnterprise, setMyEnterprise] = useState("");
 	const token = localStorage.getItem("token");
 	const navigate = useNavigate();
 	const [currentComponent, setCurrentComponent] = useState("Appointments");
 	const [coloredNavlink, setColoredNavlink] = useState("white");
+	const [enterpriseId, setEnterpriseId] = useState(
+		localStorage.getItem("enterpriseId")
+	);
 
 	useEffect(() => {
 		async function fetchDashboard() {
 			const headers = {
 				token: token,
+				enterpriseId: enterpriseId,
 			};
+			console.log(headers);
 			const response = await axios.get(
 				"http://localhost:4000/enterprise/",
 				{ headers }
 			);
 			if (response.data[0]) {
 				setMyEnterprise(response.data[0]);
+			} else if (enterpriseId) {
+				// je renvoie au back enterprise Id pour qu'il le mette en arg ! si pas enterprise id, alors le prendre dans le local storage
+				localStorage.removeItem("enterpriseId");
+				return;
 			} else {
 				navigate("/createenterprise");
 			}
 		}
 		fetchDashboard();
-	}, [navigate, token]);
+	}, []);
 	const handleClick = (componentName) => {
 		setColoredNavlink("white");
 		setCurrentComponent(componentName);
@@ -102,7 +108,7 @@ function EnterpriseDashboard() {
 								}
 								style={{
 									color:
-										currentComponent === "Offers"
+										currentComponent === "Services"
 											? "#eca869"
 											: "white",
 								}}>

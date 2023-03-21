@@ -7,6 +7,7 @@ import ServicesInfos from "../enterepriseDashboard/servicesInfos/servicesInfos.j
 import OffersInfos from "../enterepriseDashboard/offersInfos/OffersInfos.jsx";
 import AppointmentsInfos from "../enterepriseDashboard/appointmentsInfos/appointmentsInfos.jsx";
 import ClientsInfos from "../enterepriseDashboard/clientsInfos/clientsInfos.jsx";
+import CreateEnterprise from "../CreateEnterpriseFrom/CreateEnterpriseFrom.jsx";
 
 function App() {
 	return (
@@ -34,6 +35,10 @@ function App() {
 					path="/myenterprise/appointments"
 					exact
 					element={<AppointmentsInfos />}></Route>
+				<Route
+					path="/createenterprise"
+					exact
+					element={<CreateEnterprise />}></Route>
 				<Route
 					path="/myenterprise/clients"
 					exact

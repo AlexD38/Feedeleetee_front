@@ -39,9 +39,13 @@ function CreateEnterprise() {
 				}
 			);
 			const result = response.data;
-			console.log(result.success);
-			if (result.success) {
-				alert(result.success);
+			console.log(result);
+			if (result.userCreateEnterprise.success) {
+				alert(result.userCreateEnterprise.success);
+				localStorage.setItem(
+					"enterpriseId",
+					result.userCreateEnterprise.enterpriseId
+				);
 				navigate("/home");
 			}
 			if (result.authenticated === false) {
