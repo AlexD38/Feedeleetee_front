@@ -11,6 +11,7 @@ const Input = styled.input`
 	background-color: grey;
 	transition: all 0.3s ease;
 	cursor: pointer;
+	max-width: fit-content;
   text-align: center;
   padding: .5rem
 	&:focus {

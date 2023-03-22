@@ -10,12 +10,14 @@ import DeleteSign from "../../deleteSign/deleteSign.jsx";
 import EditSign from "../../editSign/EditSign.jsx";
 import Button from "../../../styles/components/Button.js";
 import { motion } from "framer-motion";
-import DeleteBtn from "../../buttons/deleteBtn.jsx";
+import CheckSign from "../../checkSign/CheckSign.jsx";
 function AppointmentsInfos() {
 	const [myAppointments, setMyAppointments] = useState([]);
 	const token = localStorage.getItem("token");
 	const [showInput, setShowInput] = useState(false);
+	const [showEditInput, setShowEditInput] = useState(false);
 	const [showButtons, setShowButtons] = useState(false);
+	const [showCheckSign, setShowCheckSign] = useState(false);
 
 	useEffect(() => {
 		async function fetchAppointments() {
@@ -38,6 +40,7 @@ function AppointmentsInfos() {
 		} else {
 			setShowButtons(false);
 			setShowInput(false);
+			setShowEditInput(false);
 		}
 	};
 	const sendData = async (e) => {
@@ -89,7 +92,32 @@ function AppointmentsInfos() {
 			console.error(error);
 		}
 	};
+	const editAppointment = (e) => {
+		myAppointments.forEach((appointment) => {
+			console.log(appointment.id);
+			console.log("XXXXXXXX", e.currentTarget.parentNode.id);
+			const clickedElmId = +e.currentTarget.parentNode.id;
+			console.log(typeof clickedElmId);
+			if (appointment.id === +e.currentTarget.parentNode.id) {
+				if (!showEditInput) {
+					setShowEditInput(true);
+					setShowButtons(false);
+					setShowCheckSign(true);
+					setShowInput(false);
+				} else {
+					setShowEditInput(false);
+				}
+			}
+		});
+	};
+	const updateData = () => {
+		setShowButtons(true);
+		setShowCheckSign(false);
+		setShowEditInput(false);
+		setShowInput(true);
 
+		console.log("update");
+	};
 	return (
 		<VerticalWrapper>
 			<motion.h1
@@ -110,18 +138,41 @@ function AppointmentsInfos() {
 
 					{myAppointments.map((myAppointment) => (
 						<HorizontalWrapper key={myAppointment.id}>
-							<motion.h3
-								id={myAppointment.id}
-								// whileHover={{ scale: 1.1 }}
-								// initial={{ opacity: 0, scale: 0.5 }}
-								// animate={{ opacity: 1, scale: 1 }}
-								// transition={{ duration: 0.3 }}
-							>
-								Le {myAppointment.day} à :{" "}
-								{myAppointment.time_of_day}
+							<motion.h3 id={myAppointment.id}>
+								{showEditInput ? (
+									<motion.form>
+										<HorizontalWrapper>
+											<Input
+												type="date"
+												value={
+													myAppointment.day
+												}></Input>
+											<Input
+												type="text"
+												placeholder={
+													myAppointment.time_of_day
+												}></Input>
+										</HorizontalWrapper>
+										{showCheckSign ? (
+											<div onClick={updateData}>
+												<CheckSign />
+											</div>
+										) : (
+											<></>
+										)}
+									</motion.form>
+								) : (
+									<p>
+										Le {myAppointment.day} à :{" "}
+										{myAppointment.time_of_day}
+									</p>
+								)}
+
 								{showButtons && (
 									<>
-										<Button>Edit</Button>
+										<Button onClick={editAppointment}>
+											Edit
+										</Button>
 										<Button onClick={deleteAppointment}>
 											Delete
 										</Button>
@@ -142,8 +193,7 @@ function AppointmentsInfos() {
 						<motion.form
 							initial={{ opacity: 0, scale: 0.5 }}
 							animate={{ opacity: 1, scale: 1 }}
-							transition={{ duration: 0.5 }}
-							action="submit">
+							transition={{ duration: 0.5 }}>
 							<Input type="date"></Input>
 							<Input type="text" min="1" />
 						</motion.form>
