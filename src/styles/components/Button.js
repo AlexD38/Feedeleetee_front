@@ -13,6 +13,7 @@ const Button = styled.button`
 	border: none;
 	transition: all 0.3s ease;
 	&:hover {
+		scale: 1.1;
 		cursor: pointer;
 		color: #eca869;
 		transition: all 0.2s ease;
