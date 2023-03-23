@@ -115,6 +115,10 @@ function AppointmentsInfos() {
 
     console.log("update");
   };
+  // const dataUpdatedByEditBtn = (newData) => {
+  //   setMyAppointments([myAppointments, ...newData]);
+  //   console.log(newData);
+  // };
   return (
     <VerticalWrapper>
       <motion.h1
@@ -147,8 +151,7 @@ function AppointmentsInfos() {
                     <EditButton
                       id={myAppointment.id}
                       day={myAppointment.day}
-                      time={myAppointment.time_of_day}
-                      //   onClick={editAppointment}
+                      time_of_day={myAppointment.time_of_day}
                     />
                     <Button onClick={deleteAppointment}>Delete</Button>
                   </>
