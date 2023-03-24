@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import Greetings from "../../styles/components/Greetings.js";
+import Greetings from "../../styles/components/EnterpriseName.js";
 import { useNavigate } from "react-router-dom";
 import Logout from "../Logout/Logout.jsx";
 import ClientsInfos from "./clientsInfos/clientsInfos.jsx";
@@ -14,126 +14,150 @@ import Header from "../../styles/layout/header.js";
 import EnterpriseDesc from "../../styles/components/enterpriseDesc.js";
 import Navbar from "../../styles/components/navbar.js";
 import EditSign from "../editSign/EditSign.jsx";
+import EnterpriseName from "../../styles/components/EnterpriseName.js";
+import { motion } from "framer-motion";
 function EnterpriseDashboard() {
-	const [myEnterprise, setMyEnterprise] = useState("");
-	const token = localStorage.getItem("token");
-	const navigate = useNavigate();
-	const [currentComponent, setCurrentComponent] = useState("Appointments");
-	const [coloredNavlink, setColoredNavlink] = useState("white");
-	const [enterpriseId, setEnterpriseId] = useState(
-		localStorage.getItem("enterpriseId")
-	);
+  const [myEnterprise, setMyEnterprise] = useState("");
+  const token = localStorage.getItem("token");
+  const navigate = useNavigate();
+  const [currentComponent, setCurrentComponent] = useState("Appointments");
+  const [coloredNavlink, setColoredNavlink] = useState("white");
+  const [enterpriseId, setEnterpriseId] = useState(
+    localStorage.getItem("enterpriseId")
+  );
 
-	useEffect(() => {
-		async function fetchDashboard() {
-			const headers = {
-				token: token,
-				enterpriseId: enterpriseId,
-			};
-			console.log(headers);
-			const response = await axios.get(
-				"http://localhost:4000/enterprise/",
-				{ headers }
-			);
-			if (response.data[0]) {
-				setMyEnterprise(response.data[0]);
-			} else if (enterpriseId) {
-				// je renvoie au back enterprise Id pour qu'il le mette en arg ! si pas enterprise id, alors le prendre dans le local storage
-				localStorage.removeItem("enterpriseId");
-				return;
-			} else {
-				navigate("/createenterprise");
-			}
-		}
-		fetchDashboard();
-	}, []);
-	const handleClick = (componentName) => {
-		setColoredNavlink("white");
-		setCurrentComponent(componentName);
-		console.log(currentComponent);
-	};
+  useEffect(() => {
+    async function fetchDashboard() {
+      const headers = {
+        token: token,
+        enterpriseId: enterpriseId,
+      };
+      console.log(headers);
+      const response = await axios.get("http://localhost:4000/enterprise/", {
+        headers,
+      });
+      if (response.data[0]) {
+        setMyEnterprise(response.data[0]);
+        console.log(response.data[0]);
+      } else if (enterpriseId) {
+        // je renvoie au back enterprise Id pour qu'il le mette en arg ! si pas enterprise id, alors le prendre dans le local storage
+        localStorage.removeItem("enterpriseId");
+        return;
+      } else {
+        navigate("/createenterprise");
+      }
+    }
+    fetchDashboard();
+    console.log(myEnterprise);
+  }, []);
+  const handleClick = (componentName) => {
+    setColoredNavlink("white");
+    setCurrentComponent(componentName);
+    console.log(currentComponent);
+  };
 
-	return (
-		<>
-			{" "}
-			{myEnterprise.name ? (
-				<>
-					<Header>
-						<Greetings>{myEnterprise.name}</Greetings>
-						<EnterpriseDesc>
-							{myEnterprise.description}
-						</EnterpriseDesc>
-					</Header>
-					<SideBar>
-						<Navbar>
-							<LinkComp
-								onClick={(e) =>
-									handleClick(e.target.textContent)
-								}
-								style={{
-									color:
-										currentComponent === "Appointments"
-											? "#eca869"
-											: "white",
-								}}>
-								Appointments
-							</LinkComp>
-							<LinkComp
-								onClick={(e) =>
-									handleClick(e.target.textContent)
-								}
-								style={{
-									color:
-										currentComponent === "Clients"
-											? "#eca869"
-											: "white",
-								}}>
-								Clients
-							</LinkComp>
-							<LinkComp
-								onClick={(e) =>
-									handleClick(e.target.textContent)
-								}
-								style={{
-									color:
-										currentComponent === "Offers"
-											? "#eca869"
-											: "white",
-								}}>
-								Offers
-							</LinkComp>
-							<LinkComp
-								onClick={(e) =>
-									handleClick(e.target.textContent)
-								}
-								style={{
-									color:
-										currentComponent === "Services"
-											? "#eca869"
-											: "white",
-								}}>
-								Services
-							</LinkComp>
-						</Navbar>
-						<Logo src={myEnterprise.logo} alt="logo" />
-						<Logout />
-					</SideBar>
-					{currentComponent === "Appointments" && (
-						<AppointmentsInfos />
-					)}
-					{currentComponent === "Clients" && <ClientsInfos />}
-					{currentComponent === "Offers" && <OffersInfos />}
-					{currentComponent === "Services" && <ServicesInfos />}
-				</>
-			) : (
-				<>
-					<LinkComp href="/createenterprise">
-						You must create one first...
-					</LinkComp>
-				</>
-			)}
-		</>
-	);
+  return (
+    <>
+      {" "}
+      {myEnterprise.name ? (
+        <>
+          <motion.header
+            initial={{ x: -300 }}
+            animate={{ x: 0 }}
+            // whileHover={{ scale: 1.1 }}
+            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+          >
+            <Header>
+              <EnterpriseName>{myEnterprise.name}</EnterpriseName>
+              <EnterpriseDesc>{myEnterprise.description}</EnterpriseDesc>
+            </Header>
+          </motion.header>
+          <SideBar>
+            <motion.aside
+              initial={{ y: -300 }}
+              animate={{ y: 0 }}
+              // whileHover={{ scale: 1.1 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            >
+              <Navbar>
+                <motion.div
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.97 }}
+                >
+                  <LinkComp
+                    onClick={(e) => handleClick(e.target.textContent)}
+                    style={{
+                      color:
+                        currentComponent === "Appointments"
+                          ? "#eca869"
+                          : "white",
+                    }}
+                  >
+                    Appointments
+                  </LinkComp>
+                </motion.div>
+                <motion.div
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.97 }}
+                >
+                  <LinkComp
+                    onClick={(e) => handleClick(e.target.textContent)}
+                    style={{
+                      color:
+                        currentComponent === "Clients" ? "#eca869" : "white",
+                    }}
+                  >
+                    Clients
+                  </LinkComp>
+                </motion.div>
+                <motion.div
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.97 }}
+                >
+                  <LinkComp
+                    onClick={(e) => handleClick(e.target.textContent)}
+                    style={{
+                      color:
+                        currentComponent === "Offers" ? "#eca869" : "white",
+                    }}
+                  >
+                    Offers
+                  </LinkComp>
+                </motion.div>
+                <motion.div
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.97 }}
+                >
+                  <LinkComp
+                    onClick={(e) => handleClick(e.target.textContent)}
+                    style={{
+                      color:
+                        currentComponent === "Services" ? "#eca869" : "white",
+                    }}
+                  >
+                    Services
+                  </LinkComp>
+                </motion.div>
+              </Navbar>
+            </motion.aside>
+
+            <Logo src={myEnterprise.logo} alt="logo" />
+            <Logout />
+          </SideBar>
+          {currentComponent === "Appointments" && <AppointmentsInfos />}
+          {currentComponent === "Clients" && <ClientsInfos />}
+          {currentComponent === "Offers" && <OffersInfos />}
+          {currentComponent === "Services" && <ServicesInfos />}
+        </>
+      ) : (
+        <>
+          <LinkComp href="/createenterprise">
+            You must create one first...
+          </LinkComp>
+        </>
+      )}
+    </>
+  );
 }
 
 export default EnterpriseDashboard;

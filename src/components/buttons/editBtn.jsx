@@ -69,7 +69,11 @@ function EditButton(props) {
   };
 
   const updateDataFromChildComponent = (e) => {
-    e.currentTarget.parentNode.firstChild.textContent = `Le ${dayRef.current.value} à : ${timeRef.current.value}`;
+    if (dayRef.current.value != "") {
+      e.currentTarget.parentNode.firstChild.textContent = `Le ${dayRef.current.value} à : ${timeRef.current.value}`;
+    } else {
+      cancel();
+    }
   };
   return (
     <>

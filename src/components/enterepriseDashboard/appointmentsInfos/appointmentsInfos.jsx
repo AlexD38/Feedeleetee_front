@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState, useReducer } from "react";
+import { useEffect, useState, useRef } from "react";
 import Card from "../../../styles/components/card.js";
 import HorizontalWrapper from "../../../styles/components/HorizontalWrapper.js";
 import Input from "../../../styles/components/input.js";
@@ -15,6 +15,8 @@ function AppointmentsInfos() {
   const [showEditInput, setShowEditInput] = useState(false);
   const [showButtons, setShowButtons] = useState(false);
   const [showValidate, setShowValidate] = useState(false);
+  const dayRef = useRef(null);
+  const timeRef = useRef(null);
 
   useEffect(() => {
     async function fetchAppointments() {
@@ -42,8 +44,8 @@ function AppointmentsInfos() {
   };
   const sendData = async (e) => {
     const data = {
-      day: e.currentTarget.previousSibling.firstChild.value,
-      timeOfDay: e.currentTarget.previousSibling.lastChild.value,
+      day: dayRef.current.value,
+      timeOfDay: timeRef.current.value,
     };
 
     const headers = {
@@ -63,6 +65,8 @@ function AppointmentsInfos() {
     } catch (error) {
       console.log(error);
     }
+    dayRef.current.value = "";
+    timeRef.current.value = "";
   };
   const deleteAppointment = async (e) => {
     console.log(e.currentTarget.parentNode);
@@ -115,25 +119,22 @@ function AppointmentsInfos() {
 
     console.log("update");
   };
-  // const dataUpdatedByEditBtn = (newData) => {
-  //   setMyAppointments([myAppointments, ...newData]);
-  //   console.log(newData);
-  // };
+
   return (
     <VerticalWrapper>
       <motion.h1
-        initial={{ opacity: 0, scale: 0.5 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.5 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.2, delay: 0.1 }}
       >
         My Appointments
       </motion.h1>{" "}
       {myAppointments ? (
         <Card>
           <motion.div
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3, delay: 0.4 }}
             onClick={handleClick}
           >
             <EditSign />
@@ -142,9 +143,28 @@ function AppointmentsInfos() {
           {myAppointments.map((myAppointment) => (
             <HorizontalWrapper key={myAppointment.id}>
               <motion.h3 id={myAppointment.id}>
-                <p>
-                  Le {myAppointment.day} à : {myAppointment.time_of_day}
-                </p>
+                <motion.ul
+                  transition={{
+                    type: "spring",
+                    bounce: 0,
+                    duration: 0.7,
+                    delayChildren: 0.3,
+                    staggerChildren: 0.05,
+                  }}
+                >
+                  {/* <motion.p
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                  > */}
+                  <motion.li
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3, delay: 0.2 }}
+                  >
+                    Le {myAppointment.day} à : {myAppointment.time_of_day}
+                  </motion.li>
+                  {/* </motion.p> */}
+                </motion.ul>
 
                 {showButtons && (
                   <>
@@ -158,10 +178,13 @@ function AppointmentsInfos() {
                 )}
               </motion.h3>
               {myAppointment.client_id ? (
-                <h3>
+                <motion.h3
+                  initial={{ opacity: 0, x: 0 }}
+                  animate={{ opacity: 1, x: 0 }}
+                >
                   - Rdv pris par {myAppointment.firstname}{" "}
                   {myAppointment.lastname}
-                </h3>
+                </motion.h3>
               ) : (
                 <></>
               )}
@@ -173,8 +196,8 @@ function AppointmentsInfos() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5 }}
             >
-              <Input type="date"></Input>
-              <Input type="text" min="1" />
+              <Input type="date" ref={dayRef}></Input>
+              <Input type="text" min="1" ref={timeRef} />
             </motion.form>
           )}
 
