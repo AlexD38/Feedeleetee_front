@@ -2,10 +2,9 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Card from "../../../styles/components/card.js";
 import VerticalWrapper from "../../../styles/components/verticalWrapper.js";
-import EditSign from "../../editSign/EditSign.jsx";
 import { motion } from "framer-motion";
 import LinkComp from "../../../styles/components/LinkComp.js";
-import Button from "../../../styles/components/Button.js";
+import SingleCLient from "./singleClient.jsx";
 
 function ClientsInfos() {
   const [myClients, setMyClients] = useState("");
@@ -22,17 +21,9 @@ function ClientsInfos() {
         { headers }
       );
       setMyClients((myClients) => response.data);
-      // console.log(response.data);
     }
     fetchClients();
   }, [token]);
-  const showClientCredentials = (e) => {
-    if (!showCredentials) {
-      setShowCredentials(true);
-    } else {
-      setShowCredentials(false);
-    }
-  };
 
   return (
     <VerticalWrapper>
@@ -53,22 +44,11 @@ function ClientsInfos() {
                 key={clientInformation.id}
               >
                 <LinkComp>
-                  {clientInformation.firstname} {clientInformation.lastname}
+                  <SingleCLient client={clientInformation} />
                 </LinkComp>
               </motion.li>
-              {showCredentials && (
-                <motion.ul
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.2, delay: 0.1 }}
-                >
-                  <li>{clientInformation.tel}</li>
-                  <li>{clientInformation.mail}</li>
-                </motion.ul>
-              )}
             </motion.ul>
           ))}
-          <Button onClick={showClientCredentials}>See clients detail</Button>
         </Card>
       ) : (
         <Card>
