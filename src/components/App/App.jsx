@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "../Home/Home.jsx";
 import LoginForm from "../Login/LoginForm.jsx";
 import Signup from "../SignUp/SignUp.jsx";
@@ -8,6 +8,7 @@ import OffersInfos from "../enterepriseDashboard/offersInfos/OffersInfos.jsx";
 import AppointmentsInfos from "../enterepriseDashboard/appointmentsInfos/appointmentsInfos.jsx";
 import ClientsInfos from "../enterepriseDashboard/clientsInfos/clientsInfos.jsx";
 import CreateEnterprise from "../CreateEnterpriseFrom/CreateEnterpriseFrom.jsx";
+import CreateClient from "../CreateClientForm/CreateClient.jsx";
 
 function App() {
 	return (
@@ -39,6 +40,10 @@ function App() {
 					path="/createenterprise"
 					exact
 					element={<CreateEnterprise />}></Route>
+				<Route
+					path="/createclient"
+					exact
+					element={<CreateClient />}></Route>
 				<Route
 					path="/myenterprise/clients"
 					exact

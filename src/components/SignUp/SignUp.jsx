@@ -5,8 +5,10 @@ import Input from "../../styles/components/input.js";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Link from "../../styles/components/LinkComp";
+import VerticalWrapper from "../../styles/components/verticalWrapper.js";
 
 import qs from "qs";
+import Greetings from "../../styles/components/Greetings.js";
 
 function Signup() {
 	const [userName, setUserName] = useState("");
@@ -50,39 +52,38 @@ function Signup() {
 	return (
 		<>
 			<Form onSubmit={handleSubmit}>
-				<label>
-					Pseudo :
-					<Input
-						required
-						type="text"
-						value={userName}
-						onChange={(e) => setUserName(e.target.value)}
-					/>
-				</label>
-				<label>
-					mail :
-					<Input
-						required
-						type="mail"
-						value={mail}
-						onChange={(e) => setMail(e.target.value)}
-					/>
-				</label>
-				<label>
-					pwd :
-					<Input
-						required
-						type="password"
-						value={password}
-						onChange={(e) => setPassword(e.target.value)}
-					/>
-				</label>
+				<Greetings size="2rem">Creez votre compte</Greetings>
+
+				<label>Pseudo :</label>
+				<Input
+					required
+					type="text"
+					value={userName}
+					onChange={(e) => setUserName(e.target.value)}
+				/>
+				<label>E-mail :</label>
+				<Input
+					required
+					type="mail"
+					value={mail}
+					onChange={(e) => setMail(e.target.value)}
+				/>
+				<label>Mot de passe :</label>
+				<Input
+					required
+					type="password"
+					value={password}
+					onChange={(e) => setPassword(e.target.value)}
+				/>
 
 				<Button type="submit">Créer un compte</Button>
-				<p>
-					Already have an account ?{" "}
-					<Link href="http://localhost:3000/login">Log in</Link>{" "}
-				</p>
+
+				<VerticalWrapper>
+					<p>
+						Already have an account ?{" "}
+						<Link href="http://localhost:3000/login">Log in</Link>{" "}
+					</p>
+				</VerticalWrapper>
 			</Form>
 		</>
 	);

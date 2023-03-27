@@ -8,6 +8,8 @@ const Card = styled.img`
 	height: 4rem;
 	width: 4rem;
 	margin: 0.1rem;
+	border: 1px solid #eca869;
+	padding: 1rem;
 `;
 
 export default Card;

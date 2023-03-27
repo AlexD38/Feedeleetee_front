@@ -6,6 +6,7 @@ const verticalWrapper = styled.div`
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
+	margin: 0 auto;
 `;
 
 export default verticalWrapper;

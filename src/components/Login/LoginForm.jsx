@@ -5,8 +5,10 @@ import Input from "../../styles/components/input.js";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Link from "../../styles/components/LinkComp";
+import VerticalWrapper from "../../styles/components/verticalWrapper";
 
 import qs from "qs";
+import Greetings from "../../styles/components/Greetings.js";
 
 function LoginForm() {
 	const [mail, setMail] = useState("");
@@ -69,32 +71,34 @@ function LoginForm() {
 	return (
 		<>
 			<Form onSubmit={handleSubmit}>
-				<label>
-					mail :
-					<Input
-						required
-						type="email"
-						value={mail}
-						onChange={(e) => setMail(e.target.value)}
-					/>
-				</label>
-				<label>
-					pwd :
-					<Input
-						onBlur={hidePwd}
-						onDoubleClick={showPwd}
-						required
-						type="password"
-						value={password}
-						onChange={(e) => setPassword(e.target.value)}
-					/>
-				</label>
+				<Greetings size="2rem">Identifiez-vous</Greetings>
+
+				<label>e-mail :</label>
+				<Input
+					required
+					type="email"
+					value={mail}
+					onChange={(e) => setMail(e.target.value)}
+				/>
+				<label>Mot de passe :</label>
+				<Input
+					onBlur={hidePwd}
+					onDoubleClick={showPwd}
+					required
+					type="password"
+					value={password}
+					onChange={(e) => setPassword(e.target.value)}
+				/>
 
 				<Button type="submit">Me connecter</Button>
-				<p>
-					Don't have an account yet ?{" "}
-					<Link href="http://localhost:3000/signup">Create One</Link>{" "}
-				</p>
+				<VerticalWrapper>
+					<p>
+						Don't have an account yet ?{" "}
+						<Link href="http://localhost:3000/signup">
+							Create One
+						</Link>{" "}
+					</p>
+				</VerticalWrapper>
 			</Form>
 		</>
 	);

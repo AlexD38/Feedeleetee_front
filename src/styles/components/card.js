@@ -4,18 +4,19 @@ import styled from "styled-components";
 const Card = styled.div`
 	display: flex;
 	position: relative;
+	flex-wrap: wrap;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	background-color: none;
 	color: white;
 	font-size: 1rem;
-	padding: 2rem;
-	border-radius: 50px;
+	padding: 3rem;
+	border-radius: 1rem;
 	background: #454545;
 	box-shadow: 20px 20px 60px #3b3b3b, -20px -20px 60px #4f4f4f;
-	margin: 1.5rem;
-	min-width: 50%;
+	margin: 5rem auto;
+	min-width: 100%;
+	max-height: 80vh;
 `;
 
 export default Card;
