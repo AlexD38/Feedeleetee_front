@@ -11,7 +11,7 @@ export default function SingleCLient(props) {
       setShowCredentials(false);
     }
   };
-  console.log(props.client.id);
+  // console.log(props.client.id);
   return (
     <>
       <ul onClick={handleClick}>

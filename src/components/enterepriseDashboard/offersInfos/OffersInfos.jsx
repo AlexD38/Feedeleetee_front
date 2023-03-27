@@ -3,7 +3,6 @@ import { useEffect, useState, useRef } from "react";
 import Button from "../../../styles/components/Button.js";
 import Card from "../../../styles/components/card.js";
 import VerticalWrapper from "../../../styles/components/verticalWrapper.js";
-import EditButton from "../../buttons/editBtn.jsx";
 import EditSign from "../../editSign/EditSign.jsx";
 import { motion } from "framer-motion";
 import Input from "../../../styles/components/input.js";
