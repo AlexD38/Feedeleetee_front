@@ -32,10 +32,11 @@ function AppointmentsInfos() {
 				{ headers }
 			);
 			setMyAppointments((myAppointments) => response.data);
-			//   console.log(response.data);
+			console.log(response.data);
+			localStorage.setItem("NumberOfAppointments", response.data.length);
 		}
 		fetchAppointments();
-	}, [token]);
+	}, [token, myAppointments]);
 	const handleClick = (e) => {
 		if (!showButtons) {
 			setShowButtons(true);

@@ -4,7 +4,7 @@ import styled from "styled-components";
 const HorizontalWrapper = styled.div`
 	display: flex;
 	flex-direction: row;
-	justify-content: space-between;
+	justify-content: center;
 	flex-wrap: wrap;
 	position: relative;
 	align-items: flex-start;

@@ -8,15 +8,15 @@ import Button from "../../styles/components/Button";
 export default function Modal() {
 	return (
 		<ModalComp>
-			<Form>
-				<Greetings>MODAL</Greetings>
-				<label htmlFor="">OUi</label>
-				<input type="text"></input>
-				<label htmlFor="">NON</label>
-				<input type="number"></input>
-				<label htmlFor="">Maybe</label>
-				<input type="date"></input>
-			</Form>
+			{/* <Form> */}
+			<Greetings>MODAL</Greetings>
+			<label htmlFor="">OUi</label>
+			<input type="text"></input>
+			<label htmlFor="">NON</label>
+			<input type="number"></input>
+			<label htmlFor="">Maybe</label>
+			<input type="date"></input>
+			{/* </Form> */}
 		</ModalComp>
 	);
 }

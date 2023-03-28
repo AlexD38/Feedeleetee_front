@@ -13,6 +13,7 @@ import Navbar from "../../styles/components/navbar.js";
 import EnterpriseName from "../../styles/components/EnterpriseName.js";
 import { motion } from "framer-motion";
 import VerticalWrapper from "../../../src/styles/components/verticalWrapper.js";
+import QuickView from "./QuickView/QuickView.jsx";
 
 function EnterpriseDashboard() {
 	const [myEnterprise, setMyEnterprise] = useState("");
@@ -104,6 +105,23 @@ function EnterpriseDashboard() {
 										style={{
 											color:
 												currentComponent ===
+												"Coup d'oeil rapide"
+													? "#eca869"
+													: "white",
+										}}>
+										Coup d'oeil rapide
+									</LinkComp>
+								</motion.div>
+								<motion.div
+									whileHover={{ scale: 1.1 }}
+									whileTap={{ scale: 0.97 }}>
+									<LinkComp
+										onClick={(e) =>
+											handleClick(e.target.textContent)
+										}
+										style={{
+											color:
+												currentComponent ===
 												"Appointments"
 													? "#eca869"
 													: "white",
@@ -169,6 +187,7 @@ function EnterpriseDashboard() {
 					{currentComponent === "Clients" && <ClientsInfos />}
 					{currentComponent === "Offers" && <OffersInfos />}
 					{currentComponent === "Services" && <ServicesInfos />}
+					{currentComponent === "Coup d'oeil rapide" && <QuickView />}
 				</>
 			) : (
 				<>
