@@ -7,7 +7,6 @@ import Link from "../../styles/components/LinkComp";
 import VerticalWrapper from "../../styles/components/verticalWrapper.js";
 import Greetings from "../../styles/components/Greetings.js";
 import Logout from "../Logout/Logout";
-import HorizontalWrapper from "../../styles/components/HorizontalWrapper";
 import Card from "../../styles/components/card";
 
 function Home() {

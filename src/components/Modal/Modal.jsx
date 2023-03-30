@@ -1,9 +1,5 @@
-import Card from "../../styles/components/card";
-import Form from "../../styles/components/form";
-import { useState } from "react";
 import Greetings from "../../styles/components/Greetings";
 import ModalComp from "../../styles/components/Modal";
-import Button from "../../styles/components/Button";
 
 export default function Modal() {
 	return (

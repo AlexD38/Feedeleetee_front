@@ -19,6 +19,8 @@ function AppointmentsInfos() {
 	const [showButtons, setShowButtons] = useState(false);
 	const [showValidate, setShowValidate] = useState(false);
 	const [blur, setBlur] = useState(false);
+	// const day = myAppointments[0].day;
+	// console.log(day.split("T")[0]);
 	const dayRef = useRef(null);
 	const timeRef = useRef(null);
 
@@ -33,10 +35,9 @@ function AppointmentsInfos() {
 			);
 			setMyAppointments((myAppointments) => response.data);
 			console.log(response.data);
-			localStorage.setItem("NumberOfAppointments", response.data.length);
 		}
 		fetchAppointments();
-	}, [token, myAppointments]);
+	}, []);
 	const handleClick = (e) => {
 		if (!showButtons) {
 			setShowButtons(true);
@@ -170,7 +171,7 @@ function AppointmentsInfos() {
 											duration: 0.3,
 											delay: 0.2,
 										}}>
-										Le {myAppointment.day} à :{" "}
+										Le {myAppointment.day.split("T")[0]} à :{" "}
 										{myAppointment.time_of_day}
 									</motion.li>
 									{/* </motion.p> */}
