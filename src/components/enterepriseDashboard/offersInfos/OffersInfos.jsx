@@ -52,7 +52,9 @@ function OffersInfos() {
 			description: descriptionRef.current.value,
 			discount: discountRef.current.value,
 		};
-
+		if (!data.description || !data.discount) {
+			return;
+		}
 		const headers = {
 			token,
 		};

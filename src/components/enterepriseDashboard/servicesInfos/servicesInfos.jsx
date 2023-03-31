@@ -53,6 +53,9 @@ function ServicesInfos() {
 			price: priceRef.current.value,
 			duration: durationRef.current.value,
 		};
+		if (!data.description || !data.price || !data.duration) {
+			return;
+		}
 
 		const headers = {
 			token,

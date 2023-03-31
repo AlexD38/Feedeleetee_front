@@ -8,7 +8,7 @@ const Button = styled.button`
 	margin: 1.5rem auto;
 	font-size: 1rem;
 	font-weight: bold;
-	padding: 1rem 1.5rem;
+	padding: 1rem;
 	border-radius: 1rem;
 	border: none;
 	transition: all 0.3s ease;

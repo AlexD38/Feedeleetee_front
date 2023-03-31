@@ -7,6 +7,10 @@ const Modal = styled.div`
 	border-radius: 0.5rem;
 	top: 50%;
 	left: 50%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 	transform: translate(-50%, -50%);
 	// box-shadow: 0 0 10rem 5rem black;
 	backdrop-filter: blur(10px) brightness(0.6);

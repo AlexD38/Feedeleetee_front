@@ -6,7 +6,7 @@ import Input from "../../../styles/components/input.js";
 import VerticalWrapper from "../../../styles/components/verticalWrapper.js";
 import EditSign from "../../editSign/EditSign.jsx";
 import Button from "../../../styles/components/Button.js";
-import { motion } from "framer-motion";
+import { delay, motion } from "framer-motion";
 import EditButton from "../../buttons/editBtn.jsx";
 import Greetings from "../../../styles/components/Greetings.js";
 import Modal from "../.././Modal/Modal.jsx";
@@ -54,6 +54,9 @@ function AppointmentsInfos() {
 			day: dayRef.current.value,
 			timeOfDay: timeRef.current.value,
 		};
+		if (data.day === "" || data.timeOfDay === "") {
+			return;
+		}
 
 		const headers = {
 			token,

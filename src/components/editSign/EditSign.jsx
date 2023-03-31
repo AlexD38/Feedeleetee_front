@@ -4,7 +4,7 @@ function EditSign() {
 	const handleEditClick = (e) => {};
 	return (
 		<EditSignIcon onClick={handleEditClick}>
-			<svg
+			{/* <svg
 				fill="CurrentColor"
 				height="50"
 				width="50"
@@ -27,7 +27,8 @@ function EditSign() {
 						</g>{" "}
 					</g>{" "}
 				</g>
-			</svg>
+			</svg> */}
+			<div>+</div>
 		</EditSignIcon>
 	);
 }

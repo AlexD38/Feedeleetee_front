@@ -6,7 +6,7 @@ const EnterpriseName = styled.h1`
 	font-size: 2.5rem;
 	font-weight: bold;
 	position: absolute;
-	top: 9rem;
+	top: 12rem;
 	margin: 0;
 `;
 
