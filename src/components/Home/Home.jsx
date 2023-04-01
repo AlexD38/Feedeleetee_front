@@ -43,7 +43,7 @@ function Home() {
 						<Card>Accéder à mon entreprise</Card>
 					</motion.div>
 				</Link>
-				<Link href="http://localhost/myclientprofile">
+				<Link href="http://localhost:3000/myclientprofile">
 					<motion.div
 						initial={{ opacity: 0 }}
 						animate={{ opacity: 1 }}

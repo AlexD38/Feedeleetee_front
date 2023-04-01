@@ -45,6 +45,10 @@ function App() {
 					exact
 					element={<CreateClient />}></Route>
 				<Route
+					path="/myclientprofile"
+					exact
+					element={<CreateClient />}></Route>
+				<Route
 					path="/myenterprise/clients"
 					exact
 					element={<ClientsInfos />}></Route>

@@ -6,20 +6,25 @@ import Input from "../../styles/components/input";
 import { useNavigate } from "react-router-dom";
 import Greetings from "../../styles/components/Greetings";
 function CreateClientForm() {
-	const clientFirstnameRef = useRef();
-	const clientLastnameRef = useRef();
-	const clientMailRef = useRef();
-	const clientTelRef = useRef();
-	const navigate = useNavigate();
+	const clientFirstnameRef = useRef(null);
+	const clientLastnameRef = useRef(null);
+	const clientMailRef = useRef(null);
+	const clientTelRef = useRef(null);
+	const navigate = useNavigate(null);
 	const token = localStorage.getItem("token");
 
 	const handleSubmit = async (event) => {
+		const firstname = clientFirstnameRef.current.value;
+		const lastname = clientLastnameRef.current.value;
+		const mail = clientMailRef.current.value;
+		const tel = clientTelRef.current.value;
+
 		const formData = new FormData();
 		const data = {
-			clientFirstnameRef,
-			clientLastnameRef,
-			clientMailRef,
-			clientTelRef,
+			firstname,
+			lastname,
+			mail,
+			tel,
 		};
 
 		const headers = {
@@ -41,12 +46,8 @@ function CreateClientForm() {
 			);
 			const result = response.data;
 			console.log(result);
-			if (result.userCreateEnterprise.success) {
-				alert(result.userCreateEnterprise.success);
-				localStorage.setItem(
-					"enterpriseId",
-					result.userCreateEnterprise.enterpriseId
-				);
+			if (result.success) {
+				alert(result.success);
 				navigate("/home");
 			}
 			if (result.authenticated === false) {
@@ -68,14 +69,14 @@ function CreateClientForm() {
 					id="firstname"
 					required
 					type="text"
-					re={clientFirstnameRef}
+					ref={clientFirstnameRef}
 				/>
 				<label for="lastname">Nom du client :</label>
 				<Input
 					id="lastname"
 					type="text"
 					required
-					re={clientLastnameRef}
+					ref={clientLastnameRef}
 				/>
 				<label for="mail">mail :</label>
 				<Input id="mail" required type="email" ref={clientMailRef} />

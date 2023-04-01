@@ -104,12 +104,12 @@ function OffersInfos() {
 			{myOffers ? (
 				<Card>
 					<Greetings size="3rem">Mes Offres</Greetings>
+					<motion.div onClick={handleClick}>
+						<EditSign />
+					</motion.div>
 
 					{myOffers.map((offerInformation) => (
 						<div key={offerInformation.id} id={offerInformation.id}>
-							<motion.div onClick={handleClick}>
-								<EditSign />
-							</motion.div>
 							<motion.div
 								initial={{ opacity: 0, y: -10 }}
 								animate={{ opacity: 1, y: 0 }}

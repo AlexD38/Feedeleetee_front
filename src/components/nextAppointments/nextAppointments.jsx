@@ -23,7 +23,7 @@ export default function NextAppointments() {
 	}, []);
 	return (
 		<>
-			{nextAppointments ? (
+			{nextAppointments.length > 0 ? (
 				<>
 					{" "}
 					<motion.h2
@@ -42,7 +42,7 @@ export default function NextAppointments() {
 					</ul>
 				</>
 			) : (
-				<>Je n'ai pas encore de rendez-vous de prévu...</>
+				<h2> vous n'avez aucun rdv à venir.</h2>
 			)}
 		</>
 	);
