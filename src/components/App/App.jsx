@@ -9,6 +9,7 @@ import AppointmentsInfos from "../enterepriseDashboard/appointmentsInfos/appoint
 import ClientsInfos from "../enterepriseDashboard/clientsInfos/clientsInfos.jsx";
 import CreateEnterprise from "../CreateEnterpriseFrom/CreateEnterpriseFrom.jsx";
 import CreateClient from "../CreateClientForm/CreateClient.jsx";
+import { ClientDashboard } from "../ClientDashboard.jsx";
 
 function App() {
 	return (
@@ -47,7 +48,7 @@ function App() {
 				<Route
 					path="/myclientprofile"
 					exact
-					element={<CreateClient />}></Route>
+					element={<ClientDashboard />}></Route>
 				<Route
 					path="/myenterprise/clients"
 					exact
