@@ -48,13 +48,17 @@ function CreateClientForm() {
 			console.log(result);
 			if (result.success) {
 				alert(result.success);
+				localStorage.setItem(
+					"clientId",
+					result.userCreateClient.client_id
+				);
 				navigate("/home");
 			}
 			if (result.authenticated === false) {
-				// Redirection vers la page de login
 				navigate("/login");
 				alert("You're not logged in");
 			}
+			return;
 		} catch (error) {
 			console.log(error);
 			alert("Erreur lors de la création de l'entreprise");

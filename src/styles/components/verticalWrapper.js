@@ -7,6 +7,7 @@ const verticalWrapper = styled.div`
 	justify-content: space-between;
 	align-items: center;
 	margin: 0 auto;
+	max-height: 100vh;
 `;
 
 export default verticalWrapper;

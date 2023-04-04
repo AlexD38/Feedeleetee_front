@@ -10,6 +10,7 @@ import ClientsInfos from "../enterepriseDashboard/clientsInfos/clientsInfos.jsx"
 import CreateEnterprise from "../CreateEnterpriseFrom/CreateEnterpriseFrom.jsx";
 import CreateClient from "../CreateClientForm/CreateClient.jsx";
 import { ClientDashboard } from "../ClientDashboard.jsx";
+import { TakeAppointment } from "../TakeAppointment.jsx";
 
 function App() {
 	return (
@@ -53,6 +54,10 @@ function App() {
 					path="/myenterprise/clients"
 					exact
 					element={<ClientsInfos />}></Route>
+				<Route
+					path="/takeappointment"
+					exact
+					element={<TakeAppointment />}></Route>
 			</Routes>
 		</Router>
 	);
