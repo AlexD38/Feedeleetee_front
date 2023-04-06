@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 // Create a styled component
-const Card = styled.img`
+const Logo = styled.img`
 	position: absolute;
 	top: 2rem;
 	border-radius: 100%;
@@ -18,4 +18,4 @@ const Card = styled.img`
 	}
 `;
 
-export default Card;
+export default Logo;

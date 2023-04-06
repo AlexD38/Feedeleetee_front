@@ -10,6 +10,8 @@
     "axios": "^1.3.4",
     "browser-sync": "^2.29.0",
     "framer-motion": "^10.10.0",
+    "fuse": "^0.4.0",
+    "fuse.js": "^6.6.2",
     "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
