@@ -13,6 +13,7 @@ import { TakeAppointment } from "../components/TakeAppointment.jsx";
 import LinkComp from "../styles/components/LinkComp";
 import Logo from "../styles/components/Logo.js";
 import Button from "../styles/components/Button";
+import HorizontalWrapper from "../styles/components/HorizontalWrapper";
 export function ClientDashboard() {
 	const token = localStorage.getItem("token");
 	const [user, setUser] = useState(localStorage.getItem("user"));
@@ -23,6 +24,7 @@ export function ClientDashboard() {
 	const inputRef = useRef(null);
 	const [clientId, setClientId] = useState(localStorage.getItem("clientId"));
 	const [date, setDate] = useState(moment().format("YYYY-MM-DD"));
+	const [selectedEnterpriseId, setSelectedEnterpriseId] = useState(null);
 
 	useEffect(() => {
 		async function fetchClient() {
@@ -75,10 +77,11 @@ export function ClientDashboard() {
 
 		setEnterprises([]);
 	};
-	const showAppointments = () => {
-		setAvailableAppointments(true);
+	const showAppointments = (e, entId) => {
+		setSelectedEnterpriseId((id) => entId);
+		console.log(selectedEnterpriseId);
 	};
-	console.log(enterprises);
+	// console.log(enterprises);
 
 	return (
 		<>
@@ -87,55 +90,54 @@ export function ClientDashboard() {
 				<>
 					<Greetings>Bonjour {client.firstname}, </Greetings>
 					<h1>Bienvenue sur votre espace client.</h1>
-					<VerticalWrapper>
-						<LinkComp onClick={handleClick}>
-							Acceder aux entreprises pour prendre rendez-vous{" "}
-						</LinkComp>
-					</VerticalWrapper>
-					{enterprises.length > 0 && (
+
+					<>
+						{client.rdv && client.rdv.length > 0 ? (
+							<ul>
+								{" "}
+								<h3>Voici vos prochains rendez-vous :</h3>
+								{client.rdv.map((rdv, index) => (
+									<li key={index}>
+										{moment(rdv)
+											.locale("fr")
+											.format("dddd DD/MM/YYYY")}
+									</li>
+								))}
+							</ul>
+						) : (
+							<p>Aucun rendez-vous pour le moment</p>
+						)}
+					</>
+					<Button onClick={handleClick}>
+						Prenez votre prochain rdv
+					</Button>
+					{enterprises && (
 						<>
 							{enterprises.map((enterprise) => (
-								<InteractiveCard
-									key={enterprise.id}
-									onClick={showAppointments}>
-									<Logo
-										src={`data:image/png;base64,${enterprise.logo}`}
-										alt=""
-									/>
-									<h2 style={{ marginTop: "10rem" }}>
-										{enterprise.name}
-									</h2>
-
-									{availableAppointments && (
-										<TakeAppointment
-											clientId={clientId}
-											id={enterprise.id}
-										/>
-									)}
-								</InteractiveCard>
-							))}
-						</>
-					)}
-
-					<SideBar>
-						<>
-							{client.rdv && client.rdv.length > 0 ? (
-								<ul>
+								<LinkComp
+									onClick={(e) =>
+										showAppointments(e, enterprise.id)
+									}>
 									{" "}
-									<h1>Vos Rendez-vous :</h1>
-									{client.rdv.map((rdv, index) => (
-										<li key={index}>
-											{moment(rdv)
-												.locale("fr")
-												.format("dddd DD/MM/YYYY")}
-										</li>
-									))}
-								</ul>
-							) : (
-								<p>Aucun rendez-vous pour le moment</p>
+									{enterprise.name}
+									<VerticalWrapper>
+										<img
+											style={{
+												maxHeight: "3rem",
+												borderRadius: "50%",
+												aspectRatio: "1 / 1",
+												objectFit: "cover",
+												margin: "1rem 0 2.5rem",
+											}}
+											src={`data:image/png;base64,${enterprise.logo}`}></img>
+									</VerticalWrapper>
+								</LinkComp>
+							))}
+							{selectedEnterpriseId && (
+								<TakeAppointment id={selectedEnterpriseId} />
 							)}
 						</>
-					</SideBar>
+					)}
 				</>
 			) : (
 				<>
