@@ -29,8 +29,10 @@ export function TakeAppointment(props) {
 					`http://localhost:4000/enterprises/${enterpriseId}/appointments`,
 					{ headers }
 				);
-				console.log(response.data);
-				setAvailableAppointments(response.data);
+				setAvailableAppointments(
+					(availableAppointments) => response.data
+				);
+				console.log(availableAppointments);
 			} catch (error) {
 				console.error(error);
 				// handle error
@@ -39,13 +41,15 @@ export function TakeAppointment(props) {
 		fetchAvailableAppointmentsFromEnterprise();
 	}, [props.id]);
 
-	const handleConfirm = (appointmentId) => {
+	const handleConfirm = (appointmentId, enterpriseId) => {
 		console.log(`confirming appointment id#${appointmentId}`);
 		const InsertClientIntoAppointment = async () => {
 			try {
 				const headers = {
 					token: token,
+					enterpriseId: enterpriseId,
 				};
+				console.log(headers.enterpriseId);
 				const response = await axios.patch(
 					`http://localhost:4000/appointments/${appointmentId}`,
 					{},
@@ -60,9 +64,9 @@ export function TakeAppointment(props) {
 			}
 		};
 		InsertClientIntoAppointment();
-		setTimeout(() => {
-			window.location.reload();
-		}, 1000);
+		// setTimeout(() => {
+		// 	window.location.reload();
+		// }, 1000);
 	};
 
 	return (
@@ -73,7 +77,12 @@ export function TakeAppointment(props) {
 					{availableAppointments.map((appointment) => (
 						<LinkComp
 							key={appointment.id}
-							onClick={() => handleConfirm(appointment.id)}>
+							onClick={() =>
+								handleConfirm(
+									appointment.id,
+									appointment.enterprise_id
+								)
+							}>
 							<ul id={appointment.id}>
 								<li>
 									{" "}
