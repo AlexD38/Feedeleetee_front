@@ -5,11 +5,10 @@ import Button from "../../styles/components/Button";
 import CloseButton from "../../styles/components/CloseBtn";
 import { useNavigate } from "react-router-dom";
 
-export default function Modal() {
-  const navigate = useNavigate();
+export default function Modal(props) {
+  // const navigate = useNavigate();
   const closeModal = () => {
-    document.querySelector(".modal").style.display = "none";
-    navigate("/myenterprise");
+    props.onClose();
   };
   return (
     <div className="modal" style={{ position: "relative" }}>

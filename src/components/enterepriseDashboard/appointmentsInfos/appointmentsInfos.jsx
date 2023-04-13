@@ -135,14 +135,11 @@ function AppointmentsInfos() {
   const closeModal = () => {
     setShowModal(false);
   };
+  console.log(AppointmentsInfos);
 
   return (
     <VerticalWrapper>
-      {showModal && (
-        <div onDoubleClick={closeModal}>
-          <Modal />
-        </div>
-      )}
+      {showModal && <Modal onClose={closeModal} />}
 
       {myAppointments ? (
         <Card>
