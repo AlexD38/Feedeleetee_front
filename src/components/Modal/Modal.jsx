@@ -4,24 +4,28 @@ import Input from "../../styles/components/input";
 import Button from "../../styles/components/Button";
 import CloseButton from "../../styles/components/CloseBtn";
 import { useNavigate } from "react-router-dom";
+import { useRef } from "react";
+import AddAppointments from "../enterepriseDashboard/appointmentsInfos/addAppointments";
 
 export default function Modal(props) {
-  // const navigate = useNavigate();
-  const closeModal = () => {
-    props.onClose();
-  };
-  return (
-    <div className="modal" style={{ position: "relative" }}>
-      <ModalComp>
-        <CloseButton onClick={closeModal}>+</CloseButton>
-        <Greetings>Ajouter un rendez-vous</Greetings>
-        <label htmlFor="">DATE</label>
-        <Input type="date"></Input>
-        <label htmlFor="">HEURE</label>
-        <Input type="time"></Input>
+	const dayRef = useRef(null);
+	const timeRef = useRef(null);
 
-        <Button>Ajouter</Button>
-      </ModalComp>
-    </div>
-  );
+	console.log(props.display);
+
+	const closeModal = () => {
+		props.onClose();
+	};
+	return (
+		<div className="modal" style={{ position: "relative" }}>
+			<ModalComp>
+				{props.display === "Appointments" && (
+					<>
+						<CloseButton onClick={closeModal}>+</CloseButton>
+						<AddAppointments onClose={closeModal} />
+					</>
+				)}
+			</ModalComp>
+		</div>
+	);
 }

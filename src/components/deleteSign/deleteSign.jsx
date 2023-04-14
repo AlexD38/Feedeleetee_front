@@ -7,7 +7,7 @@ function DeleteSign() {
 	};
 	return (
 		<DeleteSignIcon
-			onClick={deleteAction}
+			// onClick={deleteAction}
 			version="1.1"
 			id="Capa_1"
 			fill="CurrentColor"
