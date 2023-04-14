@@ -148,7 +148,7 @@ function AppointmentsInfos() {
 		<VerticalWrapper>
 			{showModal && <Modal onClose={closeModal} display="Appointments" />}
 
-			{myAppointments ? (
+			{myAppointments.length > 0 ? (
 				<Card>
 					<Greetings size="3rem">Mes rendez-vous</Greetings>
 
@@ -249,6 +249,9 @@ function AppointmentsInfos() {
 			) : (
 				<Card>
 					<h1>No Appointments...</h1>
+					<Button onClick={handleClick} type="submit">
+						ADD
+					</Button>
 				</Card>
 			)}
 		</VerticalWrapper>

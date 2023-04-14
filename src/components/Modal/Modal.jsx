@@ -6,6 +6,8 @@ import CloseButton from "../../styles/components/CloseBtn";
 import { useNavigate } from "react-router-dom";
 import { useRef } from "react";
 import AddAppointments from "../enterepriseDashboard/appointmentsInfos/addAppointments";
+import { AddOffers } from "../enterepriseDashboard/offersInfos/AddOffers";
+import { AddServices } from "../enterepriseDashboard/servicesInfos/addServices";
 
 export default function Modal(props) {
 	const dayRef = useRef(null);
@@ -23,6 +25,18 @@ export default function Modal(props) {
 					<>
 						<CloseButton onClick={closeModal}>+</CloseButton>
 						<AddAppointments onClose={closeModal} />
+					</>
+				)}
+				{props.display === "Offers" && (
+					<>
+						<CloseButton onClick={closeModal}>+</CloseButton>
+						<AddOffers onClose={closeModal} />
+					</>
+				)}
+				{props.display === "Services" && (
+					<>
+						<CloseButton onClick={closeModal}>+</CloseButton>
+						<AddServices onClose={closeModal} />
 					</>
 				)}
 			</ModalComp>

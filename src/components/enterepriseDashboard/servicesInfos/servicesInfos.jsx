@@ -7,6 +7,9 @@ import EditSign from "../../editSign/EditSign.jsx";
 import Input from "../../../styles/components/input.js";
 import Button from "../../../styles/components/Button.js";
 import Greetings from "../../../styles/components/Greetings.js";
+import Modal from "../.././Modal/Modal.jsx";
+import LinkComp from "../../../styles/components/LinkComp.js";
+import HorizontalWrapper from "../../../styles/components/HorizontalWrapper.js";
 
 function ServicesInfos() {
 	const [myServices, setMyServices] = useState("");
@@ -17,6 +20,12 @@ function ServicesInfos() {
 	const descriptionRef = useRef(null);
 	const priceRef = useRef(null);
 	const durationRef = useRef(null);
+	const [showModal, setShowModal] = useState(false);
+	const [selectedServiceId, setSelectedServiceId] = useState(null);
+	const closeModal = () => {
+		setShowModal(false);
+	};
+
 	useEffect(() => {
 		async function fetchServices() {
 			const headers = {
@@ -33,50 +42,19 @@ function ServicesInfos() {
 			// console.log(response.data);
 		}
 		fetchServices();
-	}, [token]);
+	}, [token, showModal]);
 	const handleClick = (e) => {
 		if (!showButtons) {
 			setShowButtons(true);
 			setShowInput(true);
+			setShowModal(true);
 		} else {
 			setShowButtons(false);
 			setShowInput(false);
 			setShowEditInput(false);
 		}
 	};
-	const sendData = async (e) => {
-		console.log("desc", descriptionRef.current.value);
-		console.log("price", priceRef.current.value);
-		console.log("Durée", durationRef.current.value);
-		const data = {
-			description: descriptionRef.current.value,
-			price: priceRef.current.value,
-			duration: durationRef.current.value,
-		};
-		if (!data.description || !data.price || !data.duration) {
-			return;
-		}
 
-		const headers = {
-			token,
-		};
-		try {
-			const response = await axios.post(
-				`http://localhost:4000/enterprises/services`,
-				{ data },
-				{
-					headers,
-				}
-			);
-			console.log(response);
-			console.log(response.data.serviceCreated);
-			setMyServices([...myServices, response.data.serviceCreated]);
-		} catch (error) {
-			console.log(error);
-		}
-		descriptionRef.current.value = "";
-		priceRef.current.value = "";
-	};
 	const deleteService = async (e) => {
 		console.log(e.currentTarget.parentNode.firstChild.id);
 		console.log(myServices);
@@ -102,69 +80,65 @@ function ServicesInfos() {
 			console.error(error);
 		}
 	};
+	const handleServiceClick = (serviceId) => {
+		if (selectedServiceId != serviceId) {
+			setSelectedServiceId((id) => serviceId);
+		} else if (selectedServiceId === serviceId) {
+			setSelectedServiceId(null);
+		}
+	};
 
 	return (
-		<VerticalWrapper>
+		<HorizontalWrapper>
+			{showModal && <Modal onClose={closeModal} display="Services" />}
+
 			{myServices ? (
 				<Card>
 					<Greetings size="3rem">Mes Services</Greetings>
 
-					<motion.div onClick={handleClick}>
-						<EditSign />
-					</motion.div>
 					{myServices.map((serviceInformation) => (
 						<motion.div
 							initial={{ opacity: 0, y: -10 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.3, delay: 0.2 }}
 							key={serviceInformation.id}>
-							<p id={serviceInformation.id}>
-								{serviceInformation.description} :{" "}
-								{serviceInformation.price} € -{" "}
-								{serviceInformation.duration}H
-							</p>
-							{showButtons && (
-								<Button onClick={deleteService}>Delete</Button>
+							<LinkComp
+								onClick={(e) =>
+									handleServiceClick(serviceInformation.id)
+								}
+								id={serviceInformation.id}>
+								<li>{serviceInformation.description} : </li>
+								<li>
+									{serviceInformation.price} € -
+									{serviceInformation.duration}H
+								</li>
+							</LinkComp>
+							{selectedServiceId === serviceInformation.id && (
+								<Button
+									onClick={deleteService}
+									style={{
+										marginLeft: "1rem",
+									}}
+									id={selectedServiceId}>
+									DELETE
+								</Button>
 							)}
 						</motion.div>
 					))}
-					{showInput && (
-						<motion.form
-							initial={{ opacity: 0, scale: 0.5 }}
-							animate={{ opacity: 1, scale: 1 }}
-							transition={{ duration: 0.5 }}>
-							<label>
-								Description :
-								<Input type="text" ref={descriptionRef} />
-							</label>
-							<label>
-								Prix :
-								<Input
-									type="number"
-									min="1"
-									max="100"
-									ref={priceRef}
-								/>
-							</label>
-							<label>
-								Durée :
-								<Input
-									type="number"
-									min="0"
-									max="10"
-									ref={durationRef}
-								/>
-							</label>
-						</motion.form>
-					)}
-					{showButtons && <Button onClick={sendData}>Add</Button>}
+
+					<Button onClick={handleClick} type="submit">
+						ADD
+					</Button>
 				</Card>
 			) : (
 				<Card>
 					<h1>No services yet...</h1>
+					<Button onClick={handleClick} type="submit">
+						ADD
+					</Button>
 				</Card>
 			)}
-		</VerticalWrapper>
+		</HorizontalWrapper>
 	);
 }
 
