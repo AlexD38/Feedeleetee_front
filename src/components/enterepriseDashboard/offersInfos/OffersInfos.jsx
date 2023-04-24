@@ -9,6 +9,7 @@ import Input from "../../../styles/components/input.js";
 import Greetings from "../../../styles/components/Greetings.js";
 import Modal from "../../Modal/Modal.jsx";
 import LinkComp from "../../../styles/components/LinkComp.js";
+import { BsFillTrash3Fill } from "react-icons/bs";
 
 function OffersInfos() {
 	const [myOffers, setMyOffers] = useState("");
@@ -114,7 +115,7 @@ function OffersInfos() {
 										marginLeft: "1rem",
 									}}
 									id={selectedOfferId}>
-									DELETE
+									<BsFillTrash3Fill />
 								</Button>
 							)}
 						</LinkComp>

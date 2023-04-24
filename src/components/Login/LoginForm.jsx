@@ -10,7 +10,7 @@ import qs from "qs";
 import Greetings from "../../styles/components/Greetings.js";
 import PropTypes from "prop-types";
 
-function LoginForm() {
+function LoginForm(props) {
 	const [mail, setMail] = useState("");
 	const [password, setPassword] = useState("");
 	const navigate = useNavigate();
@@ -104,5 +104,9 @@ function LoginForm() {
 		</>
 	);
 }
+LoginForm.propTypes = {
+	mail: PropTypes.string.isRequired,
+	password: PropTypes.string.isRequired,
+};
 
 export default LoginForm;

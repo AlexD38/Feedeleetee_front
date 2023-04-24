@@ -6,11 +6,11 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Link from "../../styles/components/LinkComp";
 import VerticalWrapper from "../../styles/components/verticalWrapper.js";
-
+import PropTypes from "prop-types";
 import qs from "qs";
 import Greetings from "../../styles/components/Greetings.js";
 
-function Signup() {
+function Signup(props) {
 	const [userName, setUserName] = useState("");
 	const [mail, setMail] = useState("");
 	const [password, setPassword] = useState("");
@@ -88,5 +88,10 @@ function Signup() {
 		</>
 	);
 }
+Signup.propTypes = {
+	userName: PropTypes.string.isRequired,
+	mail: PropTypes.string.isRequired,
+	password: PropTypes.string.isRequired,
+};
 
 export default Signup;

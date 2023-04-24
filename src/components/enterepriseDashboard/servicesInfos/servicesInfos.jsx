@@ -10,6 +10,7 @@ import Greetings from "../../../styles/components/Greetings.js";
 import Modal from "../.././Modal/Modal.jsx";
 import LinkComp from "../../../styles/components/LinkComp.js";
 import HorizontalWrapper from "../../../styles/components/HorizontalWrapper.js";
+import { BsFillTrash3Fill } from "react-icons/bs";
 
 function ServicesInfos() {
 	const [myServices, setMyServices] = useState("");
@@ -120,7 +121,7 @@ function ServicesInfos() {
 										marginLeft: "1rem",
 									}}
 									id={selectedServiceId}>
-									DELETE
+									<BsFillTrash3Fill />
 								</Button>
 							)}
 						</motion.div>

@@ -11,12 +11,13 @@ import CreateEnterprise from "../CreateEnterpriseFrom/CreateEnterpriseFrom.jsx";
 import CreateClient from "../CreateClientForm/CreateClient.jsx";
 import { ClientDashboard } from "../ClientDashboard.jsx";
 import { TakeAppointment } from "../TakeAppointment.jsx";
+import { HomePage } from "../HomePage.jsx";
 
 function App() {
 	return (
 		<Router>
 			<Routes>
-				<Route path="/" exact element={<Signup />} />
+				<Route path="/" exact element={<HomePage />} />
 				<Route path="/login" exact element={<LoginForm />} />
 				<Route path="/home" exact element={<Home />} />
 

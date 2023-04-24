@@ -8,12 +8,14 @@ import { useAnimate, stagger, motion, delay } from "framer-motion";
 // Universal
 function QuickView() {
 	const token = localStorage.getItem("token");
+	const enterpriseId = localStorage.getItem("enterpriseId");
 	const [quickView, setQuickView] = useState([]);
 
 	useEffect(() => {
 		async function fetchQuickView() {
 			const headers = {
 				token: token,
+				enterpriseId: enterpriseId,
 			};
 			const response = await axios.get(
 				`http://localhost:4000/quickview`,

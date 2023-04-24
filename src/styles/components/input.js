@@ -20,6 +20,9 @@ const Input = styled.input`
 		background-color: GhostWhite;
 		transition: all 0.3s ease;
 	}
+	@media (max-width: 1250px) {
+		width: 100%;
+	}
 `;
 
 export default Input;
