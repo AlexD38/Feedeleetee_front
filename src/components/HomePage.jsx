@@ -10,7 +10,8 @@ import Modal from "../components/Modal/Modal.jsx";
 export function HomePage() {
   const [showButton, setShowButton] = useState(false);
   const [filter, setFilter] = useState(false);
-  const [showModal, setShowModal] = useState(false);
+  const [showLoginModal, setShowLoginModal] = useState(false);
+  const [showSignupModal, setShowSignupModal] = useState(false);
   const navigate = useNavigate();
 
   const showLoginButton = () => {
@@ -21,19 +22,44 @@ export function HomePage() {
     }, "2000");
   };
   showLoginButton();
+
   const navigateToLogin = () => {
-    // navigate("/login");
-    setShowModal(true);
-    // window.scrollTo(0, document.body.scrollHeight);
+    setShowLoginModal(true);
+  };
+  const navigateToSignup = () => {
+    setShowSignupModal(true);
   };
   const body = document.querySelector("body");
   body.style.overflow = "hidden";
   const closeModal = () => {
-    setShowModal(false);
+    setShowLoginModal(false);
+    setShowSignupModal(false);
+  };
+  const changeDisplay = () => {
+    if (showLoginModal) {
+      setShowLoginModal(false);
+      setShowSignupModal(true);
+    } else {
+      setShowLoginModal(true);
+      setShowSignupModal(false);
+    }
   };
   return (
     <>
-      {showModal && <Modal onClose={closeModal} display="Login"></Modal>}
+      {showLoginModal && (
+        <Modal
+          onClose={closeModal}
+          display="Login"
+          changeDisplay={changeDisplay}
+        ></Modal>
+      )}
+      {showSignupModal && (
+        <Modal
+          onClose={closeModal}
+          display="Signup"
+          changeDisplay={changeDisplay}
+        ></Modal>
+      )}
       <div style={{ overflow: "hidden", height: "100vh" }}>
         <motion.div
           initial={{ opacity: 0 }}
@@ -43,7 +69,7 @@ export function HomePage() {
             delay: 1,
           }}
         >
-          <HomePageText>Hello,</HomePageText>
+          <HomePageText style={{ bottom: "4rem" }}>Hello,</HomePageText>
         </motion.div>
         <motion.div
           initial={{ opacity: 0 }}
@@ -53,7 +79,7 @@ export function HomePage() {
             delay: 1.5,
           }}
         >
-          <HomePageText style={{ top: "4rem" }}>
+          <HomePageText>
             and Welcome to your{" "}
             <span
               style={{
@@ -91,14 +117,27 @@ export function HomePage() {
                 onClick={navigateToLogin}
                 style={{
                   position: "absolute",
-                  bottom: "1rem",
+                  top: "1rem",
                   right: "3rem",
                   margin: "0, auto",
                   zIndex: "1",
                   backgroundColor: "#eca869",
                 }}
               >
-                Click to enter
+                Login
+              </Button>
+              <Button
+                onClick={navigateToSignup}
+                style={{
+                  position: "absolute",
+                  top: "1rem",
+                  right: "12rem",
+                  margin: "0, auto",
+                  zIndex: "1",
+                  backgroundColor: "#eca869",
+                }}
+              >
+                Register
               </Button>
             </div>
           </motion.div>

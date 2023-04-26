@@ -9,16 +9,19 @@ import AddAppointments from "../enterepriseDashboard/appointmentsInfos/addAppoin
 import { AddOffers } from "../enterepriseDashboard/offersInfos/AddOffers";
 import { AddServices } from "../enterepriseDashboard/servicesInfos/addServices";
 import Login from "../Login/LoginForm.jsx";
+import SignUp from "../SignUp/SignUp.jsx";
 
 export default function Modal(props) {
   const dayRef = useRef(null);
   const timeRef = useRef(null);
 
-  console.log(props.display);
-
   const closeModal = () => {
     props.onClose();
   };
+  const changeDisplay = () => {
+    props.changeDisplay();
+  };
+
   return (
     <div className="modal" style={{ position: "relative" }}>
       <ModalComp>
@@ -42,8 +45,14 @@ export default function Modal(props) {
         )}
         {props.display === "Login" && (
           <>
-            {/* <CloseButton onClick={closeModal}>+</CloseButton> */}
-            <Login onClose={closeModal} />
+            <CloseButton onClick={closeModal}>+</CloseButton>
+            <Login onClose={closeModal} changeDisplay={changeDisplay} />
+          </>
+        )}
+        {props.display === "Signup" && (
+          <>
+            <CloseButton onClick={closeModal}>+</CloseButton>
+            <SignUp onClose={closeModal} changeDisplay={changeDisplay} />
           </>
         )}
       </ModalComp>

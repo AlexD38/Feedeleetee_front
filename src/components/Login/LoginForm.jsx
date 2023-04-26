@@ -11,6 +11,7 @@ import Greetings from "../../styles/components/Greetings.js";
 import PropTypes from "prop-types";
 
 function LoginForm(props) {
+  console.log(props);
   const [mail, setMail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -63,8 +64,6 @@ function LoginForm(props) {
     event.target.type = "password";
   };
 
-  // console.log("token");
-
   return (
     <>
       <Form onSubmit={handleSubmit}>
@@ -92,7 +91,7 @@ function LoginForm(props) {
         <VerticalWrapper>
           <p>
             Don't have an account yet ?{" "}
-            <Link href="http://localhost:3000/signup">Create One</Link>{" "}
+            <Link onClick={props.changeDisplay}>Create One</Link>{" "}
           </p>
         </VerticalWrapper>
       </Form>
