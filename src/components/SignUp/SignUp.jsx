@@ -11,87 +11,88 @@ import qs from "qs";
 import Greetings from "../../styles/components/Greetings.js";
 
 function Signup(props) {
-  const [userName, setUserName] = useState("");
-  const [mail, setMail] = useState("");
-  const [password, setPassword] = useState("");
-  const navigate = useNavigate();
+	const [userName, setUserName] = useState("");
+	const [mail, setMail] = useState("");
+	const [password, setPassword] = useState("");
+	const navigate = useNavigate();
 
-  const handleSubmit = async (event) => {
-    const data = {
-      userName,
-      mail,
-      password,
-    };
+	const handleSubmit = async (event) => {
+		const data = {
+			userName,
+			mail,
+			password,
+		};
 
-    const headers = {
-      "Content-Type": "application/x-www-form-urlencoded",
-    };
+		const headers = {
+			"Content-Type": "application/x-www-form-urlencoded",
+		};
 
-    console.log(userName, mail, password);
-    event.preventDefault();
+		console.log(userName, mail, password);
+		event.preventDefault();
 
-    try {
-      const response = await axios.post(
-        "http://localhost:4000/users",
-        qs.stringify(data),
-        {
-          headers,
-        }
-      );
-      const message = response.data.message;
-      console.log(message);
+		try {
+			const response = await axios.post(
+				"http://localhost:4000/users",
+				qs.stringify(data),
+				{
+					headers,
+				}
+			);
+			const message = response.data.message;
+			console.log(message);
 
-      // Redirection vers la page de login
-      navigate("/login");
-    } catch (error) {
-      console.log(error);
-      alert("Erreur lors de la création de l'utilisateur");
-    }
-  };
+			// Redirection vers la page de login
+			// navigate("/login")
+			props.changeDisplay();
+		} catch (error) {
+			console.log(error);
+			alert("Erreur lors de la création de l'utilisateur");
+		}
+	};
 
-  return (
-    <>
-      <Form onSubmit={handleSubmit}>
-        <Greetings size="2rem">Creez votre compte</Greetings>
+	return (
+		<>
+			<Form onSubmit={handleSubmit}>
+				<Greetings size="2rem">Creez votre compte</Greetings>
 
-        <label>Pseudo :</label>
-        <Input
-          required
-          type="text"
-          value={userName}
-          onChange={(e) => setUserName(e.target.value)}
-        />
-        <label>E-mail :</label>
-        <Input
-          required
-          type="mail"
-          value={mail}
-          onChange={(e) => setMail(e.target.value)}
-        />
-        <label>Mot de passe :</label>
-        <Input
-          required
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+				<label>Pseudo :</label>
+				<Input
+					required
+					type="text"
+					value={userName}
+					onChange={(e) => setUserName(e.target.value)}
+				/>
+				<label>E-mail :</label>
+				<Input
+					required
+					type="mail"
+					value={mail}
+					onChange={(e) => setMail(e.target.value)}
+				/>
+				<label>Mot de passe :</label>
+				<Input
+					required
+					type="password"
+					value={password}
+					onChange={(e) => setPassword(e.target.value)}
+				/>
 
-        <Button type="submit">Créer un compte</Button>
+				<Button type="submit">Créer un compte</Button>
 
-        <VerticalWrapper>
-          <p>
-            Already have an account ?{" "}
-            <Link onClick={props.changeDisplay}>Log in</Link>{" "}
-          </p>
-        </VerticalWrapper>
-      </Form>
-    </>
-  );
+				<VerticalWrapper>
+					<p>
+						Already have an account ?{" "}
+						<Link onClick={props.changeDisplay}>Log in</Link>{" "}
+					</p>
+				</VerticalWrapper>
+			</Form>
+		</>
+	);
 }
 Signup.propTypes = {
-  userName: PropTypes.string.isRequired,
-  mail: PropTypes.string.isRequired,
-  password: PropTypes.string.isRequired,
+	userName: PropTypes.string.isRequired,
+	mail: PropTypes.string.isRequired,
+	password: PropTypes.string.isRequired,
 };
 
 export default Signup;

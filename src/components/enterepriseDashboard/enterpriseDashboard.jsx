@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import Logout from "../Logout/Logout.jsx";
 import ClientsInfos from "./clientsInfos/clientsInfos.jsx";
 import ServicesInfos from "./servicesInfos/servicesInfos.jsx";
@@ -15,6 +15,7 @@ import { motion } from "framer-motion";
 import VerticalWrapper from "../../../src/styles/components/verticalWrapper.js";
 import QuickView from "./QuickView/QuickView.jsx";
 import Button from "../../styles/components/Button.js";
+import CreateEnterpriseForm from "../CreateEnterpriseFrom/CreateEnterpriseFrom.jsx";
 
 function EnterpriseDashboard() {
 	const [myEnterprise, setMyEnterprise] = useState("");
@@ -49,12 +50,10 @@ function EnterpriseDashboard() {
 				// je renvoie au back enterprise Id pour qu'il le mette en arg ! si pas enterprise id, alors le prendre dans le local storage
 				localStorage.removeItem("enterpriseId");
 				return;
-			} else {
-				navigate("/createenterprise");
 			}
 		}
 		fetchDashboard();
-		// console.log(myEnterprise);
+		console.log(myEnterprise);
 	}, []);
 	const handleClick = (componentName) => {
 		setColoredNavlink("white");
@@ -90,7 +89,6 @@ function EnterpriseDashboard() {
 			console.log("no file to upload");
 		}
 	};
-
 	return (
 		<>
 			{" "}
@@ -256,9 +254,7 @@ function EnterpriseDashboard() {
 				</>
 			) : (
 				<>
-					<LinkComp href="/createenterprise">
-						You must create one first...
-					</LinkComp>
+					<CreateEnterpriseForm />
 				</>
 			)}
 		</>
