@@ -70,11 +70,15 @@ function LoginForm(props) {
     };
     const inputErrDisplay = (event) => {
         if (inputError) {
-            event.target.style.border = "3px solid red";
-            console.log(event.target.style);
-            console.log(inputError);
+            const inputs = document.querySelectorAll("input");
+            inputs.forEach((input) => {
+                input.style.border = "3px solid red";
+                // console.log(event.target.style);
+                console.log(inputError);
+            });
         }
     };
+    inputErrDisplay();
 
     return (
         <>
@@ -88,7 +92,7 @@ function LoginForm(props) {
                     value={mail}
                     pattern='^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$'
                     onChange={(e) => setMail(e.target.value)}
-                    onMouseEnter={inputErrDisplay}
+                    // onFocus={inputErrDisplay}
                 />
                 <label>Mot de passe :</label>
                 <Input
@@ -98,7 +102,7 @@ function LoginForm(props) {
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    onMouseEnter={inputErrDisplay}
+                    // onFocus={inputErrDisplay}
                 />
 
                 <Button type="submit">Me connecter</Button>
