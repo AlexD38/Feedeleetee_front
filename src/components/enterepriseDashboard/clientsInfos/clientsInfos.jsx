@@ -8,55 +8,59 @@ import SingleCLient from "./singleClient.jsx";
 import Greetings from "../../../styles/components/Greetings.js";
 
 function ClientsInfos() {
-	const [myClients, setMyClients] = useState("");
-	const token = localStorage.getItem("token");
-	const [showCredentials, setShowCredentials] = useState(false);
+    const [myClients, setMyClients] = useState("");
+    const token = localStorage.getItem("token");
+    const [showCredentials, setShowCredentials] = useState(false);
+    const enterpriseId = localStorage.getItem("enterpriseId");
 
-	useEffect(() => {
-		async function fetchClients() {
-			const headers = {
-				token: token,
-			};
-			const response = await axios.get(
-				`http://localhost:4000/enterprises/clients`,
-				{ headers }
-			);
-			setMyClients((myClients) => response.data);
-		}
-		fetchClients();
-	}, [token]);
+    useEffect(() => {
+        async function fetchClients() {
+            const headers = {
+                token,
+                enterpriseId,
+            };
+            const response = await axios.get(
+                `http://localhost:4000/enterprises/clients`,
+                { headers }
+            );
+            setMyClients((myClients) => response.data);
+        }
+        fetchClients();
+    }, [token]);
 
-	return (
-		<VerticalWrapper>
-			{myClients ? (
-				<Card>
-					<Greetings size="3rem">Mes Clients</Greetings>
+    return (
+        <VerticalWrapper>
+            {myClients ? (
+                <Card>
+                    <Greetings size="3rem">Mes Clients</Greetings>
 
-					{myClients.map((clientInformation) => (
-						<motion.ul
-							initial={{ opacity: 0, y: -10 }}
-							animate={{ opacity: 1, y: 0 }}
-							transition={{ duration: 0.3, delay: 0.2 }}
-							key={clientInformation.id}>
-							<motion.li
-								initial={{ opacity: 0, y: -10 }}
-								animate={{ opacity: 1, y: 0 }}
-								transition={{ duration: 0.3, delay: 0.2 }}
-								key={clientInformation.id}>
-								<LinkComp>
-									<SingleCLient client={clientInformation} />
-								</LinkComp>
-							</motion.li>
-						</motion.ul>
-					))}
-				</Card>
-			) : (
-				<Card>
-					<h1>No clients yet ...</h1>
-				</Card>
-			)}
-		</VerticalWrapper>
-	);
+                    {myClients.map((clientInformation) => (
+                        <motion.ul
+                            initial={{ opacity: 0, y: -10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.3, delay: 0.2 }}
+                            key={clientInformation.id}
+                        >
+                            <motion.li
+                                initial={{ opacity: 0, y: -10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.3, delay: 0.2 }}
+                                key={clientInformation.id}
+                            >
+                                <LinkComp>
+                                    <SingleCLient client={clientInformation} />
+                                </LinkComp>
+                            </motion.li>
+                        </motion.ul>
+                    ))}
+                </Card>
+            ) : (
+                <Card>
+                    <h1>No clients yet ...</h1>
+                </Card>
+            )}
+        </VerticalWrapper>
+    );
 }
 
 export default ClientsInfos;
