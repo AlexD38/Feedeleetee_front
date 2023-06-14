@@ -257,7 +257,7 @@ function EnterpriseDashboard() {
                                 </motion.div>
                             </Navbar>
                         </motion.aside>
-                        <Logout />
+                        <Logout linkTo="home" />
                     </SideBar>
                     {currentComponent === "Appointments" && (
                         <AppointmentsInfos />

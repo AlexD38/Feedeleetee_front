@@ -81,7 +81,7 @@ function Home() {
                 </Link>
             </HorizontalWrapper>
 
-            <Logout />
+            <Logout linkTo="" />
         </>
     ) : (
         <>
