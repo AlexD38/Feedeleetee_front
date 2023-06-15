@@ -21,7 +21,7 @@ export default function AddAppointments(props) {
 
         const headers = {
             token,
-            enterpriseId,
+            enterpriseId: +enterpriseId,
         };
         try {
             const response = await axios.post(

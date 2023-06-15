@@ -1,6 +1,6 @@
 # TODO =
 
--   display message error when user already existst when **signup**
+-   display message error when user already exists when **signup**
 -   responsive
 -   add css au lieu de styled components
 -   create enterprise goes into modal
@@ -13,4 +13,5 @@
 ## Add feature :
 
 -   modifier son entreprise
--   modifer son profil client -
+-   modifer son profil client
+-   light dark mode

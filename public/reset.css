@@ -1,0 +1,45 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    font: inherit;
+}
+
+html {
+    color-scheme: light dark;
+}
+
+body {
+    font-family: system-ui;
+    font-size: 1.125rem;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+main {
+    width: min(65ch, 100% - 4rem);
+    margin-inline: auto;
+}
+
+img,
+picture,
+svg,
+videos {
+    max-width: 100%;
+    display: block;
+}
+
+input,
+textarea,
+button,
+select {
+    font: inherit;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}

@@ -46,10 +46,7 @@ function EnterpriseDashboard() {
             if (response.data[0]) {
                 setMyEnterprise(response.data[0]);
                 console.log(response.data[0]);
-            } else if (enterpriseId) {
-                // je renvoie au back enterprise Id pour qu'il le mette en arg ! si pas enterprise id, alors le prendre dans le local storage
-                // localStorage.removeItem("enterpriseId");
-                return;
+                localStorage.setItem("enterpriseId", response.data[0].id);
             }
         }
         fetchDashboard();
