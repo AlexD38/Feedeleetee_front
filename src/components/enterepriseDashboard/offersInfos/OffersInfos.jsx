@@ -1,6 +1,5 @@
 import axios from "axios";
 import { useEffect, useState, useRef } from "react";
-import Button from "../../../styles/components/Button.js";
 import Card from "../../../styles/components/card.js";
 import VerticalWrapper from "../../../styles/components/verticalWrapper.js";
 import EditSign from "../../editSign/EditSign.jsx";
@@ -16,7 +15,7 @@ function OffersInfos() {
     const token = localStorage.getItem("token");
     const [showInput, setShowInput] = useState(false);
     const [showEditInput, setShowEditInput] = useState(false);
-    const [showButtons, setShowButtons] = useState(false);
+    const [showbuttons, setShowbuttons] = useState(false);
     const [showValidate, setShowValidate] = useState(false);
     const descriptionRef = useRef(null);
     const [showModal, setShowModal] = useState(false);
@@ -68,12 +67,12 @@ function OffersInfos() {
         }
     };
     const handleClick = (e) => {
-        if (!showButtons) {
-            // setShowButtons(true);
+        if (!showbuttons) {
+            // setShowbuttons(true);
             setShowModal(true);
             // setShowInput(true);
         } else {
-            setShowButtons(false);
+            setShowbuttons(false);
             setShowInput(false);
             setShowEditInput(false);
         }
@@ -113,7 +112,7 @@ function OffersInfos() {
                                 <p>-{offerInformation.discount}%</p>
                             </motion.div>
                             {selectedOfferId === offerInformation.id && (
-                                <Button
+                                <button
                                     onClick={deleteOffer}
                                     style={{
                                         marginLeft: "1rem",
@@ -121,14 +120,14 @@ function OffersInfos() {
                                     id={selectedOfferId}
                                 >
                                     <BsFillTrash3Fill />
-                                </Button>
+                                </button>
                             )}
                         </LinkComp>
                     ))}
 
-                    <Button onClick={handleClick} type="submit">
+                    <button onClick={handleClick} type="submit">
                         ADD
-                    </Button>
+                    </button>
                 </Card>
             ) : (
                 <Card>

@@ -1,6 +1,5 @@
 import Input from "../../../styles/components/input";
 import { useRef } from "react";
-import Button from "../../../styles/components/Button";
 import axios from "axios";
 import Greetings from "../../../styles/components/Greetings";
 
@@ -51,7 +50,7 @@ export function AddOffers(props) {
             <Input type="text" ref={descriptionRef} />
             <label>Discount : (en pourcentage)</label>
             <Input type="number" min="0" max="100" ref={discountRef} />
-            <Button onClick={sendData}>Ajouter</Button>
+            <button onClick={sendData}>Ajouter</button>
         </>
     );
 }

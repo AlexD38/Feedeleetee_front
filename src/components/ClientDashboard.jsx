@@ -9,7 +9,6 @@ import CreateClient from "../components/CreateClientForm/CreateClient.jsx";
 import { TakeAppointment } from "../components/TakeAppointment.jsx";
 import LinkComp from "../styles/components/LinkComp";
 import Card from "../styles/components/card";
-import Button from "../styles/components/Button";
 export function ClientDashboard() {
     const token = localStorage.getItem("token");
     const [user, setUser] = useState(localStorage.getItem("user"));
@@ -112,9 +111,9 @@ export function ClientDashboard() {
                             </p>
                         )}
                     </Card>
-                    <Button onClick={handleClick}>
+                    <button onClick={handleClick}>
                         Prenez votre prochain rdv
-                    </Button>
+                    </button>
                     {enterprises && (
                         <>
                             {enterprises.map((enterprise) => (

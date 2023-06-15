@@ -5,7 +5,6 @@ import VerticalWrapper from "../../../styles/components/verticalWrapper.js";
 import { motion } from "framer-motion";
 import EditSign from "../../editSign/EditSign.jsx";
 import Input from "../../../styles/components/input.js";
-import Button from "../../../styles/components/Button.js";
 import Greetings from "../../../styles/components/Greetings.js";
 import Modal from "../.././Modal/Modal.jsx";
 import LinkComp from "../../../styles/components/LinkComp.js";
@@ -17,7 +16,7 @@ function ServicesInfos() {
     const token = localStorage.getItem("token");
     const [showInput, setShowInput] = useState(false);
     const [showEditInput, setShowEditInput] = useState(false);
-    const [showButtons, setShowButtons] = useState(false);
+    const [showbuttons, setShowbuttons] = useState(false);
     const descriptionRef = useRef(null);
     const priceRef = useRef(null);
     const durationRef = useRef(null);
@@ -47,12 +46,12 @@ function ServicesInfos() {
         fetchServices();
     }, [token, showModal]);
     const handleClick = (e) => {
-        if (!showButtons) {
-            setShowButtons(true);
+        if (!showbuttons) {
+            setShowbuttons(true);
             setShowInput(true);
             setShowModal(true);
         } else {
-            setShowButtons(false);
+            setShowbuttons(false);
             setShowInput(false);
             setShowEditInput(false);
         }
@@ -119,7 +118,7 @@ function ServicesInfos() {
                                 </li>
                             </LinkComp>
                             {selectedServiceId === serviceInformation.id && (
-                                <Button
+                                <button
                                     onClick={deleteService}
                                     style={{
                                         marginLeft: "1rem",
@@ -127,21 +126,21 @@ function ServicesInfos() {
                                     id={selectedServiceId}
                                 >
                                     <BsFillTrash3Fill />
-                                </Button>
+                                </button>
                             )}
                         </motion.div>
                     ))}
 
-                    <Button onClick={handleClick} type="submit">
+                    <button onClick={handleClick} type="submit">
                         ADD
-                    </Button>
+                    </button>
                 </Card>
             ) : (
                 <Card>
                     <h1>No services yet...</h1>
-                    <Button onClick={handleClick} type="submit">
+                    <button onClick={handleClick} type="submit">
                         ADD
-                    </Button>
+                    </button>
                 </Card>
             )}
         </HorizontalWrapper>

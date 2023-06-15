@@ -14,7 +14,6 @@ import EnterpriseName from "../../styles/components/EnterpriseName.js";
 import { motion } from "framer-motion";
 import VerticalWrapper from "../../../src/styles/components/verticalWrapper.js";
 import QuickView from "./QuickView/QuickView.jsx";
-import Button from "../../styles/components/Button.js";
 import CreateEnterpriseForm from "../CreateEnterpriseFrom/CreateEnterpriseFrom.jsx";
 
 function EnterpriseDashboard() {
@@ -137,9 +136,9 @@ function EnterpriseDashboard() {
                                             initial={{ opacity: 0 }}
                                             animate={{ opacity: 1 }}
                                         >
-                                            <Button type="submit">
+                                            <button type="submit">
                                                 upload
-                                            </Button>
+                                            </button>
                                         </motion.div>
                                     </form>
                                 )}

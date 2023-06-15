@@ -2,7 +2,6 @@ import { useRef } from "react";
 import axios from "axios";
 import Greetings from "../../../styles/components/Greetings";
 import Input from "../../../styles/components/input";
-import Button from "../../../styles/components/Button";
 
 export default function AddAppointments(props) {
     const token = localStorage.getItem("token");
@@ -49,7 +48,7 @@ export default function AddAppointments(props) {
             <Input type="date" ref={dayRef}></Input>
             <label htmlFor="">HEURE</label>
             <Input type="time" ref={timeRef}></Input>
-            <Button onClick={sendData}>Ajouter</Button>
+            <button onClick={sendData}>Ajouter</button>
         </>
     );
 }

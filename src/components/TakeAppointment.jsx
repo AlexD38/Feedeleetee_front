@@ -1,11 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import InteractiveCard from "../styles/components/interactiveCard";
-import Button from "../styles/components/Button";
-import HorizontalWrapper from "../styles/components/HorizontalWrapper";
 import moment from "moment";
 import "moment/locale/fr";
-import CloseBtn from "../styles/components/CloseBtn.js";
 import Card from "../styles/components/card";
 import LinkComp from "../styles/components/LinkComp";
 

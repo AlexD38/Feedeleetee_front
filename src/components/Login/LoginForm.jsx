@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Button from "../../styles/components/Button.js";
 import Form from "../../styles/components/form.js";
 import Input from "../../styles/components/input.js";
 import axios from "axios";
@@ -105,7 +104,7 @@ function LoginForm(props) {
                     // onFocus={inputErrDisplay}
                 />
 
-                <Button type="submit">Me connecter</Button>
+                <button type="submit">Me connecter</button>
                 <VerticalWrapper>
                     <p>
                         Don't have an account yet ?{" "}

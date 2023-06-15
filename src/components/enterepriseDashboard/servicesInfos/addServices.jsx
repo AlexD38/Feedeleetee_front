@@ -2,7 +2,6 @@ import { useRef } from "react";
 import Input from "../../../styles/components/input.js";
 import Greetings from "../../../styles/components/Greetings";
 import axios from "axios";
-import Button from "../../../styles/components/Button.js";
 
 export function AddServices(props) {
     const descriptionRef = useRef(null);
@@ -57,7 +56,7 @@ export function AddServices(props) {
             <Input type="number" min="1" max="100" ref={priceRef} />
             <label>Durée :</label>
             <Input type="number" min="0" max="10" ref={durationRef} />
-            <Button onClick={sendData}>Ajouter</Button>
+            <button onClick={sendData}>Ajouter</button>
         </>
     );
 }

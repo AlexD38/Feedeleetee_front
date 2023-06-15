@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Button from "../../styles/components/Button.js";
 import Form from "../../styles/components/form.js";
 import Input from "../../styles/components/input.js";
 import axios from "axios";
@@ -77,7 +76,7 @@ function Signup(props) {
                     onChange={(e) => setPassword(e.target.value)}
                 />
 
-                <Button type="submit">Créer un compte</Button>
+                <button type="submit">Créer un compte</button>
 
                 <VerticalWrapper>
                     <p>

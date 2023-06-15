@@ -2,12 +2,9 @@ import axios from "axios";
 import { useEffect, useState, useRef } from "react";
 import Card from "../../../styles/components/card.js";
 import HorizontalWrapper from "../../../styles/components/HorizontalWrapper.js";
-import Input from "../../../styles/components/input.js";
 import VerticalWrapper from "../../../styles/components/verticalWrapper.js";
-import EditSign from "../../editSign/EditSign.jsx";
-import Button from "../../../styles/components/Button.js";
 import { motion } from "framer-motion";
-import EditButton from "../../buttons/editBtn.jsx";
+import Editbutton from "../../buttons/editBtn.jsx";
 import Greetings from "../../../styles/components/Greetings.js";
 import Modal from "../.././Modal/Modal.jsx";
 import moment from "moment";
@@ -21,7 +18,7 @@ function AppointmentsInfos() {
     const [showInput, setShowInput] = useState(false);
     const [showEditInput, setShowEditInput] = useState(false);
     const [showModal, setShowModal] = useState(false);
-    const [showButtons, setShowButtons] = useState(false);
+    const [showbuttons, setShowbuttons] = useState(false);
     const [showValidate, setShowValidate] = useState(false);
     const [blur, setBlur] = useState(false);
     const [showTrashCan, setShowTrashCan] = useState(false);
@@ -49,12 +46,12 @@ function AppointmentsInfos() {
         fetchAppointments();
     }, [showModal]);
     const handleClick = (e) => {
-        if (!showButtons) {
-            // setShowButtons(true);
+        if (!showbuttons) {
+            // setShowbuttons(true);
             setShowModal(true);
             // setShowInput(true);
         } else {
-            setShowButtons(false);
+            setShowbuttons(false);
             setShowInput(false);
             setShowEditInput(false);
         }
@@ -120,7 +117,7 @@ function AppointmentsInfos() {
             if (+appointment.id === +e.currentTarget.parentNode.id) {
                 if (!showEditInput) {
                     setShowEditInput(true);
-                    setShowButtons(false);
+                    setShowbuttons(false);
                     setShowValidate(true);
                     setShowInput(false);
                 } else {
@@ -130,7 +127,7 @@ function AppointmentsInfos() {
         });
     };
     const updateData = () => {
-        setShowButtons(true);
+        setShowbuttons(true);
         setShowValidate(false);
         setShowEditInput(false);
         setShowInput(true);
@@ -219,45 +216,45 @@ function AppointmentsInfos() {
                                             )}
                                             {selectedAppId ===
                                                 myAppointment.id && (
-                                                <Button
+                                                <button
                                                     onClick={deleteAppointment}
                                                     id={selectedAppId}
                                                 >
                                                     {/* DELETE */}
                                                     <BsFillTrash3Fill />
-                                                </Button>
+                                                </button>
                                             )}
                                         </LinkComp>
                                     </motion.li>
                                     {/* </motion.p> */}
                                 </motion.ul>
 
-                                {showButtons && (
+                                {showbuttons && (
                                     <>
-                                        <EditButton
+                                        <Editbutton
                                             id={myAppointment.id}
                                             day={myAppointment.day}
                                             time_of_day={
                                                 myAppointment.time_of_day
                                             }
                                         />
-                                        <Button>Delete</Button>
+                                        <button>Delete</button>
                                     </>
                                 )}
                             </motion.h3>
                         </HorizontalWrapper>
                     ))}
 
-                    <Button onClick={handleClick} type="submit">
+                    <button onClick={handleClick} type="submit">
                         ADD
-                    </Button>
+                    </button>
                 </Card>
             ) : (
                 <Card>
                     <h1>No Appointments...</h1>
-                    <Button onClick={handleClick} type="submit">
+                    <button onClick={handleClick} type="submit">
                         ADD
-                    </Button>
+                    </button>
                 </Card>
             )}
         </VerticalWrapper>

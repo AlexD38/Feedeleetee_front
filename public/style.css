@@ -1,3 +1,35 @@
- #root {
-    /* background-color: rgb(222, 28, 28); */
+:root {
+font-family: inherit;
+    --text: #e2f5e0;
+    --background: #000000;
+    --primary-button: #34a260;
+    --secondary-button: #040c0b;
+    --accent: #34a297;
+    color: var(--text);
+}
+
+html {
+    background-color: var(--background);
+}
+body {
+}
+#root {
+}
+button {
+    background-color: var(--primary-button);
+    color: var(--text);
+    margin: 1.5rem auto;
+    font-size: 1rem;
+    border-radius: 7rem;
+    transition: all 0.3s ease;
+    padding: 1rem;
+    border: none;
+    min-width: 7rem;
+    opacity: .8;
+}
+    button:hover {
+    scale: 1.05;
+    cursor: pointer;
+    opacity: 1;
+    transition: all 0.2s ease;
 }
