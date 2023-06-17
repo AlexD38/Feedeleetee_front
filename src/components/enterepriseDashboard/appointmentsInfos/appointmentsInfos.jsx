@@ -1,6 +1,5 @@
 import axios from "axios";
 import { useEffect, useState, useRef } from "react";
-import Card from "../../../styles/components/card.js";
 import HorizontalWrapper from "../../../styles/components/HorizontalWrapper.js";
 import VerticalWrapper from "../../../styles/components/verticalWrapper.js";
 import { motion } from "framer-motion";
@@ -149,7 +148,7 @@ function AppointmentsInfos() {
             {showModal && <Modal onClose={closeModal} display="Appointments" />}
 
             {myAppointments.length > 0 ? (
-                <Card>
+                <div className="card">
                     <Greetings size="3rem">Mes rendez-vous</Greetings>
 
                     {myAppointments.map((myAppointment) => (
@@ -248,14 +247,14 @@ function AppointmentsInfos() {
                     <button onClick={handleClick} type="submit">
                         ADD
                     </button>
-                </Card>
+                </div>
             ) : (
-                <Card>
+                <div>
                     <h1>No Appointments...</h1>
                     <button onClick={handleClick} type="submit">
                         ADD
                     </button>
-                </Card>
+                </div>
             )}
         </VerticalWrapper>
     );

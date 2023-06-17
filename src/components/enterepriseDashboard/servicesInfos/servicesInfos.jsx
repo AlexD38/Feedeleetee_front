@@ -95,7 +95,7 @@ function ServicesInfos() {
             {showModal && <Modal onClose={closeModal} display="Services" />}
 
             {myServices ? (
-                <Card>
+                <div className="card">
                     <Greetings size="3rem">Mes Services</Greetings>
 
                     {myServices.map((serviceInformation) => (
@@ -134,14 +134,14 @@ function ServicesInfos() {
                     <button onClick={handleClick} type="submit">
                         ADD
                     </button>
-                </Card>
+                </div>
             ) : (
-                <Card>
+                <div className="card">
                     <h1>No services yet...</h1>
                     <button onClick={handleClick} type="submit">
                         ADD
                     </button>
-                </Card>
+                </div>
             )}
         </HorizontalWrapper>
     );

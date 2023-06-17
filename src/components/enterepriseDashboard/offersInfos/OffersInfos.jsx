@@ -92,7 +92,7 @@ function OffersInfos() {
         <VerticalWrapper>
             {showModal && <Modal onClose={closeModal} display="Offers" />}
             {myOffers ? (
-                <Card>
+                <div className="card">
                     <Greetings size="3rem">Mes Offres</Greetings>
 
                     {myOffers.map((offerInformation) => (
@@ -128,11 +128,11 @@ function OffersInfos() {
                     <button onClick={handleClick} type="submit">
                         ADD
                     </button>
-                </Card>
+                </div>
             ) : (
-                <Card>
+                <div className="card">
                     <h1>No offers yet...</h1>
-                </Card>
+                </div>
             )}
         </VerticalWrapper>
     );

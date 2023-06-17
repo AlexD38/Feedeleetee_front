@@ -71,7 +71,7 @@ export function TakeAppointment(props) {
         <>
             {" "}
             {availableAppointments.length > 0 ? (
-                <Card>
+                <div className="card">
                     {availableAppointments.map((appointment) => (
                         <LinkComp
                             key={appointment.id}
@@ -93,7 +93,7 @@ export function TakeAppointment(props) {
                             </ul>
                         </LinkComp>
                     ))}
-                </Card>
+                </div>
             ) : (
                 <h4>Pas de rendez-vous de prévu !</h4>
             )}

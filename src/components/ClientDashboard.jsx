@@ -86,7 +86,7 @@ export function ClientDashboard() {
                     <Greetings>Bonjour {client.firstname}, </Greetings>
                     <h1>Bienvenue sur votre espace client.</h1>
 
-                    <Card>
+                    <div className="card">
                         {client.rdv && client.rdv[0] != null ? (
                             <ul>
                                 {" "}
@@ -110,7 +110,7 @@ export function ClientDashboard() {
                                 Aucun rendez-vous pour le moment
                             </p>
                         )}
-                    </Card>
+                    </div>
                     <button onClick={handleClick}>
                         Prenez votre prochain rdv
                     </button>

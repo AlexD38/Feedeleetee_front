@@ -31,7 +31,7 @@ function ClientsInfos() {
     return (
         <VerticalWrapper>
             {myClients ? (
-                <Card>
+                <div className="card">
                     <Greetings size="3rem">Mes Clients</Greetings>
 
                     {myClients.map((clientInformation) => (
@@ -53,11 +53,11 @@ function ClientsInfos() {
                             </motion.li>
                         </motion.ul>
                     ))}
-                </Card>
+                </div>
             ) : (
-                <Card>
+                <div className="card">
                     <h1>No clients yet ...</h1>
-                </Card>
+                </div>
             )}
         </VerticalWrapper>
     );

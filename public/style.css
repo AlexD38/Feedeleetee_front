@@ -1,11 +1,12 @@
 :root {
 font-family: inherit;
-    --text: #e2f5e0;
-    --background: #000000;
-    --primary-button: #34a260;
-    --secondary-button: #040c0b;
-    --accent: #34a297;
+    --text: #fafafa;
+    /* --background: #000000; */
+    --primary-color: #eca869;
+    --secondary-clr: #747474;
+    --accent: #6054e6;
     color: var(--text);
+    background-color: #5f5f5f;
 }
 
 html {
@@ -16,7 +17,7 @@ body {
 #root {
 }
 button {
-    background-color: var(--primary-button);
+    background-color: var(--primary-color);
     color: var(--text);
     margin: 1.5rem auto;
     font-size: 1rem;
@@ -25,11 +26,31 @@ button {
     padding: 1rem;
     border: none;
     min-width: 7rem;
-    opacity: .8;
+    opacity: .9;
+    cursor: pointer;
 }
     button:hover {
     scale: 1.05;
-    cursor: pointer;
     opacity: 1;
     transition: all 0.2s ease;
+}
+span {
+    color: var(--primary-color); 
+}
+.card {
+    background: transparent;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    color: var(--text);
+    font-size: 1rem;
+    border: 2px solid var(--primary-color);
+    transition: all 0.1s ease-in-out;
+}
+h1 {
+    font-size: 3rem;
+    color: var(--primary-color);
 }
