@@ -1,6 +1,5 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import Card from "../../../styles/components/card.js";
 import VerticalWrapper from "../../../styles/components/verticalWrapper.js";
 import { motion } from "framer-motion";
 import LinkComp from "../../../styles/components/LinkComp.js";

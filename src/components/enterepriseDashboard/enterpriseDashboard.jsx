@@ -21,7 +21,7 @@ function EnterpriseDashboard() {
     const token = localStorage.getItem("token");
     const navigate = useNavigate();
     const [currentComponent, setCurrentComponent] = useState("Appointments");
-    const [coloredNavlink, setColoredNavlink] = useState("white");
+    // const [coloredNavlink, setColoredNavlink] = useState("");
     const [modal, setModal] = useState(false);
     const [logoFile, setLogoFile] = useState(null);
     const [showUploadInput, setShowUploadInput] = useState(false);
@@ -52,7 +52,7 @@ function EnterpriseDashboard() {
         console.log(myEnterprise);
     }, []);
     const handleClick = (componentName) => {
-        setColoredNavlink("white");
+        // setColoredNavlink("");
         setCurrentComponent(componentName);
         console.log(currentComponent);
     };
@@ -167,13 +167,6 @@ function EnterpriseDashboard() {
                                         onClick={(e) =>
                                             handleClick(e.target.textContent)
                                         }
-                                        style={{
-                                            color:
-                                                currentComponent ===
-                                                "Coup d'oeil rapide"
-                                                    ? "#eca869"
-                                                    : "white",
-                                        }}
                                     >
                                         Coup d'oeil rapide
                                     </LinkComp>
@@ -186,13 +179,6 @@ function EnterpriseDashboard() {
                                         onClick={(e) =>
                                             handleClick(e.target.textContent)
                                         }
-                                        style={{
-                                            color:
-                                                currentComponent ===
-                                                "Appointments"
-                                                    ? "#eca869"
-                                                    : "white",
-                                        }}
                                     >
                                         Appointments
                                     </LinkComp>
@@ -205,12 +191,6 @@ function EnterpriseDashboard() {
                                         onClick={(e) =>
                                             handleClick(e.target.textContent)
                                         }
-                                        style={{
-                                            color:
-                                                currentComponent === "Clients"
-                                                    ? "#eca869"
-                                                    : "white",
-                                        }}
                                     >
                                         Clients
                                     </LinkComp>
@@ -223,12 +203,6 @@ function EnterpriseDashboard() {
                                         onClick={(e) =>
                                             handleClick(e.target.textContent)
                                         }
-                                        style={{
-                                            color:
-                                                currentComponent === "Offers"
-                                                    ? "#eca869"
-                                                    : "white",
-                                        }}
                                     >
                                         Offers
                                     </LinkComp>
@@ -241,12 +215,6 @@ function EnterpriseDashboard() {
                                         onClick={(e) =>
                                             handleClick(e.target.textContent)
                                         }
-                                        style={{
-                                            color:
-                                                currentComponent === "Services"
-                                                    ? "#eca869"
-                                                    : "white",
-                                        }}
                                     >
                                         Services
                                     </LinkComp>

@@ -1,8 +1,4 @@
-import Greetings from "../../styles/components/Greetings";
 import ModalComp from "../../styles/components/Modal";
-import Input from "../../styles/components/input";
-import CloseButton from "../../styles/components/CloseBtn";
-import { useNavigate } from "react-router-dom";
 import { useRef } from "react";
 import AddAppointments from "../enterepriseDashboard/appointmentsInfos/addAppointments";
 import { AddOffers } from "../enterepriseDashboard/offersInfos/AddOffers";
@@ -26,25 +22,25 @@ export default function Modal(props) {
             <ModalComp>
                 {props.display === "Appointments" && (
                     <>
-                        <CloseButton onClick={closeModal}>+</CloseButton>
+                        <button onClick={closeModal}>+</button>
                         <AddAppointments onClose={closeModal} />
                     </>
                 )}
                 {props.display === "Offers" && (
                     <>
-                        <CloseButton onClick={closeModal}>+</CloseButton>
+                        <button onClick={closeModal}>+</button>
                         <AddOffers onClose={closeModal} />
                     </>
                 )}
                 {props.display === "Services" && (
                     <>
-                        <CloseButton onClick={closeModal}>+</CloseButton>
+                        <button onClick={closeModal}>+</button>
                         <AddServices onClose={closeModal} />
                     </>
                 )}
                 {props.display === "Login" && (
                     <>
-                        <CloseButton onClick={closeModal}>+</CloseButton>
+                        <button onClick={closeModal}>+</button>
                         <Login
                             onClose={closeModal}
                             changeDisplay={changeDisplay}
@@ -53,7 +49,7 @@ export default function Modal(props) {
                 )}
                 {props.display === "Signup" && (
                     <>
-                        <CloseButton onClick={closeModal}>+</CloseButton>
+                        <button onClick={closeModal}>+</button>
                         <SignUp
                             onClose={closeModal}
                             changeDisplay={changeDisplay}

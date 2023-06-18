@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
 import Link from "../../styles/components/LinkComp";
-import VerticalWrapper from "../../styles/components/verticalWrapper.js";
 import HorizontalWrapper from "../../styles/components/HorizontalWrapper.js";
 import Greetings from "../../styles/components/Greetings.js";
 import Logout from "../Logout/Logout";
-import Card from "../../styles/components/card";
 import EnterpriseChoiceImg from "../../styles/components/EnterpriseChoiceImg.js";
 import EnterpriseImg from "../../styles/images/EnterpriseChoiceImg.jpg";
 import ClientImg from "../../styles/images/client.jpg";
@@ -24,9 +21,9 @@ function Home() {
     }, [token]);
 
     return userName ? (
-        <>
+        <div className="home-container">
             <Greetings style={{ position: "absolute", top: "0rem" }}>
-                Bonjour {userName}
+                Bonjour <span>{userName}</span>
             </Greetings>
             <HorizontalWrapper>
                 <Link href="http://localhost:3000/myenterprise">
@@ -82,7 +79,7 @@ function Home() {
             </HorizontalWrapper>
 
             <Logout linkTo="" />
-        </>
+        </div>
     ) : (
         <>
             <h1>nothing to see here...</h1>

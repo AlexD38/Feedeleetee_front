@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import moment from "moment";
 import "moment/locale/fr";
-import Card from "../styles/components/card";
 import LinkComp from "../styles/components/LinkComp";
 
 export function TakeAppointment(props) {

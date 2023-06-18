@@ -1,10 +1,6 @@
 import axios from "axios";
 import { useEffect, useState, useRef } from "react";
-import Card from "../../../styles/components/card.js";
-import VerticalWrapper from "../../../styles/components/verticalWrapper.js";
 import { motion } from "framer-motion";
-import EditSign from "../../editSign/EditSign.jsx";
-import Input from "../../../styles/components/input.js";
 import Greetings from "../../../styles/components/Greetings.js";
 import Modal from "../.././Modal/Modal.jsx";
 import LinkComp from "../../../styles/components/LinkComp.js";

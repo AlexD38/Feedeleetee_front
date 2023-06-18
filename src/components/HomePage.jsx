@@ -4,7 +4,6 @@ import HomePageText from "../styles/components/HomePageText";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import LoginForm from "../components/Login/LoginForm.jsx";
 import Modal from "../components/Modal/Modal.jsx";
 export function HomePage() {
     const [showbutton, setShowbutton] = useState(false);

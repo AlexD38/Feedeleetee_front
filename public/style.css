@@ -1,26 +1,30 @@
 :root {
 font-family: inherit;
-    --text: #fafafa;
-    /* --background: #000000; */
+    --text: #747474;
+    --background: #474747;
     --primary-color: #eca869;
     --secondary-clr: #747474;
     --accent: #6054e6;
-    color: var(--text);
-    background-color: #5f5f5f;
+    /* color: var(--text); */
+    /* background-color: #ffffff; */
 }
 
 html {
+    color-scheme: light;
     background-color: var(--background);
+    position: relative;
 }
 body {
+    position: relative;
 }
 #root {
+    position: relative;
 }
 button {
     background-color: var(--primary-color);
-    color: var(--text);
+    /* color: var(--text); */
     margin: 1.5rem auto;
-    font-size: 1rem;
+    font-size: 1.225rem;
     border-radius: 7rem;
     transition: all 0.3s ease;
     padding: 1rem;
@@ -34,6 +38,11 @@ button {
     opacity: 1;
     transition: all 0.2s ease;
 }
+.logout-btn {
+    margin: 0 auto;
+    position: absolute;
+    bottom: 1rem;
+}
 span {
     color: var(--primary-color); 
 }
@@ -43,14 +52,23 @@ span {
     position: relative;
     flex-direction: column;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     padding: 1rem;
-    color: var(--text);
     font-size: 1rem;
+    text-align: left;
     border: 2px solid var(--primary-color);
     transition: all 0.1s ease-in-out;
 }
 h1 {
     font-size: 3rem;
-    color: var(--primary-color);
+    /* color: var(--text); */
+}
+.home-container {
+    border : 3px solid green;
+    min-height: 100vh;
+    min-width: 100vw;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
 }
