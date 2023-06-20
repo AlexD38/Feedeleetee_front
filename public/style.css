@@ -23,6 +23,12 @@ body {
 }
 #root {
     position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 }
 button {
     color-scheme: dark;
@@ -78,4 +84,40 @@ h1 {
     justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
+}
+nav ul li:hover {
+    color: var(--primary-color);
+    transition: all .3s ease;
+}
+nav ul li {
+    
+    transition: all .3s ease;
+}
+ul {
+    display: flex;
+    gap: 3rem;
+}
+nav {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    min-width: 100%;
+    min-height: 8rem;
+    position: relative;
+    padding: 1rem;
+    color: var(--text-dark);
+}
+.logo {
+    max-width: 6rem;
+    height: 6rem;
+    aspect-ratio: 1.1;
+    border-radius: 50%;
+    display: inline;
+    position: absolute;
+    left: 1rem;
+}
+.enterprise-name {
+    margin: 0;
+    position: absolute;
+    left: 8rem;
 }

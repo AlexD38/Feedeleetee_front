@@ -16,7 +16,6 @@ export function HomePage() {
         setTimeout(() => {
             setShowbutton(true);
             setFilter(true);
-            // console.log("oui");
         }, "2000");
     };
     showLoginbutton();
@@ -124,7 +123,6 @@ export function HomePage() {
                                     right: "3rem",
                                     margin: "0, auto",
                                     zIndex: "1",
-                                    backgroundColor: "#eca869",
                                 }}
                             >
                                 Login
@@ -137,7 +135,6 @@ export function HomePage() {
                                     right: "12rem",
                                     margin: "0, auto",
                                     zIndex: "1",
-                                    backgroundColor: "#eca869",
                                 }}
                             >
                                 Register

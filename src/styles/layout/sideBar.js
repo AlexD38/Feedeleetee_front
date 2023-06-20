@@ -2,8 +2,9 @@ import styled from "styled-components";
 
 // Create a styled component
 const SideBar = styled.aside`
-    position: absolute;
+    position: relative;
     display: flex;
+    justify-self: flex-start;
     flex-direction: row;
     justify-content: center;
     align-items: center;

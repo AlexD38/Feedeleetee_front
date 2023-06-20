@@ -25,58 +25,56 @@ function Home() {
             <Greetings style={{ position: "absolute", top: "0rem" }}>
                 Bonjour <span>{userName}</span>
             </Greetings>
-            <HorizontalWrapper>
-                <Link href="http://localhost:3000/myenterprise">
-                    <div
+            <Link href="http://localhost:3000/myenterprise">
+                <div
+                    style={{
+                        height: "20rem",
+                        position: "relative",
+                        width: "30rem",
+                        overflow: "hidden",
+                    }}
+                >
+                    <span
                         style={{
-                            height: "20rem",
-                            position: "relative",
-                            width: "30rem",
-                            overflow: "hidden",
+                            position: "absolute",
+                            zIndex: "3",
+                            top: "0",
+                            left: ".5rem",
+                            fontSize: "3rem",
+                            textAlign: "left",
+                            textShadow: "0px 0px 10px black",
                         }}
                     >
-                        <span
-                            style={{
-                                position: "absolute",
-                                zIndex: "3",
-                                top: "0",
-                                left: ".5rem",
-                                fontSize: "3rem",
-                                textAlign: "left",
-                                textShadow: "0px 0px 10px black",
-                            }}
-                        >
-                            Accéder à mon entreprise
-                        </span>
-                        <EnterpriseChoiceImg src={EnterpriseImg} />
-                    </div>
-                </Link>
-                <Link href="http://localhost:3000/myclientprofile">
-                    <div
+                        Accéder à mon entreprise
+                    </span>
+                    <EnterpriseChoiceImg src={EnterpriseImg} />
+                </div>
+            </Link>
+            <Link href="http://localhost:3000/myclientprofile">
+                <div
+                    style={{
+                        height: "20rem",
+                        position: "relative",
+                        width: "30rem",
+                        overflow: "hidden",
+                    }}
+                >
+                    <span
                         style={{
-                            height: "20rem",
-                            position: "relative",
-                            width: "30rem",
-                            overflow: "hidden",
+                            position: "absolute",
+                            zIndex: "3",
+                            bottom: "0",
+                            right: ".5rem",
+                            fontSize: "3rem",
+                            textAlign: "right",
+                            textShadow: "0px 0px 10px black",
                         }}
                     >
-                        <span
-                            style={{
-                                position: "absolute",
-                                zIndex: "3",
-                                bottom: "0",
-                                right: ".5rem",
-                                fontSize: "3rem",
-                                textAlign: "right",
-                                textShadow: "0px 0px 10px black",
-                            }}
-                        >
-                            Accéder à mon espace client
-                        </span>
-                        <EnterpriseChoiceImg src={ClientImg} />
-                    </div>
-                </Link>
-            </HorizontalWrapper>
+                        Accéder à mon espace client
+                    </span>
+                    <EnterpriseChoiceImg src={ClientImg} />
+                </div>
+            </Link>
 
             <Logout linkTo="" />
         </div>
