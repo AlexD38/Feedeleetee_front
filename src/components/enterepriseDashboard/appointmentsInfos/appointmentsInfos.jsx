@@ -35,10 +35,7 @@ function AppointmentsInfos() {
                 token: token,
                 enterpriseId,
             };
-            const response = await axios.get(
-                `http://localhost:4000/enterprises/appointments`,
-                { headers }
-            );
+            const response = await axios.get(`http://localhost:4000/enterprises/appointments`, { headers });
             setMyAppointments((myAppointments) => response.data);
             console.log(response.data);
         }
@@ -90,17 +87,12 @@ function AppointmentsInfos() {
             token: token,
         };
         try {
-            const response = await axios.delete(
-                `http://localhost:4000/appointments/${id}`,
-                {
-                    headers,
-                }
-            );
+            const response = await axios.delete(`http://localhost:4000/appointments/${id}`, {
+                headers,
+            });
             console.log(response.data.success);
             // create a new copy of myAppointments by filtering out the deleted appointment
-            const updatedAppointments = myAppointments.filter(
-                (appointment) => appointment.id != id
-            );
+            const updatedAppointments = myAppointments.filter((appointment) => appointment.id != id);
             // update the state with the new copy of myAppointments
             setMyAppointments(updatedAppointments);
         } catch (error) {
@@ -109,10 +101,7 @@ function AppointmentsInfos() {
     };
     const editAppointment = (e) => {
         myAppointments.forEach((appointment) => {
-            console.log(appointment.id);
-            console.log("XXXXXXXX", e.currentTarget.parentNode.id);
             const clickedElmId = +e.currentTarget.parentNode.id;
-            console.log(typeof clickedElmId);
             if (+appointment.id === +e.currentTarget.parentNode.id) {
                 if (!showEditInput) {
                     setShowEditInput(true);
@@ -153,94 +142,35 @@ function AppointmentsInfos() {
 
                     {myAppointments.map((myAppointment) => (
                         <HorizontalWrapper key={myAppointment.id}>
-                            <motion.h3 id={myAppointment.id}>
-                                <motion.ul
-                                    transition={{
-                                        type: "spring",
-                                        bounce: 0,
-                                        duration: 0.7,
-                                        delayChildren: 0.3,
-                                        staggerChildren: 0.05,
-                                    }}
-                                >
-                                    <motion.li
-                                        initial={{ opacity: 0, y: -10 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        transition={{
-                                            duration: 0.3,
-                                            delay: 0.2,
-                                        }}
-                                    >
-                                        <LinkComp
-                                            onClick={(e) =>
-                                                handleAppointmentClick(
-                                                    myAppointment.id
-                                                )
-                                            }
-                                        >
-                                            Le{" "}
-                                            {moment(myAppointment.day)
-                                                .locale("fr")
-                                                .format(
-                                                    "dddd DD MMMM YYYY"
-                                                )}{" "}
-                                            à{" "}
-                                            {myAppointment.time_of_day.includes(
-                                                ":"
-                                            )
-                                                ? myAppointment.time_of_day.replace(
-                                                      ":",
-                                                      "h"
-                                                  )
-                                                : myAppointment.time_of_day.concat(
-                                                      "h"
-                                                  )}
+                            <h3>
+                                <ul>
+                                    <li>
+                                        <LinkComp onClick={(e) => handleAppointmentClick(myAppointment.id)}>
+                                            Le {moment(myAppointment.day).locale("fr").format("dddd DD MMMM YYYY")} à {myAppointment.time_of_day.includes(":") ? myAppointment.time_of_day.replace(":", "h") : myAppointment.time_of_day.concat("h")}
                                             {myAppointment.client_id ? (
-                                                <motion.li
-                                                    initial={{
-                                                        opacity: 0,
-                                                        x: 0,
-                                                    }}
-                                                    animate={{
-                                                        opacity: 1,
-                                                        x: 0,
-                                                    }}
-                                                >
-                                                    (pris par{" "}
-                                                    {myAppointment.firstname}{" "}
-                                                    {myAppointment.lastname})
-                                                </motion.li>
+                                                <li>
+                                                    (pris par {myAppointment.firstname} {myAppointment.lastname})
+                                                </li>
                                             ) : (
                                                 <></>
                                             )}
-                                            {selectedAppId ===
-                                                myAppointment.id && (
-                                                <button
-                                                    onClick={deleteAppointment}
-                                                    id={selectedAppId}
-                                                >
+                                            {selectedAppId === myAppointment.id && (
+                                                <button onClick={deleteAppointment} id={selectedAppId}>
                                                     {/* DELETE */}
                                                     <BsFillTrash3Fill />
                                                 </button>
                                             )}
                                         </LinkComp>
-                                    </motion.li>
-                                    {/* </motion.p> */}
-                                </motion.ul>
+                                    </li>
+                                </ul>
 
                                 {showbuttons && (
                                     <>
-                                        <Editbutton
-                                            id={myAppointment.id}
-                                            day={myAppointment.day}
-                                            time_of_day={
-                                                myAppointment.time_of_day
-                                            }
-                                        />
+                                        <Editbutton id={myAppointment.id} day={myAppointment.day} time_of_day={myAppointment.time_of_day} />
                                         <button>Delete</button>
                                     </>
                                 )}
-                            </motion.h3>
+                            </h3>
                         </HorizontalWrapper>
                     ))}
 
