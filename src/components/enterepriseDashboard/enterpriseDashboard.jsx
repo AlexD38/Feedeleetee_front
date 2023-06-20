@@ -90,16 +90,6 @@ function EnterpriseDashboard() {
             {" "}
             {myEnterprise.name ? (
                 <>
-                    <motion.header
-                        initial={{ x: -300 }}
-                        animate={{ x: 0 }}
-                        // whileHover={{ scale: 1.1 }}
-                        transition={{
-                            type: "spring",
-                            stiffness: 300,
-                            damping: 20,
-                        }}
-                    ></motion.header>
                     <SideBar>
                         <motion.div
                             initial={{ opacity: 0 }}
@@ -223,6 +213,16 @@ function EnterpriseDashboard() {
                         </motion.aside>
                         <Logout linkTo="home" />
                     </SideBar>
+                    <motion.header
+                        initial={{ x: -300 }}
+                        animate={{ x: 0 }}
+                        // whileHover={{ scale: 1.1 }}
+                        transition={{
+                            type: "spring",
+                            stiffness: 300,
+                            damping: 20,
+                        }}
+                    ></motion.header>
                     {currentComponent === "Appointments" && (
                         <AppointmentsInfos />
                     )}

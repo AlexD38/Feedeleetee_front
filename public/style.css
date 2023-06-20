@@ -1,8 +1,9 @@
 :root {
 font-family: inherit;
-    --text: #747474;
+    --text-light: #747474;
+    --text-dark: #dcdcdc;
     --background: #474747;
-    --primary-color: #eca869;
+    --primary-color: #ab6e1e;
     --secondary-clr: #747474;
     --accent: #6054e6;
     /* color: var(--text); */
@@ -16,13 +17,17 @@ html {
 }
 body {
     position: relative;
+    min-height: 100vh;
+    min-width: 100vw;
+    border: 2px solid red;
 }
 #root {
     position: relative;
 }
 button {
+    color-scheme: dark;
     background-color: var(--primary-color);
-    /* color: var(--text); */
+    color: var(--text-dark);
     margin: 1.5rem auto;
     font-size: 1.225rem;
     border-radius: 7rem;
@@ -33,6 +38,7 @@ button {
     opacity: .9;
     cursor: pointer;
 }
+
     button:hover {
     scale: 1.05;
     opacity: 1;
@@ -61,7 +67,8 @@ span {
 }
 h1 {
     font-size: 3rem;
-    /* color: var(--text); */
+    color-scheme: dark;
+    color: var(--text-dark);
 }
 .home-container {
     border : 3px solid green;

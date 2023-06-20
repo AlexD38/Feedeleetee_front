@@ -55,7 +55,7 @@ function LoginForm(props) {
                 response.data.userName
             );
 
-            navigate("/home");
+            navigate("/myenterprise");
         } catch (error) {
             console.log(error);
             alert("erreur lors de la connexion");
