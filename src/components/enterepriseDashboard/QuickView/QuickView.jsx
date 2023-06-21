@@ -33,13 +33,13 @@ function QuickView(props) {
                 <main className="quickview__container">
                     <div className="quickview__title">
                         {" "}
-                        <Greetings>{quickView.username},</Greetings>
+                        {/* <Greetings>{quickView.username},</Greetings> */}
                         <h1>
                             <span>Coup d'oeil sur votre entreprise</span>
                         </h1>{" "}
                     </div>
                     <div className="quickview__body">
-                        <div className="quickview__body--top">
+                        <div className="quickview__body--left">
                             {quickView.number_of_services > 0 ? (
                                 <div className="quickview__card">
                                     <div className="card__number">
@@ -69,18 +69,20 @@ function QuickView(props) {
                                         </div>
                                         <p>clients</p>
                                     </div>
-                                    <div className="quickview__card quickview__card--summary">
-                                        <img className=" logo card__logo" src={`data:image/png;base64,${props.enterprise.logo}`} alt="logo" />
-                                        <p className="card__title">{props.enterprise.name}</p>
-                                        <p className="card__address">{props.enterprise.address}</p>
-                                        <p className="card__description">{props.enterprise.description}</p>
-                                    </div>
+                                    <NextAppointments />
                                 </>
                             ) : (
                                 <h2> vous n'avez pas encore de clients</h2>
                             )}
                         </div>
-                        <NextAppointments />
+                        <div className="quickview__body--right">
+                            <div className="quickview__card quickview__card--summary">
+                                <img className=" logo card__logo" src={`data:image/png;base64,${props.enterprise.logo}`} alt="logo" />
+                                <p className="card__title">{props.enterprise.name}</p>
+                                <p className="card__address">{props.enterprise.address}</p>
+                                <p className="card__description">{props.enterprise.description}</p>
+                            </div>
+                        </div>
                     </div>
                 </main>
             )}

@@ -10,12 +10,16 @@
     justify-content: flex-start;
     align-items: center;
     align-self: flex-start;
-    
 }
-.quickview__card p, .quickview__card li {
+.quickview__card p {
    font-size: 2rem;
    margin: 0;
    color: var(--text-dark);
+}
+
+.quickview__card ul  {
+    display: flex;
+    flex-direction: column;
 }
 .quickview__container {
     display: flex;
@@ -32,7 +36,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: baseline;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     gap: 1rem;
     position: relative;
     border-top: 3px solid var(--primary-color);
@@ -60,7 +64,8 @@
 }
 .quickview__card--long h3 {
     color: var(--primary-color);
-    text-align: left;
+    font-size: 2rem;
+    text-align: center;
     margin-left: 0;
     margin-right: auto;
     margin-bottom: 2rem;
@@ -99,11 +104,13 @@
     font-style: italic;
     margin-top: 1rem;
 }
-.quickview__body--top {
+.quickview__body--left, .quickview__body--right {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: baseline;
-    min-width: 100%;
+    max-width: 50%;
     gap: 1rem;
 }
+
