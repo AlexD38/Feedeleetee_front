@@ -22,38 +22,42 @@ export default function Modal(props) {
             <ModalComp>
                 {props.display === "Appointments" && (
                     <>
-                        <button onClick={closeModal}>+</button>
+                        <button className="close-btn" onClick={closeModal}>
+                            close
+                        </button>
                         <AddAppointments onClose={closeModal} />
                     </>
                 )}
                 {props.display === "Offers" && (
                     <>
-                        <button onClick={closeModal}>+</button>
+                        <button className="close-btn" onClick={closeModal}>
+                            close
+                        </button>
                         <AddOffers onClose={closeModal} />
                     </>
                 )}
                 {props.display === "Services" && (
                     <>
-                        <button onClick={closeModal}>+</button>
+                        <button className="close-btn" onClick={closeModal}>
+                            close
+                        </button>
                         <AddServices onClose={closeModal} />
                     </>
                 )}
                 {props.display === "Login" && (
                     <>
-                        <button onClick={closeModal}>+</button>
-                        <Login
-                            onClose={closeModal}
-                            changeDisplay={changeDisplay}
-                        />
+                        <button className="close-btn" onClick={closeModal}>
+                            close
+                        </button>
+                        <Login onClose={closeModal} changeDisplay={changeDisplay} />
                     </>
                 )}
                 {props.display === "Signup" && (
                     <>
-                        <button onClick={closeModal}>+</button>
-                        <SignUp
-                            onClose={closeModal}
-                            changeDisplay={changeDisplay}
-                        />
+                        <button className="close-btn" onClick={closeModal}>
+                            close
+                        </button>
+                        <SignUp onClose={closeModal} changeDisplay={changeDisplay} />
                     </>
                 )}
             </ModalComp>

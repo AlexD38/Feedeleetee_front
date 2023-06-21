@@ -3,115 +3,89 @@ import HorizontalWrapper from "../../../styles/components/HorizontalWrapper";
 import axios from "axios";
 import NextAppointments from "../../nextAppointments/nextAppointments";
 import Greetings from "../../../styles/components/Greetings";
-import { useAnimate, stagger, motion, delay } from "framer-motion";
+import "../QuickView/index.css";
 
 // Universal
-function QuickView() {
-	const token = localStorage.getItem("token");
-	const enterpriseId = localStorage.getItem("enterpriseId");
-	const [quickView, setQuickView] = useState([]);
+function QuickView(props) {
+    const token = localStorage.getItem("token");
+    const enterpriseId = localStorage.getItem("enterpriseId");
+    const [quickView, setQuickView] = useState([]);
 
-	useEffect(() => {
-		async function fetchQuickView() {
-			const headers = {
-				token: token,
-				enterpriseId: enterpriseId,
-			};
-			const response = await axios.get(
-				`http://localhost:4000/quickview`,
-				{ headers }
-			);
-			if (response.status === 200) {
-				setQuickView((quickView) => response.data);
-				// setQuickView(response.data);
-				console.log(response.data);
-				console.log(quickView);
-			}
-		}
-		fetchQuickView();
-	}, []);
+    useEffect(() => {
+        async function fetchQuickView() {
+            const headers = {
+                token: token,
+                enterpriseId: enterpriseId,
+            };
+            const response = await axios.get(`http://localhost:4000/quickview`, { headers });
+            if (response.status === 200) {
+                setQuickView((quickView) => response.data);
+                setQuickView(response.data);
+            }
+        }
+        fetchQuickView();
+    }, []);
+    console.log(props.enterprise);
 
-	return (
-		<>
-			{quickView && (
-				<>
-					{" "}
-					<motion.div
-						initial={{ opacity: 0 }}
-						animate={{ opacity: 1 }}
-						transition={({ duration: 0.5 }, { delay: 0.2 })}>
-						<HorizontalWrapper
-							style={{
-								display: "none",
-							}}></HorizontalWrapper>
-						<Greetings>{quickView.username},</Greetings>
-						<h1>
-							"{quickView.entreprise}" propose actuellement :
-						</h1>{" "}
-						{quickView.number_of_services > 0 ? (
-							<>
-								<h2>
-									{quickView.number_of_services} services :{" "}
-								</h2>
-								<ul>
-									{quickView.services.map((service) => (
-										<motion.li
-											initial={{ opacity: 0 }}
-											animate={{ opacity: 1 }}
-											delay={{ stagger: 0.5 }}
-											transition={{ duration: 1 }}
-											key={service.id}>
-											{service}
-										</motion.li>
-									))}
-								</ul>
-							</>
-						) : (
-							<h2>aucun service </h2>
-						)}
-						{quickView.number_of_offers > 0 ? (
-							<>
-								<h2>{quickView.number_of_offers} offres :</h2>
-								<ul>
-									{quickView.offers.map((offer) => (
-										<motion.li
-											initial={{ opacity: 0 }}
-											animate={{ opacity: 1 }}
-											transition={{ duration: 1 }}
-											key={offer.id}>
-											{offer}
-										</motion.li>
-									))}
-								</ul>
-							</>
-						) : (
-							<h2> aucune offre et</h2>
-						)}
-						{quickView.number_of_clients > 0 ? (
-							<>
-								{" "}
-								<motion.h2
-									initial={{ opacity: 0 }}
-									animate={{ opacity: 1 }}
-									transition={{ delay: 0.3 }}>
-									Votre entreprise à pour le moment{" "}
-									{quickView.number_of_clients} clients
-								</motion.h2>
-								<ul>
-									{quickView.clients.map((client) => (
-										<li key={client.id}>{client}</li>
-									))}
-								</ul>
-							</>
-						) : (
-							<h2> vous n'avez pas encore de clients</h2>
-						)}
-						<NextAppointments />
-					</motion.div>
-				</>
-			)}
-		</>
-	);
+    return (
+        <>
+            {quickView && (
+                <main className="quickview__container">
+                    <div className="quickview__title">
+                        {" "}
+                        <Greetings>{quickView.username},</Greetings>
+                        <h1>
+                            <span>Coup d'oeil sur votre entreprise</span>
+                        </h1>{" "}
+                    </div>
+                    <div className="quickview__body">
+                        <div className="quickview__body--top">
+                            {quickView.number_of_services > 0 ? (
+                                <div className="quickview__card">
+                                    <div className="card__number">
+                                        <span>{quickView.number_of_services}</span>
+                                    </div>
+                                    <p>services</p>
+                                </div>
+                            ) : (
+                                <h3>aucun service </h3>
+                            )}
+                            {quickView.number_of_offers > 0 ? (
+                                <div className="quickview__card">
+                                    <div className="card__number">
+                                        <span>{quickView.number_of_offers}</span>
+                                    </div>
+                                    <p>offres</p>
+                                </div>
+                            ) : (
+                                <h3> aucune offre et</h3>
+                            )}
+                            {quickView.number_of_clients > 0 ? (
+                                <>
+                                    <div className="quickview__card">
+                                        {" "}
+                                        <div className="card__number">
+                                            <span>{quickView.number_of_clients}</span>
+                                        </div>
+                                        <p>clients</p>
+                                    </div>
+                                    <div className="quickview__card quickview__card--summary">
+                                        <img className=" logo card__logo" src={`data:image/png;base64,${props.enterprise.logo}`} alt="logo" />
+                                        <p className="card__title">{props.enterprise.name}</p>
+                                        <p className="card__address">{props.enterprise.address}</p>
+                                        <p className="card__description">{props.enterprise.description}</p>
+                                    </div>
+                                </>
+                            ) : (
+                                <h2> vous n'avez pas encore de clients</h2>
+                            )}
+                        </div>
+                        <NextAppointments />
+                    </div>
+                </main>
+            )}
+        </>
+    );
 }
 
 export default QuickView;

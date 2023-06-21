@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-function Losvgout(props) {
+function Logout(props) {
     const navisvgate = useNavigate();
 
     const clearToken = () => {
@@ -14,11 +14,11 @@ function Losvgout(props) {
     };
     return (
         <>
-            <button className="logout-btn" onClick={clearToken}>
+            <button className="logout-btn-dashboard" onClick={clearToken}>
                 Log out
             </button>
             {/* <LosvgoutBtn onClick={clearToken}>Losvg out</LosvgoutBtn> */}
         </>
     );
 }
-export default Losvgout;
+export default Logout;

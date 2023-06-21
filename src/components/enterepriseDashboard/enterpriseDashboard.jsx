@@ -16,9 +16,7 @@ function EnterpriseDashboard() {
     const [modal, setModal] = useState(false);
     const [logoFile, setLogoFile] = useState(null);
     const [showUploadInput, setShowUploadInput] = useState(false);
-    const [enterpriseId, setEnterpriseId] = useState(
-        localStorage.getItem("enterpriseId")
-    );
+    const [enterpriseId, setEnterpriseId] = useState(localStorage.getItem("enterpriseId"));
 
     useEffect(() => {
         async function fetchDashboard() {
@@ -27,12 +25,9 @@ function EnterpriseDashboard() {
                 enterpriseId: enterpriseId,
             };
             console.log(headers);
-            const response = await axios.get(
-                "http://localhost:4000/enterprise/",
-                {
-                    headers,
-                }
-            );
+            const response = await axios.get("http://localhost:4000/enterprise/", {
+                headers,
+            });
             if (response.data[0]) {
                 setMyEnterprise(response.data[0]);
                 console.log(response.data[0]);
@@ -58,13 +53,9 @@ function EnterpriseDashboard() {
             data.file = logoFile;
             const headers = { token, enterpriseId };
             try {
-                const response = await axios.post(
-                    "http://localhost:4000/logo",
-                    data,
-                    {
-                        headers,
-                    }
-                );
+                const response = await axios.post("http://localhost:4000/logo", data, {
+                    headers,
+                });
                 console.log("response : ");
                 window.location.reload();
             } catch (error) {
@@ -79,28 +70,10 @@ function EnterpriseDashboard() {
             {myEnterprise.name && (
                 <>
                     <nav>
-                        <img
-                            className="logo"
-                            onClick={
-                                showUploadInput
-                                    ? () => setShowUploadInput(false)
-                                    : () => setShowUploadInput(true)
-                            }
-                            src={`data:image/png;base64,${myEnterprise.logo}`}
-                            alt="logo"
-                        />
+                        <img className="logo" onClick={showUploadInput ? () => setShowUploadInput(false) : () => setShowUploadInput(true)} src={`data:image/png;base64,${myEnterprise.logo}`} alt="logo" />
                         {showUploadInput && (
-                            <form
-                                encType="multipart/form-data"
-                                onSubmit={uploadLogo}
-                            >
-                                <input
-                                    onChange={(e) =>
-                                        setLogoFile(e.target.files[0])
-                                    }
-                                    name="logo"
-                                    type="file"
-                                />
+                            <form encType="multipart/form-data" onSubmit={uploadLogo}>
+                                <input onChange={(e) => setLogoFile(e.target.files[0])} name="logo" type="file" />
 
                                 <button type="submit">upload</button>
                             </form>
@@ -110,53 +83,21 @@ function EnterpriseDashboard() {
                             <span>{myEnterprise.name}</span>
                         </h1>
                         <ul>
-                            <li
-                                onClick={(e) =>
-                                    handleClick(e.target.textContent)
-                                }
-                            >
-                                Coup d'oeil rapide
-                            </li>
-                            <li
-                                onClick={(e) =>
-                                    handleClick(e.target.textContent)
-                                }
-                            >
-                                Appointments
-                            </li>
-                            <li
-                                onClick={(e) =>
-                                    handleClick(e.target.textContent)
-                                }
-                            >
-                                Clients
-                            </li>
-                            <li
-                                onClick={(e) =>
-                                    handleClick(e.target.textContent)
-                                }
-                            >
-                                Offers
-                            </li>
-                            <li
-                                onClick={(e) =>
-                                    handleClick(e.target.textContent)
-                                }
-                            >
-                                Services
-                            </li>{" "}
+                            <li onClick={(e) => handleClick(e.target.textContent)}>Coup d'oeil rapide</li>
+                            <li onClick={(e) => handleClick(e.target.textContent)}>Appointments</li>
+                            <li onClick={(e) => handleClick(e.target.textContent)}>Clients</li>
+                            <li onClick={(e) => handleClick(e.target.textContent)}>Offers</li>
+                            <li onClick={(e) => handleClick(e.target.textContent)}>Services</li>{" "}
                         </ul>
+                        <Logout linkTo="home" />
                     </nav>
-                    {currentComponent === "Appointments" && (
-                        <AppointmentsInfos />
-                    )}
+                    {currentComponent === "Appointments" && <AppointmentsInfos />}
                     {currentComponent === "Clients" && <ClientsInfos />}
                     {currentComponent === "Offers" && <OffersInfos />}
                     {currentComponent === "Services" && <ServicesInfos />}
-                    {currentComponent === "Coup d'oeil rapide" && <QuickView />}
+                    {currentComponent === "Coup d'oeil rapide" && <QuickView enterprise={myEnterprise} />}
                 </>
             )}
-            <Logout linkTo="home" />
         </>
     );
 }
