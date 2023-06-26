@@ -37,6 +37,7 @@ function EnterpriseDashboard() {
                 }
             } catch (error) {
                 console.log(error);
+                navigate("/");
             }
         }
         fetchDashboard();
