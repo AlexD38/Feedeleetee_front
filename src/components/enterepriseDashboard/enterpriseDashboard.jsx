@@ -7,6 +7,7 @@ import ServicesInfos from "./servicesInfos/servicesInfos.jsx";
 import OffersInfos from "./offersInfos/OffersInfos.jsx";
 import AppointmentsInfos from "./appointmentsInfos/appointmentsInfos.jsx";
 import QuickView from "./QuickView/QuickView.jsx";
+import "../enterepriseDashboard/index.css";
 
 function EnterpriseDashboard() {
     const [myEnterprise, setMyEnterprise] = useState("");
@@ -25,13 +26,17 @@ function EnterpriseDashboard() {
                 enterpriseId: enterpriseId,
             };
             console.log(headers);
-            const response = await axios.get("http://localhost:4000/enterprise/", {
-                headers,
-            });
-            if (response.data[0]) {
-                setMyEnterprise(response.data[0]);
-                console.log(response.data[0]);
-                localStorage.setItem("enterpriseId", response.data[0].id);
+            try {
+                const response = await axios.get("http://localhost:4000/enterprise/", {
+                    headers,
+                });
+                if (response.data[0]) {
+                    setMyEnterprise(response.data[0]);
+                    console.log(response.data[0]);
+                    localStorage.setItem("enterpriseId", response.data[0].id);
+                }
+            } catch (error) {
+                console.log(error);
             }
         }
         fetchDashboard();

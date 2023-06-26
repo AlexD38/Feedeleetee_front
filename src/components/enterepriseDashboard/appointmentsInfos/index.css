@@ -1,0 +1,12 @@
+h3 {
+    color : var(--primary-color);
+    text-align: center;
+    display: block;
+    margin: 2rem auto;
+}
+.appointment-infos {
+    text-align: center;
+    margin: 1rem;
+    border: 1px solid var(--primary-color);
+    padding: .2rem 5rem;
+}

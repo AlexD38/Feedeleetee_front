@@ -2,7 +2,6 @@ import axios from "axios";
 import { useEffect, useState, useRef } from "react";
 import HorizontalWrapper from "../../../styles/components/HorizontalWrapper.js";
 import VerticalWrapper from "../../../styles/components/verticalWrapper.js";
-import { motion } from "framer-motion";
 import Editbutton from "../../buttons/editBtn.jsx";
 import Greetings from "../../../styles/components/Greetings.js";
 import Modal from "../.././Modal/Modal.jsx";
@@ -10,6 +9,7 @@ import moment from "moment";
 import LinkComp from "../../../styles/components/LinkComp.js";
 import "moment/locale/fr";
 import { BsFillTrash3Fill } from "react-icons/bs";
+import "../appointmentsInfos/index.css";
 
 function AppointmentsInfos() {
     const [myAppointments, setMyAppointments] = useState([]);
@@ -138,39 +138,37 @@ function AppointmentsInfos() {
 
             {myAppointments.length > 0 ? (
                 <div className="card">
-                    <Greetings size="3rem">Mes rendez-vous</Greetings>
+                    <h3>Mes rendez-vous</h3>
 
                     {myAppointments.map((myAppointment) => (
                         <HorizontalWrapper key={myAppointment.id}>
-                            <h3>
-                                <ul>
-                                    <li>
-                                        <LinkComp onClick={(e) => handleAppointmentClick(myAppointment.id)}>
-                                            Le {moment(myAppointment.day).locale("fr").format("dddd DD MMMM YYYY")} à {myAppointment.time_of_day.includes(":") ? myAppointment.time_of_day.replace(":", "h") : myAppointment.time_of_day.concat("h")}
-                                            {myAppointment.client_id ? (
-                                                <li>
-                                                    (pris par {myAppointment.firstname} {myAppointment.lastname})
-                                                </li>
-                                            ) : (
-                                                <></>
-                                            )}
-                                            {selectedAppId === myAppointment.id && (
-                                                <button onClick={deleteAppointment} id={selectedAppId}>
-                                                    {/* DELETE */}
-                                                    <BsFillTrash3Fill />
-                                                </button>
-                                            )}
-                                        </LinkComp>
-                                    </li>
-                                </ul>
+                            <ul>
+                                <li className="appointment-infos">
+                                    <LinkComp onClick={(e) => handleAppointmentClick(myAppointment.id)}>
+                                        Le {moment(myAppointment.day).locale("fr").format("dddd DD MMMM YYYY")} à {myAppointment.time_of_day.includes(":") ? myAppointment.time_of_day.replace(":", "h") : myAppointment.time_of_day.concat("h")}
+                                        {myAppointment.client_id ? (
+                                            <li>
+                                                (pris par {myAppointment.firstname} {myAppointment.lastname})
+                                            </li>
+                                        ) : (
+                                            <></>
+                                        )}
+                                        {selectedAppId === myAppointment.id && (
+                                            <button onClick={deleteAppointment} id={selectedAppId}>
+                                                {/* DELETE */}
+                                                <BsFillTrash3Fill />
+                                            </button>
+                                        )}
+                                    </LinkComp>
+                                </li>
+                            </ul>
 
-                                {showbuttons && (
-                                    <>
-                                        <Editbutton id={myAppointment.id} day={myAppointment.day} time_of_day={myAppointment.time_of_day} />
-                                        <button>Delete</button>
-                                    </>
-                                )}
-                            </h3>
+                            {showbuttons && (
+                                <>
+                                    <Editbutton id={myAppointment.id} day={myAppointment.day} time_of_day={myAppointment.time_of_day} />
+                                    <button>Delete</button>
+                                </>
+                            )}
                         </HorizontalWrapper>
                     ))}
 
