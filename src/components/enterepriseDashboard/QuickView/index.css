@@ -74,15 +74,15 @@
 	text-align: left;
 	overflow-y: hidden;
 	position: relative;
+	min-width: fit-content;
 }
 .card__logo {
 	border-radius: 1rem;
-	position: absolute;
-	top: 1rem;
-	right: 1rem;
-	left: auto;
+	position: relative;
 	display: block;
+	margin: 0 auto 1rem;
 	z-index: 99;
+	display: none;
 }
 .quickview__card--summary .card__title {
 	font-size: 4rem;

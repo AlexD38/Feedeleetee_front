@@ -91,7 +91,7 @@ function QuickView(props) {
 							<div className="quickview__card quickview__card--summary">
 								{props.enterprise.logo && (
 									<img
-										className=" logo card__logo"
+										className=" card__logo"
 										src={`data:image/png;base64,${props.enterprise.logo}`}
 										alt="logo"
 									/>
