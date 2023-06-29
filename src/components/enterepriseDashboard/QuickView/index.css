@@ -1,116 +1,112 @@
 .quickview__card {
-    border: 3px solid var(--primary-color);
-    width: fit-content;
-    font-size: 1rem;
-    position: relative;
-    padding: 1rem;
-    border-radius: .5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    align-self: flex-start;
+	border: 3px solid var(--primary-color);
+	width: fit-content;
+	font-size: 1rem;
+	position: relative;
+	padding: 1rem;
+	border-radius: 0.5rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	align-self: flex-start;
 }
 .quickview__card p {
-   font-size: 2rem;
-   margin: 0;
-   color: var(--text-dark);
+	font-size: 2rem;
+	margin: 0;
+	color: var(--text-dark);
 }
 
-.quickview__card ul  {
-    display: flex;
-    flex-direction: column;
+.quickview__card ul {
+	display: flex;
+	flex-direction: column;
 }
 .quickview__container {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: baseline;
-    flex-wrap: wrap;
-    min-width: 70%;
-    min-height: 80vh;
-
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	flex-wrap: wrap;
+	min-width: 70%;
+	min-height: 80vh;
 }
 .quickview__body {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: baseline;
-    /* flex-wrap: wrap; */
-    gap: 1rem;
-    position: relative;
-    border-top: 3px solid var(--primary-color);
-    margin-top: .2rem;
-    padding-top: 2rem;
-
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: baseline;
+	gap: 1rem;
+	position: relative;
+	border-top: 3px solid var(--primary-color);
+	margin-top: 0.2rem;
+	padding-top: 2rem;
 }
 .quickview__title {
-    display: block;
-    text-align: left;
-    min-width: 100%;
+	display: block;
+	text-align: left;
+	min-width: 100%;
 }
 .card__number {
-    font-size: 4rem;
-    max-width: fit-content;
-    align-self: baseline;
-    margin: 0 ;
-    margin-left: 0;
-    margin-right: auto;
-    line-height: 3rem;
+	font-size: 4rem;
+	max-width: fit-content;
+	align-self: baseline;
+	margin: 0;
+	margin-left: 0;
+	margin-right: auto;
+	line-height: 3rem;
 }
 .quickview__card--long {
-    min-width: 100%;
-    color: var(--text-dark);
+	min-width: 100%;
+	color: var(--text-dark);
 }
 .quickview__card--long h3 {
-    color: var(--primary-color);
-    font-size: 2rem;
-    text-align: center;
-    margin-left: 0;
-    margin-right: auto;
-    margin-bottom: 2rem;
+	color: var(--primary-color);
+	font-size: 2rem;
+	text-align: center;
+	margin-left: 0;
+	margin-right: auto;
+	margin-bottom: 2rem;
 }
 .quickview__card--summary {
-    align-items: baseline;
-    text-align: left;
-    flex-grow: 1;
-    text-align: left;
-    overflow-y: hidden;
-    position: relative;
+	align-items: baseline;
+	text-align: left;
+	flex-grow: 1;
+	text-align: left;
+	overflow-y: hidden;
+	position: relative;
 }
 .card__logo {
-    border-radius: 1rem ;
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    left: auto;
-    display: block;
-    z-index: 99;
+	border-radius: 1rem;
+	position: absolute;
+	top: 1rem;
+	right: 1rem;
+	left: auto;
+	display: block;
+	z-index: 99;
 }
 .quickview__card--summary .card__title {
-    font-size: 4rem;
-    color: var(--primary-color);
-    line-height: 3rem;
-    margin-bottom : 4rem;
+	font-size: 4rem;
+	color: var(--primary-color);
+	line-height: 3rem;
+	margin-bottom: 4rem;
 }
 
 .quickview__card--summary .card__address {
-    font-size: 1.2rem;
-
+	font-size: 1.2rem;
 }
 .quickview__card--summary .card__description {
-    font-size: 1.2rem;
-    opacity: .5;
-    font-style: italic;
-    margin-top: 1rem;
+	font-size: 1.2rem;
+	opacity: 0.5;
+	font-style: italic;
+	margin-top: 1rem;
 }
-.quickview__body--left, .quickview__body--right {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: baseline;
-    max-width: 50%;
-    gap: 1rem;
+.quickview__body--left,
+.quickview__body--right {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: baseline;
+	max-width: 50%;
+	gap: 1rem;
 }
-
