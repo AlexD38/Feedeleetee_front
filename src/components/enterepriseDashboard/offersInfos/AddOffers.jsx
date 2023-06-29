@@ -7,7 +7,7 @@ export function AddOffers(props) {
     const descriptionRef = useRef(null);
     const discountRef = useRef(null);
     const token = localStorage.getItem("token");
-    const enterpriseId = localStorage.getItem("enterpriseId");
+    const enterpriseId = props.enterprise;
 
     const sendData = async (e) => {
         console.log("desc", descriptionRef.current.value);

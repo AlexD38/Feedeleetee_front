@@ -8,7 +8,7 @@ export function AddServices(props) {
     const priceRef = useRef(null);
     const durationRef = useRef(null);
     const token = localStorage.getItem("token");
-    const enterpriseId = localStorage.getItem("enterpriseId");
+    const enterpriseId = props.enterprise;
 
     const sendData = async (e) => {
         console.log("desc", descriptionRef.current.value);

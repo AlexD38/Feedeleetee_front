@@ -7,7 +7,7 @@ import Modal from "../../Modal/Modal.jsx";
 import LinkComp from "../../../styles/components/LinkComp.js";
 import { BsFillTrash3Fill } from "react-icons/bs";
 
-function OffersInfos() {
+function OffersInfos(props) {
     const [myOffers, setMyOffers] = useState("");
     const token = localStorage.getItem("token");
     const [showInput, setShowInput] = useState(false);
@@ -17,7 +17,7 @@ function OffersInfos() {
     const descriptionRef = useRef(null);
     const [showModal, setShowModal] = useState(false);
     const [selectedOfferId, setSelectedOfferId] = useState(null);
-    const enterpriseId = localStorage.getItem("enterpriseId");
+    const enterpriseId = props.enterprise.id;
 
     const discountRef = useRef(null);
 
@@ -27,10 +27,7 @@ function OffersInfos() {
                 token,
                 enterpriseId,
             };
-            const response = await axios.get(
-                `http://localhost:4000/enterprises/offers`,
-                { headers }
-            );
+            const response = await axios.get(`http://localhost:4000/enterprises/offers`, { headers });
             const offers = response.data;
             if (offers) {
                 setMyOffers((myOffers) => response.data);
@@ -48,12 +45,9 @@ function OffersInfos() {
             token: token,
         };
         try {
-            const response = await axios.delete(
-                `http://localhost:4000/offers/${id}`,
-                {
-                    headers,
-                }
-            );
+            const response = await axios.delete(`http://localhost:4000/offers/${id}`, {
+                headers,
+            });
             console.log(response.data.success);
             // create a new copy of myAppointments by filtering out the deleted appointment
             const updatedOffers = myOffers.filter((offer) => offer.id != id);
@@ -87,24 +81,14 @@ function OffersInfos() {
 
     return (
         <VerticalWrapper>
-            {showModal && <Modal onClose={closeModal} display="Offers" />}
+            {showModal && <Modal onClose={closeModal} display="Offers" enterprise={enterpriseId} />}
             {myOffers ? (
                 <div className="card">
                     <Greetings size="3rem">Mes Offres</Greetings>
 
                     {myOffers.map((offerInformation) => (
-                        <LinkComp
-                            onClick={(e) =>
-                                handleOfferClick(offerInformation.id)
-                            }
-                            key={offerInformation.id}
-                            id={offerInformation.id}
-                        >
-                            <motion.div
-                                initial={{ opacity: 0, y: -10 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.3, delay: 0.2 }}
-                            >
+                        <LinkComp onClick={(e) => handleOfferClick(offerInformation.id)} key={offerInformation.id} id={offerInformation.id}>
+                            <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: 0.2 }}>
                                 <p>{offerInformation.description}</p>
                                 <p>-{offerInformation.discount}%</p>
                             </motion.div>
@@ -114,8 +98,7 @@ function OffersInfos() {
                                     style={{
                                         marginLeft: "1rem",
                                     }}
-                                    id={selectedOfferId}
-                                >
+                                    id={selectedOfferId}>
                                     <BsFillTrash3Fill />
                                 </button>
                             )}

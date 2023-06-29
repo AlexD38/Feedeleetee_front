@@ -9,6 +9,8 @@ import SignUp from "../SignUp/SignUp.jsx";
 export default function Modal(props) {
     const dayRef = useRef(null);
     const timeRef = useRef(null);
+    const enterpriseId = props.enterprise;
+    console.log(enterpriseId);
 
     const closeModal = () => {
         props.onClose();
@@ -25,7 +27,7 @@ export default function Modal(props) {
                         <button className="close-btn" onClick={closeModal}>
                             close
                         </button>
-                        <AddAppointments onClose={closeModal} />
+                        <AddAppointments enterprise={enterpriseId} onClose={closeModal} />
                     </>
                 )}
                 {props.display === "Offers" && (
@@ -33,7 +35,7 @@ export default function Modal(props) {
                         <button className="close-btn" onClick={closeModal}>
                             close
                         </button>
-                        <AddOffers onClose={closeModal} />
+                        <AddOffers enterprise={enterpriseId} onClose={closeModal} />
                     </>
                 )}
                 {props.display === "Services" && (
@@ -41,7 +43,7 @@ export default function Modal(props) {
                         <button className="close-btn" onClick={closeModal}>
                             close
                         </button>
-                        <AddServices onClose={closeModal} />
+                        <AddServices enterprise={enterpriseId} onClose={closeModal} />
                     </>
                 )}
                 {props.display === "Login" && (

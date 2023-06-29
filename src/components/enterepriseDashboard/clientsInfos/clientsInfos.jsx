@@ -6,11 +6,11 @@ import LinkComp from "../../../styles/components/LinkComp.js";
 import SingleCLient from "./singleClient.jsx";
 import Greetings from "../../../styles/components/Greetings.js";
 
-function ClientsInfos() {
+function ClientsInfos(props) {
     const [myClients, setMyClients] = useState("");
     const token = localStorage.getItem("token");
     const [showCredentials, setShowCredentials] = useState(false);
-    const enterpriseId = localStorage.getItem("enterpriseId");
+    const enterpriseId = props.enterprise.id;
 
     useEffect(() => {
         async function fetchClients() {
@@ -18,10 +18,7 @@ function ClientsInfos() {
                 token,
                 enterpriseId,
             };
-            const response = await axios.get(
-                `http://localhost:4000/enterprises/clients`,
-                { headers }
-            );
+            const response = await axios.get(`http://localhost:4000/enterprises/clients`, { headers });
             setMyClients((myClients) => response.data);
         }
         fetchClients();
@@ -34,18 +31,8 @@ function ClientsInfos() {
                     <Greetings size="3rem">Mes Clients</Greetings>
 
                     {myClients.map((clientInformation) => (
-                        <motion.ul
-                            initial={{ opacity: 0, y: -10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.3, delay: 0.2 }}
-                            key={clientInformation.id}
-                        >
-                            <motion.li
-                                initial={{ opacity: 0, y: -10 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.3, delay: 0.2 }}
-                                key={clientInformation.id}
-                            >
+                        <motion.ul initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: 0.2 }} key={clientInformation.id}>
+                            <motion.li initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: 0.2 }} key={clientInformation.id}>
                                 <LinkComp>
                                     <SingleCLient client={clientInformation} />
                                 </LinkComp>

@@ -11,7 +11,7 @@ import "moment/locale/fr";
 import { BsFillTrash3Fill } from "react-icons/bs";
 import "../appointmentsInfos/index.css";
 
-function AppointmentsInfos() {
+function AppointmentsInfos(props) {
     const [myAppointments, setMyAppointments] = useState([]);
     const token = localStorage.getItem("token");
     const [showInput, setShowInput] = useState(false);
@@ -22,19 +22,21 @@ function AppointmentsInfos() {
     const [blur, setBlur] = useState(false);
     const [showTrashCan, setShowTrashCan] = useState(false);
     const [selectedAppId, setSelectedAppId] = useState(null);
-    const enterpriseId = localStorage.getItem("enterpriseId");
+    const enterpriseId = props.enterprise.id;
+    // console.log(enterpriseId);
 
     // const day = myAppointments[0].day;
     // console.log(day.split("T")[0]);
     const dayRef = useRef(null);
     const timeRef = useRef(null);
 
+    const headers = {
+        token: token,
+        enterpriseId,
+    };
+
     useEffect(() => {
         async function fetchAppointments() {
-            const headers = {
-                token: token,
-                enterpriseId,
-            };
             const response = await axios.get(`http://localhost:4000/enterprises/appointments`, { headers });
             setMyAppointments((myAppointments) => response.data);
             console.log(response.data);
@@ -61,9 +63,6 @@ function AppointmentsInfos() {
             return;
         }
 
-        const headers = {
-            token,
-        };
         try {
             const response = await axios.post(
                 `http://localhost:4000/enterprises/appointments`,
@@ -72,6 +71,7 @@ function AppointmentsInfos() {
                     headers,
                 }
             );
+
             console.log(response.data);
             console.log(response.data.success);
             setMyAppointments([...myAppointments, response.data.results]);
@@ -134,7 +134,7 @@ function AppointmentsInfos() {
     };
     return (
         <VerticalWrapper>
-            {showModal && <Modal onClose={closeModal} display="Appointments" />}
+            {showModal && <Modal onClose={closeModal} display="Appointments" enterprise={enterpriseId} />}
 
             {myAppointments.length > 0 ? (
                 <div className="card">

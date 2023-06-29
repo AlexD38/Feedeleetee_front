@@ -26,26 +26,18 @@ function CreateEnterprise() {
             token: token,
         };
 
-        console.log(data);
-        // console.log(token);
+        // console.log(data);
         event.preventDefault();
 
         try {
-            const response = await axios.post(
-                "http://localhost:4000/enterprise",
-                data,
-                {
-                    headers,
-                }
-            );
+            const response = await axios.post("http://localhost:4000/enterprise", data, {
+                headers,
+            });
             const result = response.data;
             console.log(result);
-            if (result.userCreateEnterprise.success) {
-                alert(result.userCreateEnterprise.success);
-                localStorage.setItem(
-                    "enterpriseId",
-                    result.userCreateEnterprise.enterpriseId
-                );
+            if (result.enterpriseId) {
+                alert(`well done ${result.bearer.userName}, you just created your enterprise with id : ${result.enterpriseId}`);
+                localStorage.setItem("token", result.token);
                 navigate("/home");
             }
             if (result.authenticated === false) {
@@ -63,37 +55,19 @@ function CreateEnterprise() {
             <Form onSubmit={handleSubmit} enctype="multipart/form-data">
                 <label>
                     Nom de l'entreprise :
-                    <Input
-                        required
-                        type="text"
-                        value={enterpriseName}
-                        onChange={(e) => setEnterpriseName(e.target.value)}
-                    />
+                    <Input required type="text" value={enterpriseName} onChange={(e) => setEnterpriseName(e.target.value)} />
                 </label>
                 <label>
                     Adresse de l'entreprise :
-                    <Input
-                        type="text"
-                        value={enterpriseAddress}
-                        onChange={(e) => setEnterpriseAddress(e.target.value)}
-                    />
+                    <Input type="text" value={enterpriseAddress} onChange={(e) => setEnterpriseAddress(e.target.value)} />
                 </label>
                 <label>
                     description de l'entreprise :
-                    <Input
-                        required
-                        type="text"
-                        value={enterpriseDesc}
-                        onChange={(e) => setEnterpriseDesc(e.target.value)}
-                    />
+                    <Input required type="text" value={enterpriseDesc} onChange={(e) => setEnterpriseDesc(e.target.value)} />
                 </label>
                 <label>
                     Logo de l'entreprise :
-                    <Input
-                        type="text"
-                        value={enterpriseLogo}
-                        onChange={(e) => setEnterpriseLogo(e.target.value)}
-                    />
+                    <Input type="text" value={enterpriseLogo} onChange={(e) => setEnterpriseLogo(e.target.value)} />
                 </label>
 
                 <button type="submit">Créer mon entreprise</button>

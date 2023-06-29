@@ -5,7 +5,8 @@ import Input from "../../../styles/components/input";
 
 export default function AddAppointments(props) {
     const token = localStorage.getItem("token");
-    const enterpriseId = localStorage.getItem("enterpriseId");
+    const enterpriseId = props.enterprise;
+    console.log(enterpriseId);
 
     const dayRef = useRef(null);
     const timeRef = useRef(null);

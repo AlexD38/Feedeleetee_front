@@ -13,19 +13,16 @@ function EnterpriseDashboard() {
     const [myEnterprise, setMyEnterprise] = useState("");
     const token = localStorage.getItem("token");
     const navigate = useNavigate();
-    const [currentComponent, setCurrentComponent] = useState("Appointments");
+    const [currentComponent, setCurrentComponent] = useState("Coup d'oeil rapide");
     const [modal, setModal] = useState(false);
     const [logoFile, setLogoFile] = useState(null);
     const [showUploadInput, setShowUploadInput] = useState(false);
-    const [enterpriseId, setEnterpriseId] = useState(localStorage.getItem("enterpriseId"));
 
     useEffect(() => {
         async function fetchDashboard() {
             const headers = {
                 token: token,
-                enterpriseId: enterpriseId,
             };
-            console.log(headers);
             try {
                 const response = await axios.get("http://localhost:4000/enterprise/", {
                     headers,
@@ -33,7 +30,9 @@ function EnterpriseDashboard() {
                 if (response.data[0]) {
                     setMyEnterprise(response.data[0]);
                     console.log(response.data[0]);
-                    localStorage.setItem("enterpriseId", response.data[0].id);
+                    // localStorage.setItem("enterpriseId", response.data[0].id);
+                } else if (!response) {
+                    navigate("/createmyenterprise");
                 }
             } catch (error) {
                 console.log(error);
@@ -57,7 +56,7 @@ function EnterpriseDashboard() {
             data.append("logo", logoFile);
             data.fileName = fileName;
             data.file = logoFile;
-            const headers = { token, enterpriseId };
+            const headers = { token };
             try {
                 const response = await axios.post("http://localhost:4000/logo", data, {
                     headers,
@@ -97,10 +96,10 @@ function EnterpriseDashboard() {
                         </ul>
                         <Logout linkTo="home" />
                     </nav>
-                    {currentComponent === "Appointments" && <AppointmentsInfos />}
-                    {currentComponent === "Clients" && <ClientsInfos />}
-                    {currentComponent === "Offers" && <OffersInfos />}
-                    {currentComponent === "Services" && <ServicesInfos />}
+                    {currentComponent === "Appointments" && <AppointmentsInfos enterprise={myEnterprise} />}
+                    {currentComponent === "Clients" && <ClientsInfos enterprise={myEnterprise} />}
+                    {currentComponent === "Offers" && <OffersInfos enterprise={myEnterprise} />}
+                    {currentComponent === "Services" && <ServicesInfos enterprise={myEnterprise} />}
                     {currentComponent === "Coup d'oeil rapide" && <QuickView enterprise={myEnterprise} />}
                 </>
             )}

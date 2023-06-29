@@ -1,14 +1,12 @@
 import { useState, useEffect } from "react";
-import HorizontalWrapper from "../../../styles/components/HorizontalWrapper";
-import axios from "axios";
 import NextAppointments from "../../nextAppointments/nextAppointments";
-import Greetings from "../../../styles/components/Greetings";
+import axios from "axios";
 import "../QuickView/index.css";
 
 // Universal
 function QuickView(props) {
     const token = localStorage.getItem("token");
-    const enterpriseId = localStorage.getItem("enterpriseId");
+    const enterpriseId = props.enterprise.id;
     const [quickView, setQuickView] = useState([]);
 
     useEffect(() => {
@@ -17,15 +15,21 @@ function QuickView(props) {
                 token: token,
                 enterpriseId: enterpriseId,
             };
-            const response = await axios.get(`http://localhost:4000/quickview`, { headers });
-            if (response.status === 200) {
-                setQuickView((quickView) => response.data);
-                setQuickView(response.data);
+            try {
+                const response = await axios.get(`http://localhost:4000/quickview`, { headers });
+                if (response.status === 200) {
+                    setQuickView((quickView) => response.data);
+                    setQuickView(response.data);
+                    console.log(quickView);
+                }
+                console.log(response);
+            } catch (error) {
+                console.log(error);
             }
         }
         fetchQuickView();
     }, []);
-    console.log(props.enterprise);
+    // console.log(props.enterprise);
 
     return (
         <>
@@ -33,7 +37,6 @@ function QuickView(props) {
                 <main className="quickview__container">
                     <div className="quickview__title">
                         {" "}
-                        {/* <Greetings>{quickView.username},</Greetings> */}
                         <h1>
                             <span>Coup d'oeil sur votre entreprise</span>
                         </h1>{" "}
@@ -77,7 +80,7 @@ function QuickView(props) {
                         </div>
                         <div className="quickview__body--right">
                             <div className="quickview__card quickview__card--summary">
-                                <img className=" logo card__logo" src={`data:image/png;base64,${props.enterprise.logo}`} alt="logo" />
+                                {props.enterprise.logo.length > 30 && <img className=" logo card__logo" src={`data:image/png;base64,${props.enterprise.logo}`} alt="logo" />}
                                 <p className="card__title">{props.enterprise.name}</p>
                                 <p className="card__address">{props.enterprise.address}</p>
                                 <p className="card__description">{props.enterprise.description}</p>

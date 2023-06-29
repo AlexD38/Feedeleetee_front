@@ -7,7 +7,7 @@ import LinkComp from "../../../styles/components/LinkComp.js";
 import HorizontalWrapper from "../../../styles/components/HorizontalWrapper.js";
 import { BsFillTrash3Fill } from "react-icons/bs";
 
-function ServicesInfos() {
+function ServicesInfos(props) {
     const [myServices, setMyServices] = useState("");
     const token = localStorage.getItem("token");
     const [showInput, setShowInput] = useState(false);
@@ -21,7 +21,7 @@ function ServicesInfos() {
     const closeModal = () => {
         setShowModal(false);
     };
-    const enterpriseId = localStorage.getItem("enterpriseId");
+    const enterpriseId = props.enterprise.id;
 
     useEffect(() => {
         async function fetchServices() {
@@ -29,15 +29,12 @@ function ServicesInfos() {
                 token,
                 enterpriseId,
             };
-            const response = await axios.get(
-                `http://localhost:4000/enterprises/services`,
-                { headers }
-            );
+            const response = await axios.get(`http://localhost:4000/enterprises/services`, { headers });
             const services = response.data;
             if (services) {
                 setMyServices((myServices) => response.data);
             }
-            // console.log(response.data);
+            console.log(response.data);
         }
         fetchServices();
     }, [token, showModal]);
@@ -61,17 +58,12 @@ function ServicesInfos() {
             token: token,
         };
         try {
-            const response = await axios.delete(
-                `http://localhost:4000/services/${id}`,
-                {
-                    headers,
-                }
-            );
+            const response = await axios.delete(`http://localhost:4000/services/${id}`, {
+                headers,
+            });
             // console.log(response);
             // create a new copy of myAppointments by filtering out the deleted appointment
-            const updatedServices = myServices.filter(
-                (service) => service.id != id
-            );
+            const updatedServices = myServices.filter((service) => service.id != id);
             // update the state with the new copy of myAppointments
             setMyServices(updatedServices);
         } catch (error) {
@@ -88,29 +80,18 @@ function ServicesInfos() {
 
     return (
         <HorizontalWrapper>
-            {showModal && <Modal onClose={closeModal} display="Services" />}
+            {showModal && <Modal onClose={closeModal} display="Services" enterprise={enterpriseId} />}
 
             {myServices ? (
                 <div className="card">
                     <Greetings size="3rem">Mes Services</Greetings>
 
                     {myServices.map((serviceInformation) => (
-                        <motion.div
-                            initial={{ opacity: 0, y: -10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.3, delay: 0.2 }}
-                            key={serviceInformation.id}
-                        >
-                            <LinkComp
-                                onClick={(e) =>
-                                    handleServiceClick(serviceInformation.id)
-                                }
-                                id={serviceInformation.id}
-                            >
+                        <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: 0.2 }} key={serviceInformation.id}>
+                            <LinkComp onClick={(e) => handleServiceClick(serviceInformation.id)} id={serviceInformation.id}>
                                 <li>{serviceInformation.description} : </li>
                                 <li>
-                                    {serviceInformation.price} € -
-                                    {serviceInformation.duration}H
+                                    {serviceInformation.price} € -{serviceInformation.duration}H
                                 </li>
                             </LinkComp>
                             {selectedServiceId === serviceInformation.id && (
@@ -119,8 +100,7 @@ function ServicesInfos() {
                                     style={{
                                         marginLeft: "1rem",
                                     }}
-                                    id={selectedServiceId}
-                                >
+                                    id={selectedServiceId}>
                                     <BsFillTrash3Fill />
                                 </button>
                             )}

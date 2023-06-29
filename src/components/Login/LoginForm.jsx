@@ -31,13 +31,9 @@ function LoginForm(props) {
         event.preventDefault();
 
         try {
-            const response = await axios.post(
-                "http://localhost:4000/login",
-                qs.stringify(data),
-                {
-                    headers,
-                }
-            );
+            const response = await axios.post("http://localhost:4000/login", qs.stringify(data), {
+                headers,
+            });
             console.log("reponse : ", response.data);
 
             if (response.data.error) {
@@ -46,14 +42,12 @@ function LoginForm(props) {
                 inputErrDisplay();
                 return;
             }
-            response.data.token = localStorage.setItem(
-                "token",
-                response.data.token
-            );
-            response.data.userName = localStorage.setItem(
-                "user",
-                response.data.userName
-            );
+            response.data.token = localStorage.setItem("token", response.data.token);
+            response.data.userName = localStorage.setItem("user", response.data.userName);
+            if (!response.data.enterpriseId) {
+                navigate("/createenterprise");
+                return;
+            }
 
             navigate("/myenterprise");
         } catch (error) {
@@ -107,8 +101,7 @@ function LoginForm(props) {
                 <button type="submit">Me connecter</button>
                 <VerticalWrapper>
                     <p>
-                        Don't have an account yet ?{" "}
-                        <Link onClick={props.changeDisplay}>Create One</Link>{" "}
+                        Don't have an account yet ? <Link onClick={props.changeDisplay}>Create One</Link>{" "}
                     </p>
                 </VerticalWrapper>
             </Form>
