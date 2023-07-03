@@ -11,7 +11,7 @@ import CreateEnterprise from "../CreateEnterpriseFrom/CreateEnterpriseFrom.jsx";
 import CreateClient from "../CreateClientForm/CreateClient.jsx";
 import { ClientDashboard } from "../ClientDashboard.jsx";
 import { TakeAppointment } from "../TakeAppointment.jsx";
-import { HomePage } from "../HomePage.jsx";
+import { HomePage } from "../Homepage/HomePage.jsx";
 
 function App() {
 	return (

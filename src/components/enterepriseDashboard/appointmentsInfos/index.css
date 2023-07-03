@@ -13,8 +13,7 @@ li {
 	border-radius: 1rem;
 	padding: 0.2rem 5rem;
 	font-size: 1.4rem;
-	max-width: 100%;
-	min-width: 50%;
+	width: min(100%, 100%);
 	display: flex;
 	justify-content: space-evenly;
 	align-items: center;

@@ -4,7 +4,7 @@
 	--text-dark: #dcdcdc;
 	--background: #474747;
 	--primary-color: #ab6e1e;
-	--secondary-clr: #747474;
+	--secondary-clr: #4a4a4a;
 	--accent: #6054e6;
 	/* color: var(--text); */
 	/* background-color: #ffffff; */
@@ -19,6 +19,7 @@ body {
 	position: relative;
 	min-height: 100vh;
 	min-width: 100vw;
+	overflow-x: hidden;
 }
 #root {
 	position: relative;

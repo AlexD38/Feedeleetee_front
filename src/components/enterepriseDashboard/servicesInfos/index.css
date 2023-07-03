@@ -1,0 +1,72 @@
+.services-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+}
+.service-infos {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 0;
+}
+.services-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 1rem;
+	width: min(100%, 100%);
+	position: relative;
+}
+.service-description {
+	display: block;
+	min-width: 100%;
+}
+
+.services-container li {
+	width: min(50rem, 100%);
+}
+.services-container ul {
+	text-align: center;
+	margin: 1rem;
+	border-radius: 1rem;
+	padding: 0.2rem 5rem;
+	font-size: 1.4rem;
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	transition: all 0.5s ease;
+	border: 2px solid var(--primary-color);
+}
+.services-container ul:hover {
+	background-color: var(--primary-color);
+}
+.services-container ul:hover .del-btn--service {
+	background-color: var(--secondary-clr);
+}
+.service-price-duration-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 1rem;
+	min-width: 100%;
+}
+.service-price-duration-container p {
+	font-weight: 600;
+	background-color: var(--primary-color);
+	border-radius: 1rem;
+	padding: 0.5rem 1.5rem;
+}
+.service-price-duration-container:hover p {
+	background-color: var(--secondary-clr);
+}
+
+.del-btn--service {
+	background-color: var(--primary-color);
+}
