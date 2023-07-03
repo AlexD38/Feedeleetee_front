@@ -1,16 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-function Logout(props) {
-    const navisvgate = useNavigate();
+function Logout() {
+    const navigate = useNavigate();
 
     const clearToken = () => {
-        if (props.linkTo === "home") {
-            navisvgate(`/${props.linkTo}`);
-        } else if (props.linkTo === "") {
-            navisvgate(`/${props.linkTo}`);
-            localStorage.clear();
-        }
+        localStorage.clear();
+        navigate("/");
     };
     return (
         <>
