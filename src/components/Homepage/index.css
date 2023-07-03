@@ -2,7 +2,7 @@ img {
 	width: 100vw;
 }
 .img-container {
-	max-height: 66vh;
+	max-height: 80vh;
 	overflow-y: hidden;
 }
 header {
@@ -130,7 +130,7 @@ h5 {
 .left-contact {
 	text-align: left;
 }
-form {
+.contact-form {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;

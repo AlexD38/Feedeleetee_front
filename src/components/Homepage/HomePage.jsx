@@ -164,7 +164,7 @@ export function HomePage() {
 						</p>
 					</div>
 					<div className="right-contact">
-						<form action="">
+						<form className="contact-form" action="">
 							<label htmlFor="mail">
 								Mail
 								<input className="input-form" type="mail" />
