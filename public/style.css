@@ -138,3 +138,14 @@ nav {
 a {
 	color: var(--text-dark);
 }
+
+@media (max-width : 992px) {	
+	:root {
+		font-size: 10px;
+	}
+	
+}
+@media (max-width : 650px) {	
+	
+	
+}

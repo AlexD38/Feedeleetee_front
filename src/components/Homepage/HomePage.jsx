@@ -65,8 +65,8 @@ export function HomePage() {
                 </header>
                 <div className="img-container">
                     <div className="img-container-presentation">
-                        <h2>Welcome Home.</h2>
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta autem quibusdam exercitationem ea eveniet consequatur quasi maiores, sit nisi aliquid. Odit accusantium, cupiditate reprehenderit cumque non a vitae totam vel.</p>
+                        <h2>Bienvenue.</h2>
+                        <p>Vous êtes une entreprise qui cherche à faciliter sa gestion de services et de rendez-vous clients ? Vous êtes un client à la recherche d'un service proposé par des entreprises ? Nous sommes là pour vous faciliter la vie. Fermez cet agenda, détendez-vous. On s'occupe du reste. </p>
                         <div className="img-container-btn-container">
                             <button onClick={navigateToLogin}>Je suis client</button>
                             <button onClick={navigateToLogin}>Je suis une entreprise</button>
@@ -76,11 +76,11 @@ export function HomePage() {
                     <img className="main-img" src={Business} alt="business picture for homepage" />
                 </div>
                 <section className="testimonial-section">
-                    <p>"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illo neque pariatur dolorem dolor fuga temporibus, ipsum, beatae incidunt architecto, esse voluptatem ab! Minus, sapiente asperiores eius quas veritatis expedita nam."</p>
+                    <p>"Cette application simple et efficace m'a permis de developper ma clientèle rapidement et gérer mes rendez-vous en un click pour mon entreprise ! Plus de prise de tête, finis les agendas et calendriers par milliers. L'interface est simple et rapide, tout se passe désormais sur Feedeleetee et mes clients sont contents. "</p>
                     <span>- Sophie</span>
                 </section>
                 <section className="services-section">
-                    <h2>What do we do here ? </h2>
+                    <h2>Que proposons-nous ? </h2>
                     <section className="services-container">
                         <article className="main-card">
                             <header>
@@ -98,7 +98,7 @@ export function HomePage() {
                         </article>
                         <article className="main-card">
                             <header>
-                                <img className="card-img" src="https://source.unsplash.com/400x300?work" alt="" />
+                                <img className="card-img" src="https://source.unsplash.com/400x300?happiness" alt="" />
                             </header>
                             <h2 className="card-title">Happiness</h2>
                             <p className="card-body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut sint doloribus voluptates eligendi eveniet ratione magnam repellendus</p>
