@@ -8,8 +8,8 @@ import VerticalWrapper from "../../styles/components/verticalWrapper";
 import qs from "qs";
 import Greetings from "../../styles/components/Greetings.js";
 import PropTypes from "prop-types";
-import { color } from "framer-motion";
-
+import { FaRegEye } from "react-icons/fa";
+import "../Login/index.css";
 function LoginForm(props) {
     console.log(props);
     const [mail, setMail] = useState("");
@@ -62,11 +62,15 @@ function LoginForm(props) {
             alert("erreur lors de la connexion");
         }
     };
-    const showPwd = (event) => {
-        event.target.type = "text";
+    const showPwd = () => {
+        const pwd = document.querySelector("#pwd");
+        console.log(pwd);
+        pwd.type = "text";
     };
     const hidePwd = (event) => {
-        event.target.type = "password";
+        const pwd = document.querySelector("#pwd");
+        console.log(pwd);
+        pwd.type = "password";
     };
     const inputErrDisplay = (event) => {
         if (inputError) {
@@ -84,7 +88,6 @@ function LoginForm(props) {
         <>
             <Form onSubmit={handleSubmit}>
                 <Greetings size="2rem">Identifiez-vous</Greetings>
-
                 <label>e-mail :</label>
                 <Input
                     required
@@ -97,14 +100,15 @@ function LoginForm(props) {
                 <label>Mot de passe :</label>
                 <Input
                     onBlur={hidePwd}
-                    onDoubleClick={showPwd}
+                    // onDoubleClick={showPwd}
+                    id="pwd"
                     required
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     // onFocus={inputErrDisplay}
                 />
-
+                <FaRegEye className="input-eye" onMouseEnter={showPwd} onMouseLeave={hidePwd} />
                 <button type="submit">Me connecter</button>
                 <VerticalWrapper>
                     <p>

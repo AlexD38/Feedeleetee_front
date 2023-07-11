@@ -1,0 +1,12 @@
+.input-eye {
+    font-size: 2rem;
+    position: relative;
+    transition: all .3s ease-in-out;
+    margin : 0 auto
+}
+
+.input-eye:hover {
+    color: var(--primary-color);
+    transition: all .3s ease-in-out;
+    scale: 1.1;
+}
