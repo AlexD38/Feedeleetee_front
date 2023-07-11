@@ -15,7 +15,7 @@ function LoginForm(props) {
     const [mail, setMail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
-    localStorage.clear();
+    // localStorage.clear();
     const [inputError, setInputError] = useState(false);
 
     const handleSubmit = async (event) => {
@@ -50,7 +50,13 @@ function LoginForm(props) {
                 return;
             }
 
-            navigate("/myenterprise");
+            if (response.data.authenticated) {
+                if (props.navigate === "client") {
+                    navigate("/myclientprofile");
+                } else if (props.navigate === "enterprise") {
+                    navigate("/myenterprise");
+                }
+            }
         } catch (error) {
             console.log(error);
             alert("erreur lors de la connexion");

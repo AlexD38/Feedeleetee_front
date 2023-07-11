@@ -10,7 +10,7 @@ export default function Modal(props) {
     const dayRef = useRef(null);
     const timeRef = useRef(null);
     const enterpriseId = props.enterprise;
-    console.log(enterpriseId);
+    console.log(props);
 
     const closeModal = () => {
         props.onClose();
@@ -51,7 +51,7 @@ export default function Modal(props) {
                         <button className="close-btn" onClick={closeModal}>
                             close
                         </button>
-                        <Login onClose={closeModal} changeDisplay={changeDisplay} />
+                        <Login onClose={closeModal} changeDisplay={changeDisplay} navigate={props.whereToNext} />
                     </>
                 )}
                 {props.display === "Signup" && (

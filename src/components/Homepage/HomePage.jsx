@@ -41,10 +41,14 @@ export function HomePage() {
             setShowSignupModal(false);
         }
     };
+    const captureWhereToNavAfterLogin = (e) => {
+        console.log(e.target.getAttribute("whereToNext"));
+        localStorage.setItem("wheretonext", e.target.getAttribute("whereToNext"));
+    };
     return (
         <>
-            {showLoginModal && <Modal onClose={closeModal} display="Login" changeDisplay={changeDisplay}></Modal>}
-            {showSignupModal && <Modal onClose={closeModal} display="Signup" changeDisplay={changeDisplay}></Modal>}
+            {showLoginModal && <Modal onClose={closeModal} display="Login" changeDisplay={changeDisplay} whereToNext={localStorage.getItem("wheretonext")}></Modal>}
+            {showSignupModal && <Modal onClose={closeModal} display="Signup" changeDisplay={changeDisplay} whereToNext={localStorage.getItem("wheretonext")}></Modal>}
             <>
                 <header>
                     <nav className="main-nav">
@@ -68,8 +72,12 @@ export function HomePage() {
                         <h2>Bienvenue.</h2>
                         <p>Vous êtes une entreprise qui cherche à faciliter sa gestion de services et de rendez-vous clients ? Vous êtes un client à la recherche d'un service proposé par des entreprises ? Nous sommes là pour vous faciliter la vie. Fermez cet agenda, détendez-vous. On s'occupe du reste. </p>
                         <div className="img-container-btn-container">
-                            <button onClick={navigateToLogin}>Je suis client</button>
-                            <button onClick={navigateToLogin}>Je suis une entreprise</button>
+                            <button whereToNext="client" onClick={navigateToLogin} onMouseEnter={captureWhereToNavAfterLogin}>
+                                Je suis client
+                            </button>
+                            <button whereToNext="enterprise" onClick={navigateToLogin} onMouseEnter={captureWhereToNavAfterLogin}>
+                                Je suis une entreprise
+                            </button>
                         </div>
                     </div>
 
