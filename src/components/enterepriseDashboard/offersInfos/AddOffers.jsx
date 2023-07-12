@@ -1,4 +1,4 @@
-import Input from "../../../styles/components/input";
+import input from "../../../styles/components/input";
 import { useRef } from "react";
 import axios from "axios";
 import Greetings from "../../../styles/components/Greetings";
@@ -16,7 +16,7 @@ export function AddOffers(props) {
             description: descriptionRef.current.value,
             discount: discountRef.current.value,
         };
-        if (!data.description || !data.discount) {
+        if (!data.description || !data.discount || data.description.length > 5 || data.discount < 5 || data.discount > 100) {
             return;
         }
         const headers = {
@@ -46,11 +46,16 @@ export function AddOffers(props) {
         <>
             {" "}
             <Greetings>Ajouter une offre</Greetings>
-            <label>Description :</label>
-            <Input type="text" ref={descriptionRef} />
-            <label>Discount : (en pourcentage)</label>
-            <Input type="number" min="0" max="100" ref={discountRef} />
-            <button onClick={sendData}>Ajouter</button>
+            <form
+                onSubmit={(e) => {
+                    e.preventDefault();
+                }}>
+                <label>Description :</label>
+                <input required minLength="5" type="text" ref={descriptionRef} />
+                <label>Discount : (en pourcentage)</label>
+                <input required type="number" min="5" max="100" ref={discountRef} />
+                <button onClick={sendData}>Ajouter</button>
+            </form>
         </>
     );
 }

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Form from "../../styles/components/form.js";
-import Input from "../../styles/components/input.js";
+import input from "../../styles/components/input.js";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Link from "../../styles/components/LinkComp";
@@ -30,13 +30,9 @@ function Signup(props) {
         event.preventDefault();
 
         try {
-            const response = await axios.post(
-                "http://localhost:4000/users",
-                qs.stringify(data),
-                {
-                    headers,
-                }
-            );
+            const response = await axios.post("http://localhost:4000/users", qs.stringify(data), {
+                headers,
+            });
             const message = response.data.message;
             console.log(message);
 
@@ -51,40 +47,24 @@ function Signup(props) {
 
     return (
         <>
-            <Form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit}>
                 <Greetings size="2rem">Creez votre compte</Greetings>
 
                 <label>Pseudo :</label>
-                <Input
-                    required
-                    type="text"
-                    value={userName}
-                    onChange={(e) => setUserName(e.target.value)}
-                />
+                <input required type="text" value={userName} onChange={(e) => setUserName(e.target.value)} />
                 <label>E-mail :</label>
-                <Input
-                    required
-                    type="mail"
-                    value={mail}
-                    onChange={(e) => setMail(e.target.value)}
-                />
+                <input required type="mail" value={mail} onChange={(e) => setMail(e.target.value)} />
                 <label>Mot de passe :</label>
-                <Input
-                    required
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
+                <input required type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
 
                 <button type="submit">Créer un compte</button>
 
                 <VerticalWrapper>
                     <p>
-                        Already have an account ?{" "}
-                        <Link onClick={props.changeDisplay}>Log in</Link>{" "}
+                        Already have an account ? <Link onClick={props.changeDisplay}>Log in</Link>{" "}
                     </p>
                 </VerticalWrapper>
-            </Form>
+            </form>
         </>
     );
 }

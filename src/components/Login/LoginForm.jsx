@@ -86,28 +86,12 @@ function LoginForm(props) {
 
     return (
         <>
-            <Form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit}>
                 <Greetings size="2rem">Identifiez-vous</Greetings>
                 <label>e-mail :</label>
-                <Input
-                    required
-                    type="email"
-                    value={mail}
-                    pattern='^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$'
-                    onChange={(e) => setMail(e.target.value)}
-                    // onFocus={inputErrDisplay}
-                />
+                <input required type="email" value={mail} pattern='^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$' onChange={(e) => setMail(e.target.value)} />
                 <label>Mot de passe :</label>
-                <Input
-                    onBlur={hidePwd}
-                    // onDoubleClick={showPwd}
-                    id="pwd"
-                    required
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    // onFocus={inputErrDisplay}
-                />
+                <input onBlur={hidePwd} pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{4,}$" id="pwd" required type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
                 <FaRegEye className="input-eye" onMouseEnter={showPwd} onMouseLeave={hidePwd} />
                 <button type="submit">Me connecter</button>
                 <VerticalWrapper>
@@ -115,7 +99,7 @@ function LoginForm(props) {
                         Don't have an account yet ? <Link onClick={props.changeDisplay}>Create One</Link>{" "}
                     </p>
                 </VerticalWrapper>
-            </Form>
+            </form>
         </>
     );
 }

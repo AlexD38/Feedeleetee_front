@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import Input from "../../../styles/components/input.js";
+import input from "../../../styles/components/input.js";
 import Greetings from "../../../styles/components/Greetings";
 import axios from "axios";
 
@@ -11,6 +11,7 @@ export function AddServices(props) {
     const enterpriseId = props.enterprise;
 
     const sendData = async (e) => {
+        e.preventDefault();
         console.log("desc", descriptionRef.current.value);
         console.log("price", priceRef.current.value);
         console.log("Durée", durationRef.current.value);
@@ -19,7 +20,7 @@ export function AddServices(props) {
             price: priceRef.current.value,
             duration: durationRef.current.value,
         };
-        if (!data.description || !data.price || !data.duration) {
+        if (!data.description || !data.price || !data.duration || data.description.length < 5 || data.price < 0 || data.duration < 0) {
             return;
         }
 
@@ -49,14 +50,18 @@ export function AddServices(props) {
     return (
         <>
             <Greetings>Ajouter un Service</Greetings>
-
-            <label>Description :</label>
-            <Input type="text" ref={descriptionRef} />
-            <label>Prix :</label>
-            <Input type="number" min="1" max="100" ref={priceRef} />
-            <label>Durée :</label>
-            <Input type="number" min="0" max="10" ref={durationRef} />
-            <button onClick={sendData}>Ajouter</button>
+            <form
+                onSubmit={(e) => {
+                    e.preventDefault();
+                }}>
+                <label>Description :</label>
+                <input required minLength="5" type="text" ref={descriptionRef} />
+                <label>Prix :</label>
+                <input required type="number" min="1" max="100" ref={priceRef} />
+                <label>Durée :</label>
+                <input required type="number" min="0" max="10" ref={durationRef} />
+                <button onClick={sendData}>Ajouter</button>
+            </form>
         </>
     );
 }

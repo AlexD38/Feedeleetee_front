@@ -15,7 +15,7 @@ export default function AddAppointments(props) {
             day: dayRef.current.value,
             timeOfDay: timeRef.current.value,
         };
-        if (data.day === "" || data.timeOfDay === "") {
+        if (data.day === "" || data.timeOfDay === "" || !typeof data.day === "date" || typeof data.timeOfDay === "string" || data.timeOfDay < 8 || data.timeOfDay > 21) {
             return;
         }
 
@@ -45,11 +45,16 @@ export default function AddAppointments(props) {
     return (
         <>
             <Greetings>Ajouter un rendez-vous</Greetings>
-            <label htmlFor="">DATE</label>
-            <Input type="date" ref={dayRef}></Input>
-            <label htmlFor="">HEURE</label>
-            <Input type="time" ref={timeRef}></Input>
-            <button onClick={sendData}>Ajouter</button>
+            <form
+                onSubmit={(e) => {
+                    e.preventDefault();
+                }}>
+                <label htmlFor="">DATE</label>
+                <input required type="date" ref={dayRef}></input>
+                <label htmlFor="">HEURE</label>
+                <input required type="time" ref={timeRef}></input>
+                <button onClick={sendData}>Ajouter</button>
+            </form>
         </>
     );
 }
