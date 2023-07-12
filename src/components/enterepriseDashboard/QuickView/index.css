@@ -110,3 +110,8 @@
 	max-width: 50%;
 	gap: 1rem;
 }
+.no-clients {
+	border: 2px solid var(--primary-color);
+	padding: 1rem;
+	border-radius: 1rem;
+}

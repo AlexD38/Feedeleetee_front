@@ -147,9 +147,10 @@ form {
 label {
 	color: var(--text-dark);
 }
-input {
-	border-radius: .3rem;
-	padding: .8rem 8rem;
+input,
+textarea {
+	border-radius: 0.3rem;
+	padding: 0.8rem 8rem;
 	margin: 1rem 0;
 	margin-bottom: 2.2rem;
 	border: none;
@@ -158,28 +159,27 @@ input {
 	background-color: grey;
 	transition: all 0.3s ease;
 	cursor: pointer;
-	width : min(20rem, 100%);
-  text-align: center;
-  padding: .5rem
+	width: min(20rem, 100%);
+	text-align: center;
+	padding: 0.5rem;
 }
-  input:focus {
-	  background-color: GhostWhite;
-	  transition: all 0.3s ease;
-  }
-  input:invalid {
+input:focus,
+textarea:focus {
+	background-color: GhostWhite;
+	transition: all 0.3s ease;
+}
+input:invalid {
 	border: 1px solid red;
-  }
-  p {
+}
+p {
 	color: var(--text-dark);
-  }
-@media (max-width : 992px) {	
+}
+@media (max-width: 992px) {
 	:root {
 		font-size: 10px;
 	}
-	
 }
-@media (max-width : 650px) {	
-	
+@media (max-width: 650px) {
 	input {
 		width: 100%;
 	}

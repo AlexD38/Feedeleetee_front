@@ -81,10 +81,12 @@ function QuickView(props) {
 										</div>
 										<p>clients</p>
 									</div>
-									<NextAppointments />
 								</>
 							) : (
-								<h2> vous n'avez pas encore de clients</h2>
+								<p className="no-clients">
+									{" "}
+									vous n'avez pas encore de clients
+								</p>
 							)}
 						</div>
 						<div className="quickview__body--right">
@@ -108,6 +110,7 @@ function QuickView(props) {
 							</div>
 						</div>
 					</div>
+					<NextAppointments />
 				</main>
 			)}
 		</>
