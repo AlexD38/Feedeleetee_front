@@ -40,7 +40,7 @@ function QuickView(props) {
 				<main className="quickview__container">
 					<div className="quickview__title">
 						{" "}
-						<h1>
+						<h1 className="comp-title">
 							<span>Coup d'oeil sur votre entreprise</span>
 						</h1>{" "}
 					</div>

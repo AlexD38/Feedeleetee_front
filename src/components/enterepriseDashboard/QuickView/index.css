@@ -1,3 +1,6 @@
+* {
+}
+
 .quickview__card {
 	border: 3px solid var(--primary-color);
 	width: fit-content;
@@ -114,4 +117,25 @@
 	border: 2px solid var(--primary-color);
 	padding: 1rem;
 	border-radius: 1rem;
+}
+@media (max-width: 768px) {
+	.comp-title {
+		text-align: right;
+	}
+	.quickview__body,
+	.quickview__body--left,
+	.quickview__body--right {
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		min-width: 100%;
+	}
+	.quickview__card,
+	.quickview__card--summary,
+	.quickview__card--long {
+		width: min(50rem, 100%);
+	}
+	.quickview__card--long {
+		margin-top: 1rem;
+	}
 }

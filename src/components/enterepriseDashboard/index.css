@@ -1,3 +1,59 @@
 li {
-    cursor: pointer;
+	cursor: pointer;
+}
+.ham-top,
+.ham-mid,
+.ham-bottom {
+	display: none;
+}
+
+@media (max-width: 960px) {
+	.ham-container {
+		position: absolute;
+		top: 2rem;
+		right: 2rem;
+		z-index: 9999;
+	}
+	.nav-show {
+		right: 0;
+		backdrop-filter: blur(4px) brightness(0.5);
+	}
+	.nav-hide {
+		left: -250px;
+	}
+	nav ul {
+		/* border: 1px solid red; */
+		flex-direction: column;
+		position: fixed;
+		top: 8rem;
+		left: -250px;
+		min-height: 100vh;
+		font-size: 2rem;
+		padding: 8rem;
+		z-index: 999;
+		text-align: right;
+	}
+	.ham-top,
+	.ham-mid,
+	.ham-bottom {
+		display: block;
+		width: 30px;
+		height: 3px;
+		background-color: var(--primary-color);
+		margin: 0.5rem;
+		border-radius: 0.5rem;
+		transition: all 0.5s ease;
+	}
+	.ham-container:hover .ham-mid {
+		opacity: 0;
+		transition: all 0.5s ease;
+	}
+	.ham-container:hover .ham-top {
+		transform: rotate(45deg) translateY(6px) translateX(7px);
+		transition: all 0.5s ease;
+	}
+	.ham-container:hover .ham-bottom {
+		transition: all 0.5s ease;
+		transform: rotate(-45deg) translateY(-5px) translateX(4px);
+	}
 }

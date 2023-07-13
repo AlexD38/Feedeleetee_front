@@ -45,15 +45,22 @@ function EnterpriseDashboard() {
 		fetchDashboard();
 		console.log(myEnterprise);
 	}, []);
+
 	const handleClick = (componentName) => {
 		setCurrentComponent(componentName);
-		console.log(currentComponent);
+		showNav();
 	};
 	const updateEnterprise = (name, address, description) => {
 		myEnterprise.name = name;
 		myEnterprise.address = address;
 		myEnterprise.description = description;
 		console.log(name, address, description);
+	};
+	const showNav = () => {
+		const nav = document.querySelector("#nav");
+		nav.classList.contains("nav-show")
+			? nav.classList.remove("nav-show")
+			: nav.classList.add("nav-show");
 	};
 
 	return (
@@ -70,7 +77,12 @@ function EnterpriseDashboard() {
 						<h1 className="enterprise-name">
 							<span>{myEnterprise.name}</span>
 						</h1>
-						<ul>
+						<ul id="nav">
+							<div onClick={showNav} className="ham-container">
+								<div className="ham-top"></div>
+								<div className="ham-mid"></div>
+								<div className="ham-bottom"></div>
+							</div>
 							<li
 								onClick={(e) =>
 									handleClick(e.target.textContent)
@@ -108,6 +120,7 @@ function EnterpriseDashboard() {
 								Mon entreprise
 							</li>{" "}
 						</ul>
+
 						<Logout linkTo="home" />
 					</nav>
 					{currentComponent === "Appointments" && (
