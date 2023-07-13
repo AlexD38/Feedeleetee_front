@@ -140,9 +140,18 @@ export function HomePage() {
 							</header>
 							<h2 className="card-title">Relation</h2>
 							<p className="card-body">
-								Lorem ipsum dolor sit amet consectetur
-								adipisicing elit. Aut sint dolo. Lorem ipsum
-								dolor sit, amet consectetur adipisicing elit. A
+								Dans notre plateforme, nous mettons l'accent sur
+								l'établissement de relations solides entre les
+								entreprises et leurs clients. Nous comprenons
+								l'importance d'une connexion authentique et nous
+								nous efforçons de faciliter des relations
+								durables. Grâce à notre système convivial, les
+								entreprises peuvent interagir directement avec
+								leurs clients, établir une proximité et répondre
+								à leurs besoins spécifiques. Nous sommes
+								déterminés à créer un environnement où la
+								relation entre les entreprises et leurs clients
+								peut s'épanouir.
 							</p>
 						</article>
 						<article className="main-card">
@@ -155,9 +164,19 @@ export function HomePage() {
 							</header>
 							<h2 className="card-title">communication</h2>
 							<p className="card-body">
-								Lorem ipsum dolor sit amet consectetur
-								adipisicing elit. Aut sint doloribus voluptates
-								eligendi eveniet ratione magnam rep
+								La communication est essentielle pour toute
+								entreprise prospère. Notre plateforme offre un
+								ensemble d'outils de communication efficaces
+								pour faciliter les échanges entre les
+								entreprises et leurs clients. Les entreprises
+								peuvent partager des informations importantes,
+								envoyer des notifications personnalisées,
+								répondre aux questions et offrir un support en
+								temps réel. Notre plateforme de communication
+								intégrée garantit une interaction fluide et
+								transparente, permettant ainsi aux entreprises
+								de rester connectées avec leurs clients à tout
+								moment.
 							</p>
 						</article>
 						<article className="main-card">
@@ -168,11 +187,22 @@ export function HomePage() {
 									alt=""
 								/>
 							</header>
-							<h2 className="card-title">Happiness</h2>
+							<h2 className="card-title">Epanouissement</h2>
 							<p className="card-body">
-								Lorem ipsum dolor sit amet consectetur
-								adipisicing elit. Aut sint doloribus voluptates
-								eligendi eveniet ratione magnam repellendus
+								Nous comprenons l'importance de la gestion des
+								rendez-vous dans le contexte professionnel.
+								Grâce à notre plateforme, les clients peuvent
+								réserver facilement des rendez-vous avec les
+								entreprises en quelques clics. Notre système de
+								réservation intuitif offre une flexibilité
+								optimale, permettant aux clients de choisir
+								l'heure et la date qui leur conviennent le
+								mieux. Les entreprises bénéficient d'un aperçu
+								clair de leur emploi du temps, ce qui facilite
+								la planification et l'organisation de leurs
+								activités. Simplifiez le processus de
+								réservation avec notre plateforme conviviale et
+								offrez une expérience pratique à vos clients.
 							</p>
 						</article>
 					</section>
