@@ -17,8 +17,6 @@ function EnterpriseDashboard() {
 	const [currentComponent, setCurrentComponent] =
 		useState("Coup d'oeil rapide");
 	const [modal, setModal] = useState(false);
-	const [logoFile, setLogoFile] = useState(null);
-	const [showUploadInput, setShowUploadInput] = useState(false);
 
 	useEffect(() => {
 		async function fetchDashboard() {
@@ -50,6 +48,12 @@ function EnterpriseDashboard() {
 	const handleClick = (componentName) => {
 		setCurrentComponent(componentName);
 		console.log(currentComponent);
+	};
+	const updateEnterprise = (name, address, description) => {
+		myEnterprise.name = name;
+		myEnterprise.address = address;
+		myEnterprise.description = description;
+		console.log(name, address, description);
 	};
 
 	return (
@@ -122,7 +126,10 @@ function EnterpriseDashboard() {
 						<QuickView enterprise={myEnterprise} />
 					)}
 					{currentComponent === "Mon entreprise" && (
-						<MyEnterprise enterprise={myEnterprise} />
+						<MyEnterprise
+							enterprise={myEnterprise}
+							onUpdate={updateEnterprise}
+						/>
 					)}
 				</>
 			)}

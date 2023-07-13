@@ -2,3 +2,10 @@
 	max-width: 20rem;
 	border-radius: 1rem;
 }
+.address {
+	font-size: 2rem;
+}
+.description {
+	width: min(50rem, 80%);
+	margin-bottom: 2rem;
+}

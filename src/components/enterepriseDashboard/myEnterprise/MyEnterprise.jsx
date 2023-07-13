@@ -75,6 +75,11 @@ export default function (props) {
 				if (response) {
 					console.log(response);
 				}
+				props.onUpdate(name, address, description);
+				myEnterprise.name = name;
+				myEnterprise.address = address;
+				myEnterprise.description = description;
+				window.location.reload();
 			}
 		} catch (error) {
 			console.log(error);
@@ -103,8 +108,10 @@ export default function (props) {
 			) : (
 				<>
 					<h3>{myEnterprise.name}</h3>
-					<p>address : {myEnterprise.address}</p>
-					<p>Description : {myEnterprise.description}</p>
+					<p className="address">{myEnterprise.address}</p>
+					<p className="description">
+						Description : {myEnterprise.description}
+					</p>
 				</>
 			)}
 			<img
@@ -124,7 +131,11 @@ export default function (props) {
 					<button type="submit">Upload New Logo</button>
 				</form>
 			)}
-			<button onClick={handleClick}>Confirm Changes</button>
+			{showUploadInput ? (
+				<button onClick={handleClick}>Confirmer Changements</button>
+			) : (
+				<button onClick={handleClick}>Modifier</button>
+			)}
 		</>
 	);
 }

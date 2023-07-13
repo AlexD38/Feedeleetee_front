@@ -1,16 +1,16 @@
 .main-img {
-	 width: 100vw;
-	 filter: brightness(50%);
-	 z-index: -1;
+	width: 100vw;
+	filter: brightness(50%);
+	z-index: -1;
 }
 .social-icon {
 	font-size: 3rem;
-	color : var(--text-dark);
-	transition: all .3s ease;
+	color: var(--text-dark);
+	transition: all 0.3s ease;
 }
 .social-icon:hover {
 	color: var(--primary-color);
-	transition: all .3s ease;
+	transition: all 0.3s ease;
 }
 .img-container {
 	max-height: 80vh;
@@ -85,6 +85,7 @@ header {
 }
 .testimonial-section p {
 	width: 70%;
+	color: var(--text-light);
 }
 .services-section {
 	text-align: center;
@@ -190,92 +191,97 @@ h5 {
 	border-top: 1px solid white;
 	border-right: 1px solid white;
 	padding: 0;
-	border-radius:  0 .5rem 0 0 ;
-
+	border-radius: 0 0.5rem 0 0;
 }
 .input-form {
 	/* min-width: 50%; */
 	margin: 1rem;
 	background-color: var(--secondary-clr);
 	border: 1px solid white;
-	border-radius: .5rem;
+	border-radius: 0.5rem;
 	color: var(--text-dark);
 }
 label {
 	position: relative;
 	padding: 1rem;
 }
-.mail-label, .name-label, .message-label {
+.mail-label,
+.name-label,
+.message-label {
 	position: absolute;
 	top: 0;
 	left: 20%;
 	background-color: var(--secondary-clr);
-	padding: 0 .5rem;
+	padding: 0 0.5rem;
 }
 
 @media (max-width: 700px) {
-		.img-container-presentation h2, .img-container-presentation p {
-			display: none;
-		}
-		.img-container-btn-container {
-			flex-direction: column;		
-		}
-		.img-container-btn-container button {
-			font-size: 2rem;	
-		}
-		.testimonial-section {
-			display: none;
-		}
-		.services-section .card-title {
-				font-size: 2.5rem;
-		}
-		.services-section {
-			padding: 2rem;
-			height: fit-content;
-		}
-		.services-container {
-			flex-direction: column;
-			justify-content: center;
-			align-items: center;
-		}
-		.services-container article {
-			min-width: 100%;
-			
-		}
-		.services-container img {
-			margin: 0 auto;
-		}
-		.contact-section {
-			flex-direction: column;
-			padding: 1rem;
-			min-width: 100%;
-		}
-		.left-contact, .right-contact {
-			width: 80%;
-			text-align: center;
-		}
+	.img-container-presentation h2,
+	.img-container-presentation p {
+		display: none;
+	}
+	.img-container-btn-container {
+		flex-direction: column;
+	}
+	.img-container-btn-container button {
+		font-size: 2rem;
+	}
+	.testimonial-section {
+		display: none;
+	}
+	.services-section .card-title {
+		font-size: 2.5rem;
+	}
+	.services-section {
+		padding: 2rem;
+		height: fit-content;
+	}
+	.services-container {
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+	.services-container article {
+		min-width: 100%;
+	}
+	.services-container img {
+		margin: 0 auto;
+	}
+	.contact-section {
+		flex-direction: column;
+		padding: 1rem;
+		min-width: 100%;
+	}
+	.left-contact,
+	.right-contact {
+		width: 80%;
+		text-align: center;
+	}
 
-		.right-contact form
-		{
-			border: 1px solid  var(--text-dark);
-			display: flex;
-			flex-direction: column;
-			justify-content: flex-start;
-			align-items: center;
-			font-size: 1.5rem;
-			border-radius: 1rem;
-		}
-		.right-contact form > label, .right-contact form > label input, .right-contact form >label textarea {
-			width: 100%;
-			margin: 0;
-			padding: .5rem;
-		}
-		.mail-label, .message-label, .name-label {
-			position: relative;
-			background-color:transparent;
-			width: fit-content;
-			margin: 0 ;
-			margin-top: .5rem;
-			left: 0;
-		}
+	.right-contact form {
+		border: 1px solid var(--text-dark);
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: center;
+		font-size: 1.5rem;
+		border-radius: 1rem;
+	}
+	.right-contact form > label,
+	.right-contact form > label input,
+	.right-contact form > label textarea {
+		width: 100%;
+		margin: 0;
+		padding: 0.5rem;
+	}
+	.mail-label,
+	.message-label,
+	.name-label {
+		position: relative;
+		background-color: transparent;
+		width: fit-content;
+		margin: 0;
+		margin-top: 0.5rem;
+		left: 0;
+	}
 }
