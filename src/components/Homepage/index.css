@@ -186,14 +186,13 @@ h5 {
 	justify-content: flex-end;
 	align-items: baseline;
 	flex-wrap: wrap;
-	gap: 0;
 	border-top: 1px solid white;
 	border-right: 1px solid white;
-	padding: 0;
+	padding: 3rem;
 	border-radius: 0 0.5rem 0 0;
+	position: relative;
 }
 .input-form {
-	/* min-width: 50%; */
 	margin: 1rem;
 	background-color: var(--secondary-clr);
 	border: 1px solid white;
@@ -204,6 +203,17 @@ label {
 	position: relative;
 	padding: 1rem;
 }
+#message {
+	min-width: 100%;
+	flex: auto;
+	display: block;
+}
+
+.homepage-form-btn {
+	position: absolute;
+	bottom: -3rem;
+}
+
 .mail-label,
 .name-label,
 .message-label {
@@ -215,6 +225,11 @@ label {
 }
 
 @media (max-width: 700px) {
+	.card-body {
+		width: 80%;
+		margin: 0 auto;
+		margin-bottom: 3rem;
+	}
 	.img-container-presentation h2,
 	.img-container-presentation p {
 		display: none;
@@ -282,5 +297,8 @@ label {
 		margin: 0;
 		margin-top: 0.5rem;
 		left: 0;
+	}
+	.homepage-form-btn {
+		position: relative;
 	}
 }

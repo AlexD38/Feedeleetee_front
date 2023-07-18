@@ -253,7 +253,9 @@ export function HomePage() {
 									cols="60"
 								/>
 							</label>
-							<button type="submit">Envoyer</button>
+							<button className="homepage-form-btn" type="submit">
+								Envoyer
+							</button>
 						</form>
 					</div>
 				</section>
