@@ -90,7 +90,6 @@ header {
 .services-section {
 	text-align: center;
 	color: var(--text-dark);
-	height: 80vh;
 	background-color: var(--primary-color);
 	min-width: 100vw;
 	font-size: 2.5rem;
