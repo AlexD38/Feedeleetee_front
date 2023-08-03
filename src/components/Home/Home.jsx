@@ -26,7 +26,7 @@ function Home() {
             <Greetings style={{ position: "absolute", top: "0rem" }}>
                 Bonjour <span>{userName}</span>
             </Greetings>
-            <Link href="https://feedeleetee-back.vercel.app/myenterprise">
+            <Link href="https://feedeleetee-front.vercel.app/myenterprise">
                 <div
                     style={{
                         height: "20rem",
@@ -49,7 +49,7 @@ function Home() {
                     <EnterpriseChoiceImg src={EnterpriseImg} />
                 </div>
             </Link>
-            <Link href="https://feedeleetee-back.vercel.app/myclientprofile">
+            <Link href="https://feedeleetee-front.vercel.app/myclientprofile">
                 <div
                     style={{
                         height: "20rem",
