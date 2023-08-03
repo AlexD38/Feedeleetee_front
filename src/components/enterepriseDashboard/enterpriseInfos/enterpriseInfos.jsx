@@ -13,10 +13,7 @@ function EnterpriseInfos() {
             const headers = {
                 token: token,
             };
-            const response = await axios.get(
-                `http://localhost:4000/enterprise/`,
-                { headers }
-            );
+            const response = await axios.get(`https://feedeleetee-back.vercel.app/enterprise/`, { headers });
             // console.log(response.data[0]);
             setMyEnterprise((myEnterprise) => response.data[0]);
         }
@@ -31,11 +28,7 @@ function EnterpriseInfos() {
                         <h1>My enterprise :</h1>
                         <h3>{myEnterprise.name}</h3>
                         <h3>{myEnterprise.address}</h3>
-                        {myEnterprise.logo ? (
-                            <img alt="logo" src={myEnterprise.logo} />
-                        ) : (
-                            <></>
-                        )}
+                        {myEnterprise.logo ? <img alt="logo" src={myEnterprise.logo} /> : <></>}
                         <h3>{myEnterprise.description}</h3>{" "}
                     </div>
                 </>

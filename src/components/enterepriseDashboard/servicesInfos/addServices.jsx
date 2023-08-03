@@ -30,7 +30,7 @@ export function AddServices(props) {
         };
         try {
             const response = await axios.post(
-                `http://localhost:4000/enterprises/services`,
+                `https://feedeleetee-back.vercel.app/enterprises/services`,
                 { data },
                 {
                     headers,

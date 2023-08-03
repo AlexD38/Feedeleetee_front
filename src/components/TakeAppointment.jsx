@@ -21,13 +21,8 @@ export function TakeAppointment(props) {
                 clientId,
             };
             try {
-                const response = await axios.get(
-                    `http://localhost:4000/enterprises/${enterpriseId}/appointments`,
-                    { headers }
-                );
-                setAvailableAppointments(
-                    (availableAppointments) => response.data
-                );
+                const response = await axios.get(`https://feedeleetee-back.vercel.app/enterprises/${enterpriseId}/appointments`, { headers });
+                setAvailableAppointments((availableAppointments) => response.data);
                 console.log(availableAppointments);
             } catch (error) {
                 console.error(error);
@@ -47,11 +42,7 @@ export function TakeAppointment(props) {
                     clientId,
                 };
                 console.log(headers.enterpriseId);
-                const response = await axios.patch(
-                    `http://localhost:4000/appointments/${appointmentId}`,
-                    {},
-                    { headers }
-                );
+                const response = await axios.patch(`https://feedeleetee-back.vercel.app/appointments/${appointmentId}`, {}, { headers });
 
                 alert("Votre rendez-vous à bien été pris");
                 console.log(response);
@@ -72,22 +63,11 @@ export function TakeAppointment(props) {
             {availableAppointments.length > 0 ? (
                 <div className="card">
                     {availableAppointments.map((appointment) => (
-                        <LinkComp
-                            key={appointment.id}
-                            onClick={() =>
-                                handleConfirm(
-                                    appointment.id,
-                                    appointment.enterprise_id
-                                )
-                            }
-                        >
+                        <LinkComp key={appointment.id} onClick={() => handleConfirm(appointment.id, appointment.enterprise_id)}>
                             <ul id={appointment.id}>
                                 <li>
                                     {" "}
-                                    {moment(appointment.day)
-                                        .locale("fr")
-                                        .format("dddd DD MMMM YYYY")}{" "}
-                                    {appointment.time_of_day}
+                                    {moment(appointment.day).locale("fr").format("dddd DD MMMM YYYY")} {appointment.time_of_day}
                                 </li>
                             </ul>
                         </LinkComp>

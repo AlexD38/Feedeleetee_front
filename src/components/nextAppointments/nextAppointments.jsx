@@ -10,7 +10,7 @@ export default function NextAppointments() {
             const headers = {
                 token: token,
             };
-            const response = await axios.get(`http://localhost:4000/nextappointments`, { headers });
+            const response = await axios.get(`https://feedeleetee-back.vercel.app/nextappointments`, { headers });
             console.log(response.data);
             setNextAppointments((myAppointments) => response.data);
             localStorage.setItem("NumberOfAppointments", response.data.length);

@@ -28,7 +28,7 @@ function OffersInfos(props) {
                 token,
                 enterpriseId,
             };
-            const response = await axios.get(`http://localhost:4000/enterprises/offers`, { headers });
+            const response = await axios.get(`https://feedeleetee-back.vercel.app/enterprises/offers`, { headers });
             const offers = response.data;
             if (offers) {
                 setMyOffers((myOffers) => response.data);
@@ -47,7 +47,7 @@ function OffersInfos(props) {
             token: token,
         };
         try {
-            const response = await axios.delete(`http://localhost:4000/offers/${id}`, {
+            const response = await axios.delete(`https://feedeleetee-back.vercel.app/offers/${id}`, {
                 headers,
             });
             console.log(response.data.success);

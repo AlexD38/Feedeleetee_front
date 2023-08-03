@@ -36,21 +36,14 @@ function CreateClientForm() {
         event.preventDefault();
 
         try {
-            const response = await axios.post(
-                "http://localhost:4000/clients",
-                data,
-                {
-                    headers,
-                }
-            );
+            const response = await axios.post("https://feedeleetee-back.vercel.app/clients", data, {
+                headers,
+            });
             const result = response.data;
             console.log(result);
             if (result.success) {
                 alert(result.success);
-                localStorage.setItem(
-                    "clientId",
-                    result.userCreateClient.client_id
-                );
+                localStorage.setItem("clientId", result.userCreateClient.client_id);
                 navigate("/home");
             }
             if (result.authenticated === false) {
@@ -68,19 +61,9 @@ function CreateClientForm() {
             <Form onSubmit={handleSubmit} enctype="multipart/form-data">
                 <Greetings size="2rem">Creez votre profil client</Greetings>
                 <label for="firstname">Prénom du client :</label>
-                <Input
-                    id="firstname"
-                    required
-                    type="text"
-                    ref={clientFirstnameRef}
-                />
+                <Input id="firstname" required type="text" ref={clientFirstnameRef} />
                 <label for="lastname">Nom du client :</label>
-                <Input
-                    id="lastname"
-                    type="text"
-                    required
-                    ref={clientLastnameRef}
-                />
+                <Input id="lastname" type="text" required ref={clientLastnameRef} />
                 <label for="mail">mail :</label>
                 <Input id="mail" required type="email" ref={clientMailRef} />
                 <label for="tel">tel :</label>

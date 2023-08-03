@@ -17,13 +17,9 @@ function DeleteBtn(props) {
         // event.preventDefault();
 
         try {
-            const response = await axios.delete(
-                `http://localhost:4000/appointments/${props.id}`,
-                qs.stringify(data),
-                {
-                    headers,
-                }
-            );
+            const response = await axios.delete(`https://feedeleetee-back.vercel.app/appointments/${props.id}`, qs.stringify(data), {
+                headers,
+            });
             console.log(response.data.success);
         } catch (error) {
             console.log(error);

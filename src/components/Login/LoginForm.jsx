@@ -32,7 +32,7 @@ function LoginForm(props) {
         event.preventDefault();
 
         try {
-            const response = await axios.post("http://localhost:4000/login", qs.stringify(data), {
+            const response = await axios.post("https://feedeleetee-back.vercel.app/login", qs.stringify(data), {
                 headers,
             });
             console.log("reponse : ", response.data);

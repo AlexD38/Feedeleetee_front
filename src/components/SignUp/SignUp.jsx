@@ -30,7 +30,7 @@ function Signup(props) {
         event.preventDefault();
 
         try {
-            const response = await axios.post("http://localhost:4000/users", qs.stringify(data), {
+            const response = await axios.post("https://feedeleetee-back.vercel.app/users", qs.stringify(data), {
                 headers,
             });
             const message = response.data.message;

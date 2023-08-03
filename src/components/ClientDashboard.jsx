@@ -28,12 +28,9 @@ export function ClientDashboard() {
             };
             // console.log(headers);
             try {
-                const response = await axios.get(
-                    `http://localhost:4000/clients`,
-                    {
-                        headers,
-                    }
-                );
+                const response = await axios.get(`https://feedeleetee-back.vercel.app/clients`, {
+                    headers,
+                });
                 console.log(response.data[0]);
                 if (response.data[0] != undefined) {
                     console.log(response.data[0]);
@@ -55,12 +52,9 @@ export function ClientDashboard() {
                 token: token,
             };
             try {
-                const response = await axios.get(
-                    "http://localhost:4000/enterprises",
-                    {
-                        headers,
-                    }
-                );
+                const response = await axios.get("https://feedeleetee-back.vercel.app/enterprises", {
+                    headers,
+                });
                 // console.log(response.data.enterprises);
                 setEnterprises((enterprise) => response.data.enterprises);
             } catch (error) {
@@ -96,31 +90,20 @@ export function ClientDashboard() {
                                         style={{
                                             color: "#eca869",
                                             fontWeight: "bold",
-                                        }}
-                                    >
-                                        {moment(rdv)
-                                            .locale("fr")
-                                            .format("dddd DD MMMM YYYY")}
+                                        }}>
+                                        {moment(rdv).locale("fr").format("dddd DD MMMM YYYY")}
                                     </li>
                                 ))}
                             </ul>
                         ) : (
-                            <p style={{ color: "#eca869" }}>
-                                Aucun rendez-vous pour le moment
-                            </p>
+                            <p style={{ color: "#eca869" }}>Aucun rendez-vous pour le moment</p>
                         )}
                     </div>
-                    <button onClick={handleClick}>
-                        Prenez votre prochain rdv
-                    </button>
+                    <button onClick={handleClick}>Prenez votre prochain rdv</button>
                     {enterprises && (
                         <>
                             {enterprises.map((enterprise) => (
-                                <LinkComp
-                                    onClick={(e) =>
-                                        showAppointments(e, enterprise.id)
-                                    }
-                                >
+                                <LinkComp onClick={(e) => showAppointments(e, enterprise.id)}>
                                     {" "}
                                     {enterprise.name}
                                     <VerticalWrapper>
@@ -132,14 +115,11 @@ export function ClientDashboard() {
                                                 objectFit: "cover",
                                                 margin: "1rem 0 2.5rem",
                                             }}
-                                            src={`data:image/png;base64,${enterprise.logo}`}
-                                        ></img>
+                                            src={`data:image/png;base64,${enterprise.logo}`}></img>
                                     </VerticalWrapper>
                                 </LinkComp>
                             ))}
-                            {selectedEnterpriseId && (
-                                <TakeAppointment id={selectedEnterpriseId} />
-                            )}
+                            {selectedEnterpriseId && <TakeAppointment id={selectedEnterpriseId} />}
                         </>
                     )}
                 </>

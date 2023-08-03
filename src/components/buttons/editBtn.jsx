@@ -46,11 +46,7 @@ function Editbutton(props) {
                     console.log("you need to fill up the blank for time input");
                 } else {
                     try {
-                        const response = await axios.patch(
-                            `http://localhost:4000/appointments/${appointmentId}`,
-                            { data },
-                            { headers }
-                        );
+                        const response = await axios.patch(`https://feedeleetee-back.vercel.app/appointments/${appointmentId}`, { data }, { headers });
                         console.log(response.data.tableUpdated);
                     } catch (error) {
                         console.log(error);
@@ -85,8 +81,7 @@ function Editbutton(props) {
                         onClick={(e) => {
                             validate();
                             updateDataFromChildComponent(e);
-                        }}
-                    >
+                        }}>
                         Valider
                     </button>
                     <button onClick={cancel}>Annuler</button>
