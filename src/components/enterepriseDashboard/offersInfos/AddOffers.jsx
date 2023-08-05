@@ -25,7 +25,7 @@ export function AddOffers(props) {
         };
         try {
             const response = await axios.post(
-                `https://feedeleetee-back.vercel.app/enterprises/offers`,
+                `http://localhost:3000/enterprises/offers`,
                 { data },
                 {
                     headers,

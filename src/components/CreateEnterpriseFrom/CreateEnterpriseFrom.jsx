@@ -30,7 +30,7 @@ function CreateEnterprise() {
         event.preventDefault();
 
         try {
-            const response = await axios.post("https://feedeleetee-back.vercel.app/enterprise", data, {
+            const response = await axios.post("http://localhost:3000/enterprise", data, {
                 headers,
             });
             const result = response.data;

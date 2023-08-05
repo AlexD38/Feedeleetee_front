@@ -13,7 +13,7 @@ function EnterpriseInfos() {
             const headers = {
                 token: token,
             };
-            const response = await axios.get(`https://feedeleetee-back.vercel.app/enterprise/`, { headers });
+            const response = await axios.get(`http://localhost:3000/enterprise/`, { headers });
             // console.log(response.data[0]);
             setMyEnterprise((myEnterprise) => response.data[0]);
         }
