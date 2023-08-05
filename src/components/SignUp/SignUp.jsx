@@ -31,7 +31,7 @@ function Signup(props) {
 
 		try {
 			const response = await axios.post(
-				"http://localhost:3000/users",
+				"http://localhost:4000/users",
 				qs.stringify(data),
 				{
 					headers,

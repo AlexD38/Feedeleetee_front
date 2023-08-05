@@ -34,7 +34,7 @@ function AppointmentsInfos(props) {
 
     useEffect(() => {
         async function fetchAppointments() {
-            const response = await axios.get(`http://localhost:3000/enterprises/appointments`, { headers });
+            const response = await axios.get(`http://localhost:4000/enterprises/appointments`, { headers });
             setMyAppointments((myAppointments) => response.data);
             console.log(response.data);
         }
@@ -62,7 +62,7 @@ function AppointmentsInfos(props) {
 
         try {
             const response = await axios.post(
-                `http://localhost:3000/enterprises/appointments`,
+                `http://localhost:4000/enterprises/appointments`,
                 { data },
                 {
                     headers,
@@ -84,7 +84,7 @@ function AppointmentsInfos(props) {
             token: token,
         };
         try {
-            const response = await axios.delete(`http://localhost:3000/appointments/${id}`, {
+            const response = await axios.delete(`http://localhost:4000/appointments/${id}`, {
                 headers,
             });
             console.log(response.data.success);

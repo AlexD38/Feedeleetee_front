@@ -22,7 +22,7 @@ export function TakeAppointment(props) {
 			};
 			try {
 				const response = await axios.get(
-					`http://localhost:3000/enterprises/${enterpriseId}/appointments`,
+					`http://localhost:4000/enterprises/${enterpriseId}/appointments`,
 					{ headers }
 				);
 				setAvailableAppointments(
@@ -48,7 +48,7 @@ export function TakeAppointment(props) {
 				};
 				console.log(headers.enterpriseId);
 				const response = await axios.patch(
-					`http://localhost:3000/appointments/${appointmentId}`,
+					`http://localhost:4000/appointments/${appointmentId}`,
 					{},
 					{ headers }
 				);

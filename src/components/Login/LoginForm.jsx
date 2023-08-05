@@ -33,7 +33,7 @@ function LoginForm(props) {
 
 		try {
 			const response = await axios.post(
-				"http://localhost:3000/login",
+				"http://localhost:4000/login",
 				qs.stringify(data),
 				{
 					headers,
@@ -59,9 +59,14 @@ function LoginForm(props) {
 				navigate("/createenterprise");
 				return;
 			}
+			if (!response.data.clientId) {
+				navigate("/createclient");
+				return;
+			}
 
 			if (response.data.authenticated) {
 				if (props.navigate === "client") {
+					localStorage.setItem("clientId", response.data.clientId);
 					navigate("/myclientprofile");
 				} else if (props.navigate === "enterprise") {
 					navigate("/myenterprise");

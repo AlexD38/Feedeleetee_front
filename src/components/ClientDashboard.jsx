@@ -8,6 +8,7 @@ import VerticalWrapper from "../styles/components/verticalWrapper.js";
 import CreateClient from "../components/CreateClientForm/CreateClient.jsx";
 import { TakeAppointment } from "../components/TakeAppointment.jsx";
 import LinkComp from "../styles/components/LinkComp";
+import Logout from "./Logout/Logout";
 export function ClientDashboard() {
 	const token = localStorage.getItem("token");
 	const [user, setUser] = useState(localStorage.getItem("user"));
@@ -29,7 +30,7 @@ export function ClientDashboard() {
 			// console.log(headers);
 			try {
 				const response = await axios.get(
-					`http://localhost:3000/clients`,
+					`http://localhost:4000/clients`,
 					{
 						headers,
 					}
@@ -56,7 +57,7 @@ export function ClientDashboard() {
 			};
 			try {
 				const response = await axios.get(
-					"http://localhost:3000/enterprises",
+					"http://localhost:4000/enterprises",
 					{
 						headers,
 					}
@@ -92,6 +93,7 @@ export function ClientDashboard() {
 								<h3>Voici vos prochains rendez-vous :</h3>
 								{client.rdv.map((rdv, index) => (
 									<li
+										className="rdv-list"
 										key={index}
 										style={{
 											color: "#eca869",
@@ -139,6 +141,7 @@ export function ClientDashboard() {
 							)}
 						</>
 					)}
+					<Logout />
 				</>
 			) : (
 				<>

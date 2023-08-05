@@ -25,7 +25,7 @@ export default function AddAppointments(props) {
 		};
 		try {
 			const response = await axios.post(
-				`http://localhost:3000/enterprises/appointments`,
+				`http://localhost:4000/enterprises/appointments`,
 				{ data },
 				{
 					headers,

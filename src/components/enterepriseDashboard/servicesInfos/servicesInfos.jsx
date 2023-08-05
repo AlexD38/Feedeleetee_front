@@ -27,7 +27,7 @@ function ServicesInfos(props) {
 				enterpriseId,
 			};
 			const response = await axios.get(
-				`http://localhost:3000/enterprises/services`,
+				`http://localhost:4000/enterprises/services`,
 				{ headers }
 			);
 			const services = response.data;
@@ -60,7 +60,7 @@ function ServicesInfos(props) {
 		};
 		try {
 			const response = await axios.delete(
-				`hhttp://localhost:3000/services/${id}`,
+				`http://localhost:4000/services/${id}`,
 				{
 					headers,
 				}

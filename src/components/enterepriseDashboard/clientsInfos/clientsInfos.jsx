@@ -17,7 +17,7 @@ function ClientsInfos(props) {
 				enterpriseId,
 			};
 			const response = await axios.get(
-				`http://localhost:3000/enterprises/clients`,
+				`http://localhost:4000/enterprises/clients`,
 				{ headers }
 			);
 			setMyClients((myClients) => response.data);

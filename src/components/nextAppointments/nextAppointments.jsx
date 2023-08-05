@@ -11,7 +11,7 @@ export default function NextAppointments() {
 				token: token,
 			};
 			const response = await axios.get(
-				`http://localhost:3000/nextappointments`,
+				`http://localhost:4000/nextappointments`,
 				{ headers }
 			);
 			console.log(response.data);

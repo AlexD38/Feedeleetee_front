@@ -168,9 +168,9 @@ textarea:focus {
 	background-color: GhostWhite;
 	transition: all 0.3s ease;
 }
-input:invalid {
+/* input:invalid {
 	border: 1px solid red;
-}
+} */
 p {
 	color: var(--text-dark);
 }

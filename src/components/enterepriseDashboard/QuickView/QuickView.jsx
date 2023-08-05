@@ -16,7 +16,7 @@ function QuickView(props) {
                 enterpriseId: enterpriseId,
             };
             try {
-                const response = await axios.get(`http://localhost:3000/quickview`, { headers });
+                const response = await axios.get(`http://localhost:4000/quickview`, { headers });
                 if (response.status === 200) {
                     setQuickView((quickView) => response.data);
                     setQuickView(response.data);

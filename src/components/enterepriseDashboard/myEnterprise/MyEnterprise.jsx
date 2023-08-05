@@ -28,7 +28,7 @@ export default function (props) {
             data.file = logoFile;
             const headers = { token };
             try {
-                const response = await axios.post("http://localhost:3000/logo", data, {
+                const response = await axios.post("http://localhost:4000/logo", data, {
                     headers,
                 });
                 console.log("response : ");
@@ -58,7 +58,7 @@ export default function (props) {
             };
             console.log(data);
             if (name.length > 0 && address.length > 0 && description.length > 0) {
-                const response = await axios.patch(`http://localhost:3000/enterprises/${id}`, { data }, { headers });
+                const response = await axios.patch(`http://localhost:4000/enterprises/${id}`, { data }, { headers });
                 console.log(response.data);
                 if (response) {
                     console.log(response);
